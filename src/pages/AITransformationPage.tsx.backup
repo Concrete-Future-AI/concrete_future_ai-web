@@ -1,0 +1,1626 @@
+import React, { useState, useEffect } from 'react';
+import './AITransformationPage.css';
+
+// 导入现有组件
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+
+// 主页面组件
+const AITransformationPage = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const toggleAccordion = (index: number) => {
+    setActiveAccordion(activeAccordion === index ? null : index);
+  };
+
+  return (
+    <div className="ai-transformation-page">
+      <Navigation />
+      
+      {/* 第一屏：英雄区 */}
+      <HeroSection isVisible={isVisible} />
+      
+      {/* 第二屏：痛点共鸣区 */}
+      <PainPointsSection />
+      
+      {/* 第三屏：解决方案架构 */}
+      <SolutionsSection />
+      
+      {/* 第四屏：课程模块详解 */}
+      <CoursesSection 
+        activeAccordion={activeAccordion} 
+        toggleAccordion={toggleAccordion} 
+      />
+      
+      {/* 第五屏：客户案例与成果 */}
+      <CaseStudiesSection />
+      
+      {/* 第六屏：服务流程 */}
+      <ServiceFlowSection />
+      
+      {/* 第七屏：价格与价值锚定 */}
+      <PricingSection />
+      
+      {/* 第八屏：行动召唤 */}
+      <CTASection />
+      
+      <Footer />
+    </div>
+  );
+};
+
+// ===== 第一屏：英雄区 =====
+const HeroSection: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
+  return (
+    <section className="hero-section-ai">
+      <div className="hero-container">
+        {/* 左侧内容区 */}
+        <div className="hero-content">
+          {/* 小标签 */}
+          <div className="hero-badge">
+            <span className="badge-dot"></span>
+            <span 
+              className="badge-text"
+              style={{
+                fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                fontWeight: '600'
+              }}
+            >
+              外贸电商AI数智化转型
+            </span>
+          </div>
+          
+          {/* 主标题 */}
+          <h1 
+            className={`hero-title ${isVisible ? 'visible' : ''}`}
+            style={{
+              fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+              fontWeight: '800'
+            }}
+          >
+            外贸电商的<span className="title-underline">AI革命</span>：<br />
+            不是选择，而是<span className="title-highlight">生存必修课</span>
+          </h1>
+          
+          {/* 副标题 */}
+          <p 
+            className="hero-subtitle"
+            style={{
+              fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+              fontWeight: '400'
+            }}
+          >
+            当你还在手工处理业务时<br />
+            你的竞争对手已经用AI实现了：
+          </p>
+          
+          {/* 数据展示 */}
+          <div className="hero-stats">
+            <div className="stat-item">
+              <div 
+                className="stat-number"
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontWeight: '900'
+                }}
+              >
+                300<span className="stat-symbol">%</span>
+              </div>
+              <div 
+                className="stat-label"
+                style={{
+                  fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                  fontWeight: '500'
+                }}
+              >
+                获客效率↑
+              </div>
+            </div>
+            <div className="stat-divider"></div>
+            <div className="stat-item">
+              <div 
+                className="stat-number"
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontWeight: '900'
+                }}
+              >
+                85<span className="stat-symbol">%</span>
+              </div>
+              <div 
+                className="stat-label"
+                style={{
+                  fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                  fontWeight: '500'
+                }}
+              >
+                成本降低↓
+              </div>
+            </div>
+            <div className="stat-divider"></div>
+            <div className="stat-item">
+              <div 
+                className="stat-number"
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontWeight: '900'
+                }}
+              >
+                24<span className="stat-symbol">/7</span>
+              </div>
+              <div 
+                className="stat-label"
+                style={{
+                  fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                  fontWeight: '500'
+                }}
+              >
+                无人直播
+              </div>
+            </div>
+          </div>
+          
+          {/* CTA按钮组 */}
+          <div className="hero-cta-group">
+            <button 
+              className="btn-primary"
+              style={{
+                fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                fontWeight: '700'
+              }}
+            >
+              <span>立即预约免费诊断</span>
+              <span 
+                className="btn-note"
+                style={{
+                  fontFamily: "'IBM Plex Sans', sans-serif",
+                  fontWeight: '400'
+                }}
+              >
+                (价值¥1,000)
+              </span>
+            </button>
+            <button 
+              className="btn-secondary"
+              style={{
+                fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                fontWeight: '600'
+              }}
+            >
+              <span>查看转型方案</span>
+              <span className="arrow-icon">→</span>
+            </button>
+          </div>
+          
+          {/* 紧迫感提示 */}
+          <div className="hero-urgency">
+            <div className="urgency-icon">⏰</div>
+            <div className="urgency-content">
+              <span 
+                className="urgency-main"
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontWeight: '600'
+                }}
+              >
+                本月仅剩 2 个免费名额
+              </span>
+              <div className="urgency-progress">
+                <div className="progress-bar">
+                  <div className="progress-fill" style={{ width: '60%' }}></div>
+                </div>
+                <span 
+                  className="progress-text"
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontWeight: '600'
+                  }}
+                >
+                  已预约 3/5
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* 右侧视觉区 */}
+        <div className="hero-visual">
+          <div className="visual-showcase">
+            <div className="showcase-card card-1">
+              <div 
+                className="card-header"
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontWeight: '600'
+                }}
+              >
+                AI生成开发信
+              </div>
+              <div className="card-content">
+                <div 
+                  className="typing-effect"
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontWeight: '400'
+                  }}
+                >
+                  Dear [Client Name], I noticed your...
+                </div>
+              </div>
+            </div>
+            <div className="showcase-card card-2">
+              <div 
+                className="card-header"
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontWeight: '600'
+                }}
+              >
+                AI视觉营销
+              </div>
+              <div className="card-image"></div>
+            </div>
+            <div className="showcase-card card-3">
+              <div 
+                className="card-header"
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontWeight: '600'
+                }}
+              >
+                24h AI直播
+              </div>
+              <div className="live-indicator">
+                <span className="live-dot"></span>
+                <span 
+                  className="live-text"
+                  style={{
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontWeight: '700'
+                  }}
+                >
+                  LIVE
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* 向下滚动提示 */}
+      <div className="scroll-indicator">
+        <div 
+          className="scroll-text"
+          style={{
+            fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+            fontWeight: '500'
+          }}
+        >
+          向下了解更多
+        </div>
+        <div className="scroll-arrow">↓</div>
+      </div>
+    </section>
+  );
+};
+
+// ===== 第二屏：痛点共鸣区 =====
+const PainPointsSection = () => {
+  const comparisonData = [
+    {
+      icon: '📧',
+      title: '开发信撰写',
+      traditional: {
+        metrics: [
+          { label: '效率', value: '1封 = 30分钟', type: 'negative' },
+          { label: '质量', value: '人工个性化困难', type: 'negative' },
+          { label: '产能', value: '月均500封上限', type: 'negative' }
+        ],
+        tag: '高时间成本'
+      },
+      ai: {
+        metrics: [
+          { label: '效率', value: '100封 = 1分钟', type: 'positive' },
+          { label: '质量', value: '自动精准个性化', type: 'positive' },
+          { label: '产能', value: '月均50,000封', type: 'positive' }
+        ],
+        improvement: '效率提升100倍'
+      }
+    },
+    {
+      icon: '🎨',
+      title: '视觉营销素材',
+      traditional: {
+        metrics: [
+          { label: '制作周期', value: '设计师3天/张', type: 'negative' },
+          { label: '修改成本', value: '修改成本高', type: 'negative' },
+          { label: '月度成本', value: '¥15,000', type: 'negative' }
+        ],
+        tag: '设计师依赖'
+      },
+      ai: {
+        metrics: [
+          { label: '制作周期', value: 'AI 10秒/张', type: 'positive' },
+          { label: '修改成本', value: '无限次迭代', type: 'positive' },
+          { label: '月度成本', value: '¥2,000', type: 'positive' }
+        ],
+        improvement: '成本降低85%'
+      }
+    },
+    {
+      icon: '📹',
+      title: '直播带货',
+      traditional: {
+        metrics: [
+          { label: '人力需求', value: '需3班倒主播', type: 'negative' },
+          { label: '月度成本', value: '¥30,000', type: 'negative' },
+          { label: '稳定性', value: '状态不稳定', type: 'negative' }
+        ],
+        tag: '高人力成本'
+      },
+      ai: {
+        metrics: [
+          { label: '人力需求', value: 'AI数字人24h', type: 'positive' },
+          { label: '月度成本', value: '¥3,000', type: 'positive' },
+          { label: '稳定性', value: '标准化输出', type: 'positive' }
+        ],
+        improvement: '人力成本节省90%'
+      }
+    },
+    {
+      icon: '📊',
+      title: '市场决策',
+      traditional: {
+        metrics: [
+          { label: '决策依据', value: '依赖经验拍脑袋', type: 'negative' },
+          { label: '试错成本', value: '试错成本高', type: 'negative' },
+          { label: '决策周期', value: '数周到数月', type: 'negative' }
+        ],
+        tag: '高风险'
+      },
+      ai: {
+        metrics: [
+          { label: '决策依据', value: 'AI数据分析', type: 'positive' },
+          { label: '试错成本', value: '降低失误80%', type: 'positive' },
+          { label: '决策周期', value: '数小时到数天', type: 'positive' }
+        ],
+        improvement: '决策准确率提升'
+      }
+    }
+  ];
+
+  return (
+    <section className="pain-points-section">
+      <div className="section-container">
+        {/* 区域标题 */}
+        <div className="section-header">
+          <div className="section-badge">
+            <span className="badge-icon">💡</span>
+            <span style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: '600'
+            }}>
+              传统模式 vs AI化
+            </span>
+          </div>
+          <h2 
+            className="section-title"
+            style={{
+              fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+              fontWeight: '700'
+            }}
+          >
+            你是否每天都在经历<br />
+            这些<span className="title-emphasis">效率黑洞</span>？
+          </h2>
+          <p 
+            className="section-description"
+            style={{
+              fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+              fontWeight: '400'
+            }}
+          >
+            传统作业方式正在吞噬你的时间、成本和竞争力
+          </p>
+        </div>
+        
+        {/* 对比表格 */}
+        <div className="comparison-table">
+          {/* 表头 */}
+          <div className="table-header">
+            <div className="header-cell header-traditional">
+              <span className="header-icon">❌</span>
+              <span 
+                className="header-text"
+                style={{
+                  fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                  fontWeight: '700'
+                }}
+              >
+                传统作业模式
+              </span>
+            </div>
+            <div className="header-cell header-ai">
+              <span className="header-icon">✨</span>
+              <span 
+                className="header-text"
+                style={{
+                  fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                  fontWeight: '700'
+                }}
+              >
+                AI化后
+              </span>
+            </div>
+          </div>
+          
+          {/* 对比行 */}
+          {comparisonData.map((item, index) => (
+            <div key={index} className="comparison-row">
+              <div className="row-header">
+                <div className="row-icon">{item.icon}</div>
+                <div 
+                  className="row-title"
+                  style={{
+                    fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                    fontWeight: '600'
+                  }}
+                >
+                  {item.title}
+                </div>
+              </div>
+              <div className="row-content">
+                {/* 传统模式 */}
+                <div className="content-cell traditional">
+                  {item.traditional.metrics.map((metric, mIndex) => (
+                    <div key={mIndex} className="metric-item">
+                      <span 
+                        className="metric-label"
+                        style={{
+                          fontFamily: "'IBM Plex Sans', sans-serif",
+                          fontWeight: '500'
+                        }}
+                      >
+                        {metric.label}
+                      </span>
+                      <span 
+                        className={`metric-value ${metric.type}`}
+                        style={{
+                          fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                          fontWeight: '600'
+                        }}
+                      >
+                        {metric.value}
+                      </span>
+                    </div>
+                  ))}
+                  <div 
+                    className="cost-tag cost-high"
+                    style={{
+                      fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                      fontWeight: '600'
+                    }}
+                  >
+                    {item.traditional.tag}
+                  </div>
+                </div>
+                
+                {/* AI化后 */}
+                <div className="content-cell ai">
+                  {item.ai.metrics.map((metric, mIndex) => (
+                    <div key={mIndex} className="metric-item">
+                      <span 
+                        className="metric-label"
+                        style={{
+                          fontFamily: "'IBM Plex Sans', sans-serif",
+                          fontWeight: '500'
+                        }}
+                      >
+                        {metric.label}
+                      </span>
+                      <span 
+                        className={`metric-value ${metric.type}`}
+                        style={{
+                          fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                          fontWeight: '600'
+                        }}
+                      >
+                        {metric.value}
+                      </span>
+                    </div>
+                  ))}
+                  <div 
+                    className="improvement-tag"
+                    style={{
+                      fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                      fontWeight: '600'
+                    }}
+                  >
+                    <span className="improvement-icon">↑</span>
+                    <span>{item.ai.improvement}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {/* 底部强调 */}
+        <div className="section-emphasis">
+          <div className="emphasis-content">
+            <h3 
+              className="emphasis-title"
+              style={{
+                fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                fontWeight: '700'
+              }}
+            >
+              这不是未来，而是现在
+            </h3>
+            <p 
+              className="emphasis-text"
+              style={{
+                fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                fontWeight: '400'
+              }}
+            >
+              你的同行已经在用AI拉开差距<br />
+              每晚一个月行动，领先优势就少一年
+            </p>
+            <button 
+              className="emphasis-cta"
+              style={{
+                fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                fontWeight: '700'
+              }}
+            >
+              <span>计算我能节省多少成本</span>
+              <span className="cta-arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// 导出其他屏幕组件（为了文件不过长，我会将其他屏幕放在单独的注释中）
+// 这里先导出主组件
+export default AITransformationPage;
+
+// ===== 第三屏：解决方案架构 =====
+const SolutionsSection = () => {
+  return (
+    <section className="solutions-section">
+      <div className="section-container">
+        {/* 区域标题 */}
+        <div className="section-header">
+          <div className="section-badge">
+            <span className="badge-icon">🎯</span>
+            <span style={{
+              fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+              fontWeight: '600'
+            }}>
+              我们的服务
+            </span>
+          </div>
+          <h2 
+            className="section-title"
+            style={{
+              fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+              fontWeight: '700'
+            }}
+          >
+            我们提供的不是培训，<br />
+            是<span className="title-underline">转型操作系统</span>
+          </h2>
+          <p 
+            className="section-description"
+            style={{
+              fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+              fontWeight: '400'
+            }}
+          >
+            从战略诊断到体系落地的全链路AI化服务
+          </p>
+        </div>
+        
+        {/* 服务架构 */}
+        <div className="solutions-architecture">
+          
+          {/* 第一步：深度咨询 */}
+          <div className="solution-card card-consulting">
+            <div 
+              className="card-number"
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: '700'
+              }}
+            >
+              第一步
+            </div>
+            <div className="card-icon-large">💡</div>
+            <h3 
+              className="card-title"
+              style={{
+                fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                fontWeight: '700'
+              }}
+            >
+              深度战略咨询
+            </h3>
+            <p 
+              className="card-subtitle"
+              style={{
+                fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                fontWeight: '500'
+              }}
+            >
+              1小时 = 为企业节省6个月弯路
+            </p>
+            
+            <div className="card-content">
+              <div className="content-section">
+                <h4 
+                  className="content-heading"
+                  style={{
+                    fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                    fontWeight: '600'
+                  }}
+                >
+                  我们帮你回答3个核心问题：
+                </h4>
+                
+                {/* 问题块 */}
+                <div className="question-block">
+                  <div className="question-number">1️⃣</div>
+                  <div className="question-content">
+                    <h5 
+                      className="question-title"
+                      style={{
+                        fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                        fontWeight: '600'
+                      }}
+                    >
+                      你的业务链条哪个环节最该AI化？
+                    </h5>
+                    <ul className="question-details">
+                      <li style={{
+                        fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                        fontWeight: '400'
+                      }}>
+                        诊断10+个业务节点
+                      </li>
+                      <li style={{
+                        fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                        fontWeight: '400'
+                      }}>
+                        识别3个最快见效的突破口
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="question-block">
+                  <div className="question-number">2️⃣</div>
+                  <div className="question-content">
+                    <h5 
+                      className="question-title"
+                      style={{
+                        fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                        fontWeight: '600'
+                      }}
+                    >
+                      如何避开95%企业踩过的AI坑？
+                    </h5>
+                    <ul className="question-details">
+                      <li style={{
+                        fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                        fontWeight: '400'
+                      }}>
+                        盘点5大常见误区
+                      </li>
+                      <li style={{
+                        fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                        fontWeight: '400'
+                      }}>
+                        定制防坑指南
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="question-block">
+                  <div className="question-number">3️⃣</div>
+                  <div className="question-content">
+                    <h5 
+                      className="question-title"
+                      style={{
+                        fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                        fontWeight: '600'
+                      }}
+                    >
+                      你的90天转型路线图怎么画？
+                    </h5>
+                    <ul className="question-details">
+                      <li style={{
+                        fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                        fontWeight: '400'
+                      }}>
+                        短期速赢 + 中期体系 + 长期战略
+                      </li>
+                      <li style={{
+                        fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                        fontWeight: '400'
+                      }}>
+                        可落地的分步行动计划
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              {/* 定价盒子 */}
+              <div className="card-pricing-box">
+                <div className="pricing-row">
+                  <span 
+                    className="pricing-label"
+                    style={{
+                      fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                      fontWeight: '600'
+                    }}
+                  >
+                    💰 投资
+                  </span>
+                  <span 
+                    className="pricing-value"
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontWeight: '700'
+                    }}
+                  >
+                    ¥1,000/小时
+                  </span>
+                </div>
+                <div className="pricing-row">
+                  <span 
+                    className="pricing-label"
+                    style={{
+                      fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                      fontWeight: '600'
+                    }}
+                  >
+                    📈 价值
+                  </span>
+                  <span 
+                    className="pricing-value"
+                    style={{
+                      fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                      fontWeight: '700'
+                    }}
+                  >
+                    避免错误投入数万~数十万
+                  </span>
+                </div>
+                <div className="pricing-row">
+                  <span 
+                    className="pricing-label"
+                    style={{
+                      fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                      fontWeight: '600'
+                    }}
+                  >
+                    ⏱️ 时长
+                  </span>
+                  <span 
+                    className="pricing-value"
+                    style={{
+                      fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                      fontWeight: '700'
+                    }}
+                  >
+                    通常2-4小时深度对话
+                  </span>
+                </div>
+              </div>
+              
+              <button 
+                className="card-cta"
+                style={{
+                  fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                  fontWeight: '600'
+                }}
+              >
+                预约首次免费诊断(60分钟) →
+              </button>
+            </div>
+          </div>
+          
+          {/* 连接箭头 */}
+          <div className="solution-connector">
+            <div className="connector-line"></div>
+            <div className="connector-arrow">↓</div>
+            <div 
+              className="connector-text"
+              style={{
+                fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                fontWeight: '600'
+              }}
+            >
+              完成诊断后
+            </div>
+          </div>
+          
+          {/* 第二步：系统化培训 */}
+          <div className="solution-card card-training">
+            <div 
+              className="card-number"
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: '700'
+              }}
+            >
+              第二步
+            </div>
+            <div className="card-icon-large">🎯</div>
+            <h3 
+              className="card-title"
+              style={{
+                fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                fontWeight: '700'
+              }}
+            >
+              系统化企业内训
+            </h3>
+            <p 
+              className="card-subtitle"
+              style={{
+                fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                fontWeight: '500'
+              }}
+            >
+              不是碎片化技能，是完整转型体系
+            </p>
+            
+            <div className="card-content">
+              <div className="content-section">
+                <div className="feature-grid">
+                  {[
+                    '10大核心模块覆盖全业务链',
+                    '定制化设计，非标准化课件',
+                    '配套工具包 + 模板 + 工作流',
+                    '30天落地答疑支持',
+                    '可选进阶技术模块'
+                  ].map((text, index) => (
+                    <div key={index} className="feature-item">
+                      <div className="feature-icon">✓</div>
+                      <div 
+                        className="feature-text"
+                        style={{
+                          fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                          fontWeight: '500'
+                        }}
+                      >
+                        {text}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* 培训流程 */}
+              <div className="training-flow">
+                <div className="flow-item">
+                  <div className="flow-icon">🧠</div>
+                  <div 
+                    className="flow-text"
+                    style={{
+                      fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                      fontWeight: '600'
+                    }}
+                  >
+                    认知升级
+                  </div>
+                </div>
+                <div className="flow-arrow">→</div>
+                <div className="flow-item">
+                  <div className="flow-icon">🛠️</div>
+                  <div 
+                    className="flow-text"
+                    style={{
+                      fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                      fontWeight: '600'
+                    }}
+                  >
+                    工具掌握
+                  </div>
+                </div>
+                <div className="flow-arrow">→</div>
+                <div className="flow-item">
+                  <div className="flow-icon">🚀</div>
+                  <div 
+                    className="flow-text"
+                    style={{
+                      fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                      fontWeight: '600'
+                    }}
+                  >
+                    体系落地
+                  </div>
+                </div>
+              </div>
+              
+              <div className="card-highlight-box">
+                <p 
+                  className="highlight-text"
+                  style={{
+                    fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                    fontWeight: '600'
+                  }}
+                >
+                  让AI能力成为企业的核心竞争力
+                </p>
+              </div>
+              
+              <button 
+                className="card-cta secondary"
+                style={{
+                  fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                  fontWeight: '600'
+                }}
+              >
+                查看完整课程体系 ↓
+              </button>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </section>
+  );
+};
+
+// ===== 第四屏：课程模块详解（手风琴式） =====
+const CoursesSection: React.FC<{activeAccordion: number | null; toggleAccordion: (index: number) => void}> = ({ activeAccordion, toggleAccordion }) => {
+  const courseModules = [
+    {
+      id: 1,
+      icon: '🎯',
+      title: '模块一：AI认知重构',
+      duration: '2小时',
+      highlights: ['理解AI本质', '建立正确预期', '识别应用场景'],
+      details: '深入理解AI的底层逻辑，打破常见误区，建立正确的AI应用预期。'
+    },
+    {
+      id: 2,
+      icon: '✍️',
+      title: '模块二：AI开发信与邮件营销',
+      duration: '3小时',
+      highlights: ['批量生成开发信', '个性化定制', 'A/B测试优化'],
+      details: '学习使用AI工具快速生成高质量开发信，实现个性化大规模触达。'
+    },
+    {
+      id: 3,
+      icon: '🎨',
+      title: '模块三：AI视觉营销',
+      duration: '3小时',
+      highlights: ['产品图生成', '营销海报制作', '品牌视觉体系'],
+      details: '掌握AI图像生成工具，快速制作专业级营销素材。'
+    },
+    {
+      id: 4,
+      icon: '📹',
+      title: '模块四：AI视频制作',
+      duration: '2.5小时',
+      highlights: ['产品视频', '广告视频', '社交媒体短视频'],
+      details: '学会使用AI工具制作各类营销视频，提升内容生产效率。'
+    },
+    {
+      id: 5,
+      icon: '🤖',
+      title: '模块五：AI数字人与直播',
+      duration: '3小时',
+      highlights: ['数字人搭建', '24h无人直播', '互动自动化'],
+      details: '创建专属AI数字人，实现全天候直播带货。'
+    }
+  ];
+
+  return (
+    <section className="courses-section">
+      <div className="section-container">
+        {/* 区域标题 */}
+        <div className="section-header">
+          <div className="section-badge">
+            <span className="badge-icon">📚</span>
+            <span style={{
+              fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+              fontWeight: '600'
+            }}>
+              课程体系
+            </span>
+          </div>
+          <h2 
+            className="section-title"
+            style={{
+              fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+              fontWeight: '700'
+            }}
+          >
+            10大核心模块<br />
+            <span className="title-underline">全业务链</span>AI化覆盖
+          </h2>
+          <p 
+            className="section-description"
+            style={{
+              fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+              fontWeight: '400'
+            }}
+          >
+            从营销获客到运营服务，系统化AI能力培养
+          </p>
+        </div>
+        
+        {/* 手风琴式课程列表 */}
+        <div className="courses-accordion">
+          {courseModules.map((module, index) => (
+            <div 
+              key={module.id} 
+              className={`accordion-item ${activeAccordion === index ? 'active' : ''}`}
+            >
+              <div 
+                className="accordion-header"
+                onClick={() => toggleAccordion(index)}
+              >
+                <div className="header-left">
+                  <span className="module-icon">{module.icon}</span>
+                  <div className="module-info">
+                    <h3 
+                      className="module-title"
+                      style={{
+                        fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                        fontWeight: '600'
+                      }}
+                    >
+                      {module.title}
+                    </h3>
+                    <span 
+                      className="module-duration"
+                      style={{
+                        fontFamily: "'IBM Plex Sans', sans-serif",
+                        fontWeight: '500'
+                      }}
+                    >
+                      {module.duration}
+                    </span>
+                  </div>
+                </div>
+                <div className="header-right">
+                  <span className="expand-icon">{activeAccordion === index ? '−' : '+'}</span>
+                </div>
+              </div>
+              
+              {activeAccordion === index && (
+                <div className="accordion-content">
+                  <p 
+                    className="module-description"
+                    style={{
+                      fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                      fontWeight: '400'
+                    }}
+                  >
+                    {module.details}
+                  </p>
+                  <div className="module-highlights">
+                    <h4 
+                      className="highlights-title"
+                      style={{
+                        fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                        fontWeight: '600'
+                      }}
+                    >
+                      核心亮点：
+                    </h4>
+                    <div className="highlights-list">
+                      {module.highlights.map((highlight, hIndex) => (
+                        <div key={hIndex} className="highlight-item">
+                          <span className="highlight-icon">✓</span>
+                          <span 
+                            className="highlight-text"
+                            style={{
+                              fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                              fontWeight: '500'
+                            }}
+                          >
+                            {highlight}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        
+        {/* 底部提示 */}
+        <div className="courses-note">
+          <p 
+            style={{
+              fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+              fontWeight: '400'
+            }}
+          >
+            💡 以上仅展示5个模块，完整体系包含10大模块 + 进阶技术课程
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ===== 第五屏：客户案例 =====
+const CaseStudiesSection = () => {
+  const cases = [
+    {
+      company: 'A跨境电商',
+      industry: '家居用品出口',
+      challenge: '开发信回复率低，获客成本高',
+      solution: 'AI批量生成个性化开发信',
+      results: [
+        { label: '开发信发送量', before: '500封/月', after: '15,000封/月', improvement: '+2900%' },
+        { label: '回复率', before: '2%', after: '8%', improvement: '+300%' },
+        { label: '获客成本', before: '¥500/个', after: '¥80/个', improvement: '-84%' }
+      ]
+    },
+    {
+      company: 'B外贸公司',
+      industry: '服装面料出口',
+      challenge: '直播人力成本高，覆盖时区有限',
+      solution: 'AI数字人24h多语言直播',
+      results: [
+        { label: '直播时长', before: '8小时/天', after: '24小时/天', improvement: '+200%' },
+        { label: '人力成本', before: '¥30,000/月', after: '¥3,000/月', improvement: '-90%' },
+        { label: '覆盖时区', before: '1个', after: '3个', improvement: '+200%' }
+      ]
+    }
+  ];
+
+  return (
+    <section className="case-studies-section">
+      <div className="section-container">
+        {/* 区域标题 */}
+        <div className="section-header">
+          <div className="section-badge">
+            <span className="badge-icon">🏆</span>
+            <span style={{
+              fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+              fontWeight: '600'
+            }}>
+              客户案例
+            </span>
+          </div>
+          <h2 
+            className="section-title"
+            style={{
+              fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+              fontWeight: '700'
+            }}
+          >
+            真实数据证明<br />
+            AI转型的<span className="title-underline">ROI</span>
+          </h2>
+        </div>
+        
+        {/* 案例卡片 */}
+        <div className="cases-grid">
+          {cases.map((caseItem, index) => (
+            <div key={index} className="case-card">
+              <div className="case-header">
+                <h3 
+                  className="case-company"
+                  style={{
+                    fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                    fontWeight: '700'
+                  }}
+                >
+                  {caseItem.company}
+                </h3>
+                <span 
+                  className="case-industry"
+                  style={{
+                    fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                    fontWeight: '500'
+                  }}
+                >
+                  {caseItem.industry}
+                </span>
+              </div>
+              
+              <div className="case-challenge">
+                <h4 
+                  style={{
+                    fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                    fontWeight: '600'
+                  }}
+                >
+                  挑战：
+                </h4>
+                <p style={{
+                  fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                  fontWeight: '400'
+                }}>
+                  {caseItem.challenge}
+                </p>
+              </div>
+              
+              <div className="case-solution">
+                <h4 
+                  style={{
+                    fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                    fontWeight: '600'
+                  }}
+                >
+                  方案：
+                </h4>
+                <p style={{
+                  fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                  fontWeight: '400'
+                }}>
+                  {caseItem.solution}
+                </p>
+              </div>
+              
+              <div className="case-results">
+                {caseItem.results.map((result, rIndex) => (
+                  <div key={rIndex} className="result-item">
+                    <div 
+                      className="result-label"
+                      style={{
+                        fontFamily: "'IBM Plex Sans', sans-serif",
+                        fontWeight: '500'
+                      }}
+                    >
+                      {result.label}
+                    </div>
+                    <div className="result-comparison">
+                      <span 
+                        className="result-before"
+                        style={{
+                          fontFamily: "'JetBrains Mono', monospace",
+                          fontWeight: '600'
+                        }}
+                      >
+                        {result.before}
+                      </span>
+                      <span className="result-arrow">→</span>
+                      <span 
+                        className="result-after"
+                        style={{
+                          fontFamily: "'JetBrains Mono', monospace",
+                          fontWeight: '700'
+                        }}
+                      >
+                        {result.after}
+                      </span>
+                    </div>
+                    <div 
+                      className="result-improvement"
+                      style={{
+                        fontFamily: "'Space Grotesk', sans-serif",
+                        fontWeight: '700'
+                      }}
+                    >
+                      {result.improvement}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ===== 第六屏：服务流程 =====
+const ServiceFlowSection = () => {
+  const steps = [
+    { number: '01', title: '免费诊断', desc: '60分钟深度对话，识别AI化机会点', icon: '🔍' },
+    { number: '02', title: '方案设计', desc: '定制化90天转型路线图', icon: '📋' },
+    { number: '03', title: '内训实施', desc: '现场培训+工具包交付', icon: '🎓' },
+    { number: '04', title: '落地支持', desc: '30天答疑+持续优化', icon: '🚀' }
+  ];
+
+  return (
+    <section className="service-flow-section">
+      <div className="section-container">
+        {/* 区域标题 */}
+        <div className="section-header">
+          <h2 
+            className="section-title"
+            style={{
+              fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+              fontWeight: '700'
+            }}
+          >
+            从诊断到落地<br />
+            <span className="title-underline">4步完成</span>AI转型
+          </h2>
+        </div>
+        
+        {/* 流程步骤 */}
+        <div className="flow-steps">
+          {steps.map((step, index) => (
+            <React.Fragment key={index}>
+              <div className="step-card">
+                <div className="step-icon">{step.icon}</div>
+                <div 
+                  className="step-number"
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontWeight: '900'
+                  }}
+                >
+                  {step.number}
+                </div>
+                <h3 
+                  className="step-title"
+                  style={{
+                    fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                    fontWeight: '700'
+                  }}
+                >
+                  {step.title}
+                </h3>
+                <p 
+                  className="step-desc"
+                  style={{
+                    fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+                    fontWeight: '400'
+                  }}
+                >
+                  {step.desc}
+                </p>
+              </div>
+              {index < steps.length - 1 && (
+                <div className="step-connector">→</div>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ===== 第七屏：价格价值锚定 =====
+const PricingSection = () => {
+  return (
+    <section className="pricing-section">
+      <div className="section-container">
+        {/* 区域标题 */}
+        <div className="section-header">
+          <h2 
+            className="section-title"
+            style={{
+              fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+              fontWeight: '700'
+            }}
+          >
+            投资回报率计算
+          </h2>
+          <p 
+            className="section-description"
+            style={{
+              fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+              fontWeight: '400'
+            }}
+          >
+            算一算AI转型能为你的企业节省多少成本
+          </p>
+        </div>
+        
+        {/* ROI计算器 */}
+        <div className="roi-calculator">
+          <div className="roi-header">
+            <h3 
+              style={{
+                fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                fontWeight: '700'
+              }}
+            >
+              传统模式 vs AI化后
+            </h3>
+          </div>
+          
+          <div className="roi-comparison">
+            <div className="roi-column roi-traditional">
+              <h4 style={{
+                fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                fontWeight: '600'
+              }}>
+                传统运营成本/月
+              </h4>
+              <div className="cost-items">
+                <div className="cost-item">
+                  <span style={{fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif"}}>营销设计师</span>
+                  <span style={{fontFamily: "'JetBrains Mono', monospace", fontWeight: '700'}}>¥15,000</span>
+                </div>
+                <div className="cost-item">
+                  <span style={{fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif"}}>直播主播×3</span>
+                  <span style={{fontFamily: "'JetBrains Mono', monospace", fontWeight: '700'}}>¥30,000</span>
+                </div>
+                <div className="cost-item">
+                  <span style={{fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif"}}>内容运营</span>
+                  <span style={{fontFamily: "'JetBrains Mono', monospace", fontWeight: '700'}}>¥12,000</span>
+                </div>
+                <div className="cost-total">
+                  <span style={{fontFamily: "'Space Grotesk', sans-serif", fontWeight: '700'}}>总计</span>
+                  <span style={{fontFamily: "'JetBrains Mono', monospace", fontWeight: '900'}}>¥57,000</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="roi-arrow">→</div>
+            
+            <div className="roi-column roi-ai">
+              <h4 style={{
+                fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                fontWeight: '600'
+              }}>
+                AI化后成本/月
+              </h4>
+              <div className="cost-items">
+                <div className="cost-item">
+                  <span style={{fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif"}}>AI工具订阅</span>
+                  <span style={{fontFamily: "'JetBrains Mono', monospace", fontWeight: '700'}}>¥3,000</span>
+                </div>
+                <div className="cost-item">
+                  <span style={{fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif"}}>数字人服务</span>
+                  <span style={{fontFamily: "'JetBrains Mono', monospace", fontWeight: '700'}}>¥3,000</span>
+                </div>
+                <div className="cost-item">
+                  <span style={{fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif"}}>运营监控</span>
+                  <span style={{fontFamily: "'JetBrains Mono', monospace", fontWeight: '700'}}>¥6,000</span>
+                </div>
+                <div className="cost-total positive">
+                  <span style={{fontFamily: "'Space Grotesk', sans-serif", fontWeight: '700'}}>总计</span>
+                  <span style={{fontFamily: "'JetBrains Mono', monospace", fontWeight: '900'}}>¥12,000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="roi-savings">
+            <div className="savings-highlight">
+              <span style={{fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif", fontWeight: '700'}}>
+                每月节省：
+              </span>
+              <span style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontWeight: '900',
+                fontSize: '32px',
+                color: '#10B981'
+              }}>
+                ¥45,000
+              </span>
+            </div>
+            <div className="savings-annual">
+              <span style={{fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif"}}>
+                年度节省：
+              </span>
+              <span style={{fontFamily: "'JetBrains Mono', monospace", fontWeight: '900'}}>
+                ¥540,000
+              </span>
+            </div>
+            <div className="roi-percentage">
+              <span style={{fontFamily: "'Space Grotesk', sans-serif", fontWeight: '900', fontSize: '24px'}}>
+                投资回报率：超过2000%
+              </span>
+            </div>
+          </div>
+        </div>
+        
+        {/* 培训投资 */}
+        <div className="training-investment">
+          <h3 style={{
+            fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+            fontWeight: '700'
+          }}>
+            企业内训投资
+          </h3>
+          <p style={{
+            fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+            fontWeight: '400'
+          }}>
+            深度咨询(2-4小时) + 系统化内训 = 约 ¥20,000 - ¥50,000
+          </p>
+          <p style={{
+            fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+            fontWeight: '600',
+            color: '#10B981'
+          }}>
+            回本周期：不到1个月
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ===== 第八屏：行动召唤 =====
+const CTASection = () => {
+  return (
+    <section className="cta-section">
+      <div className="cta-container">
+        <div className="cta-content">
+          <h2 
+            className="cta-title"
+            style={{
+              fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+              fontWeight: '900'
+            }}
+          >
+            AI转型窗口期<br />
+            仅剩<span className="cta-highlight">18个月</span>
+          </h2>
+          <p 
+            className="cta-subtitle"
+            style={{
+              fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
+              fontWeight: '400'
+            }}
+          >
+            现在行动 = 领先同行2年<br />
+            犹豫等待 = 被市场淘汰
+          </p>
+          
+          <div className="cta-buttons">
+            <button 
+              className="cta-primary"
+              style={{
+                fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
+                fontWeight: '700'
+              }}
+            >
+              预约免费诊断(60分钟)
+            </button>
+            <p 
+              className="cta-note"
+              style={{
+                fontFamily: "'IBM Plex Sans', sans-serif",
+                fontWeight: '400'
+              }}
+            >
+              价值¥1,000 | 本月仅剩2个名额
+            </p>
+          </div>
+          
+          <div className="cta-trust-signals">
+            <div className="trust-item">
+              <span style={{fontFamily: "'JetBrains Mono', monospace", fontWeight: '900'}}>50+</span>
+              <span style={{fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif"}}>服务企业</span>
+            </div>
+            <div className="trust-divider">|</div>
+            <div className="trust-item">
+              <span style={{fontFamily: "'JetBrains Mono', monospace", fontWeight: '900'}}>98%</span>
+              <span style={{fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif"}}>满意度</span>
+            </div>
+            <div className="trust-divider">|</div>
+            <div className="trust-item">
+              <span style={{fontFamily: "'JetBrains Mono', monospace", fontWeight: '900'}}>平均ROI 2000%+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

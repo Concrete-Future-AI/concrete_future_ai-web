@@ -1,0 +1,1844 @@
+
+{/* 固定导航栏 */}
+<nav className="main-navigation">
+  <div className="nav-container">
+    <div className="nav-logo">
+      <img src="/assets/logo.svg" alt="公司Logo" className="logo-image" />
+    </div>
+    <div className="nav-links">
+      <a href="#solutions" className="nav-link">解决方案</a>
+      <a href="#courses" className="nav-link">课程体系</a>
+      <a href="#cases" className="nav-link">客户案例</a>
+      <a href="#pricing" className="nav-link">服务价格</a>
+      <a href="#contact" className="nav-link-cta">免费诊断</a>
+    </div>
+  </div>
+</nav>
+
+{/* 第一屏：英雄区 */}
+<section className="hero-section">
+  <div className="hero-container">
+    {/* 左侧内容区 */}
+    <div className="hero-content">
+      {/* 小标签 */}
+      <div className="hero-badge">
+        <span className="badge-dot"></span>
+        <span className="badge-text">外贸电商AI数智化转型</span>
+      </div>
+      
+      {/* 主标题 */}
+      <h1 className="hero-title">
+        外贸电商的<span className="title-underline">AI革命</span>：<br />
+        不是选择，而是<span className="title-highlight">生存必修课</span>
+      </h1>
+      
+      {/* 副标题 */}
+      <p className="hero-subtitle">
+        当你还在手工处理业务时<br />
+        你的竞争对手已经用AI实现了：
+      </p>
+      
+      {/* 数据展示 */}
+      <div className="hero-stats">
+        <div className="stat-item">
+          <div className="stat-number">300<span className="stat-symbol">%</span></div>
+          <div className="stat-label">获客效率↑</div>
+        </div>
+        <div className="stat-divider"></div>
+        <div className="stat-item">
+          <div className="stat-number">85<span className="stat-symbol">%</span></div>
+          <div className="stat-label">成本降低↓</div>
+        </div>
+        <div className="stat-divider"></div>
+        <div className="stat-item">
+          <div className="stat-number">24<span className="stat-symbol">/7</span></div>
+          <div className="stat-label">无人直播</div>
+        </div>
+      </div>
+      
+      {/* CTA按钮组 */}
+      <div className="hero-cta-group">
+        <button className="btn-primary">
+          <span>立即预约免费诊断</span>
+          <span className="btn-note">(价值¥1,000)</span>
+        </button>
+        <button className="btn-secondary">
+          <span>查看转型方案</span>
+          <span className="arrow-icon">→</span>
+        </button>
+      </div>
+      
+      {/* 紧迫感提示 */}
+      <div className="hero-urgency">
+        <div className="urgency-icon">⏰</div>
+        <div className="urgency-content">
+          <span className="urgency-main">本月仅剩 2 个免费名额</span>
+          <div className="urgency-progress">
+            <div className="progress-bar">
+              <div className="progress-fill" style={{width: '60%'}}></div>
+            </div>
+            <span className="progress-text">已预约 3/5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {/* 右侧视觉区 */}
+    <div className="hero-visual">
+      {/* 这里可以放置动态展示AI生成的内容：产品图、开发信、直播画面的轮播 */}
+      <div className="visual-showcase">
+        <div className="showcase-card card-1">
+          <div className="card-header">AI生成开发信</div>
+          <div className="card-content">
+            <div className="typing-effect">Dear [Client Name], I noticed your...</div>
+          </div>
+        </div>
+        <div className="showcase-card card-2">
+          <div className="card-header">AI视觉营销</div>
+          <div className="card-image"></div>
+        </div>
+        <div className="showcase-card card-3">
+          <div className="card-header">24h AI直播</div>
+          <div className="live-indicator">
+            <span className="live-dot"></span>
+            <span className="live-text">LIVE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {/* 向下滚动提示 */}
+  <div className="scroll-indicator">
+    <div className="scroll-text">向下了解更多</div>
+    <div className="scroll-arrow">↓</div>
+  </div>
+</section>
+<section className="pain-points-section">
+  <div className="section-container">
+    {/* 区域标题 */}
+    <div className="section-header">
+      <div className="section-badge">
+        <span className="badge-icon">💡</span>
+        <span>传统模式 vs AI化</span>
+      </div>
+      <h2 className="section-title">
+        你是否每天都在经历<br />
+        这些<span className="title-emphasis">效率黑洞</span>？
+      </h2>
+      <p className="section-description">
+        传统作业方式正在吞噬你的时间、成本和竞争力
+      </p>
+    </div>
+    
+    {/* 对比表格 */}
+    <div className="comparison-table">
+      {/* 表头 */}
+      <div className="table-header">
+        <div className="header-cell header-traditional">
+          <span className="header-icon">❌</span>
+          <span className="header-text">传统作业模式</span>
+        </div>
+        <div className="header-cell header-ai">
+          <span className="header-icon">✨</span>
+          <span className="header-text">AI化后</span>
+        </div>
+      </div>
+      
+      {/* 对比行 1: 开发信 */}
+      <div className="comparison-row">
+        <div className="row-header">
+          <div className="row-icon">📧</div>
+          <div className="row-title">开发信撰写</div>
+        </div>
+        <div className="row-content">
+          <div className="content-cell traditional">
+            <div className="metric-item">
+              <span className="metric-label">效率</span>
+              <span className="metric-value negative">1封 = 30分钟</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">质量</span>
+              <span className="metric-value negative">人工个性化困难</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">产能</span>
+              <span className="metric-value negative">月均500封上限</span>
+            </div>
+            <div className="cost-tag cost-high">高时间成本</div>
+          </div>
+          <div className="content-cell ai">
+            <div className="metric-item">
+              <span className="metric-label">效率</span>
+              <span className="metric-value positive">100封 = 1分钟</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">质量</span>
+              <span className="metric-value positive">自动精准个性化</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">产能</span>
+              <span className="metric-value positive">月均50,000封</span>
+            </div>
+            <div className="improvement-tag">
+              <span className="improvement-icon">↑</span>
+              <span>效率提升100倍</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* 对比行 2: 视觉营销 */}
+      <div className="comparison-row">
+        <div className="row-header">
+          <div className="row-icon">🎨</div>
+          <div className="row-title">视觉营销素材</div>
+        </div>
+        <div className="row-content">
+          <div className="content-cell traditional">
+            <div className="metric-item">
+              <span className="metric-label">制作周期</span>
+              <span className="metric-value negative">设计师3天/张</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">修改成本</span>
+              <span className="metric-value negative">修改成本高</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">月度成本</span>
+              <span className="metric-value negative">¥15,000</span>
+            </div>
+            <div className="cost-tag cost-high">设计师依赖</div>
+          </div>
+          <div className="content-cell ai">
+            <div className="metric-item">
+              <span className="metric-label">制作周期</span>
+              <span className="metric-value positive">AI 10秒/张</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">修改成本</span>
+              <span className="metric-value positive">无限次迭代</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">月度成本</span>
+              <span className="metric-value positive">¥2,000</span>
+            </div>
+            <div className="improvement-tag">
+              <span className="improvement-icon">↓</span>
+              <span>成本降低85%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* 对比行 3: 直播带货 */}
+      <div className="comparison-row">
+        <div className="row-header">
+          <div className="row-icon">📹</div>
+          <div className="row-title">直播带货</div>
+        </div>
+        <div className="row-content">
+          <div className="content-cell traditional">
+            <div className="metric-item">
+              <span className="metric-label">人力需求</span>
+              <span className="metric-value negative">需3班倒主播</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">月度成本</span>
+              <span className="metric-value negative">¥30,000</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">稳定性</span>
+              <span className="metric-value negative">状态不稳定</span>
+            </div>
+            <div className="cost-tag cost-high">高人力成本</div>
+          </div>
+          <div className="content-cell ai">
+            <div className="metric-item">
+              <span className="metric-label">人力需求</span>
+              <span className="metric-value positive">AI数字人24h</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">月度成本</span>
+              <span className="metric-value positive">¥3,000</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">稳定性</span>
+              <span className="metric-value positive">标准化输出</span>
+            </div>
+            <div className="improvement-tag">
+              <span className="improvement-icon">↓</span>
+              <span>人力成本节省90%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* 对比行 4: 市场决策 */}
+      <div className="comparison-row">
+        <div className="row-header">
+          <div className="row-icon">📊</div>
+          <div className="row-title">市场决策</div>
+        </div>
+        <div className="row-content">
+          <div className="content-cell traditional">
+            <div className="metric-item">
+              <span className="metric-label">决策依据</span>
+              <span className="metric-value negative">依赖经验拍脑袋</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">试错成本</span>
+              <span className="metric-value negative">试错成本高</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">决策周期</span>
+              <span className="metric-value negative">数周到数月</span>
+            </div>
+            <div className="cost-tag cost-high">高风险</div>
+          </div>
+          <div className="content-cell ai">
+            <div className="metric-item">
+              <span className="metric-label">决策依据</span>
+              <span className="metric-value positive">AI数据分析</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">试错成本</span>
+              <span className="metric-value positive">降低失误80%</span>
+            </div>
+            <div className="metric-item">
+              <span className="metric-label">决策周期</span>
+              <span className="metric-value positive">数小时到数天</span>
+            </div>
+            <div className="improvement-tag">
+              <span className="improvement-icon">↑</span>
+              <span>决策准确率提升</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {/* 底部强调 */}
+    <div className="section-emphasis">
+      <div className="emphasis-content">
+        <h3 className="emphasis-title">这不是未来，而是现在</h3>
+        <p className="emphasis-text">
+          你的同行已经在用AI拉开差距<br />
+          每晚一个月行动，领先优势就少一年
+        </p>
+        <button className="emphasis-cta">
+          <span>计算我能节省多少成本</span>
+          <span className="cta-arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<section className="solutions-section" id="solutions">
+  <div className="section-container">
+    {/* 区域标题 */}
+    <div className="section-header">
+      <div className="section-badge">
+        <span className="badge-icon">🎯</span>
+        <span>我们的服务</span>
+      </div>
+      <h2 className="section-title">
+        我们提供的不是培训，<br />
+        是<span className="title-underline">转型操作系统</span>
+      </h2>
+      <p className="section-description">
+        从战略诊断到体系落地的全链路AI化服务
+      </p>
+    </div>
+    
+    {/* 服务架构 */}
+    <div className="solutions-architecture">
+      
+      {/* 第一步：深度咨询 */}
+      <div className="solution-card card-consulting">
+        <div className="card-number">第一步</div>
+        <div className="card-icon-large">💡</div>
+        <h3 className="card-title">深度战略咨询</h3>
+        <p className="card-subtitle">1小时 = 为企业节省6个月弯路</p>
+        
+        <div className="card-content">
+          <div className="content-section">
+            <h4 className="content-heading">我们帮你回答3个核心问题：</h4>
+            
+            <div className="question-block">
+              <div className="question-number">1️⃣</div>
+              <div className="question-content">
+                <h5 className="question-title">你的业务链条哪个环节最该AI化？</h5>
+                <ul className="question-details">
+                  <li>诊断10+个业务节点</li>
+                  <li>识别3个最快见效的突破口</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="question-block">
+              <div className="question-number">2️⃣</div>
+              <div className="question-content">
+                <h5 className="question-title">如何避开95%企业踩过的AI坑？</h5>
+                <ul className="question-details">
+                  <li>盘点5大常见误区</li>
+                  <li>定制防坑指南</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="question-block">
+              <div className="question-number">3️⃣</div>
+              <div className="question-content">
+                <h5 className="question-title">你的90天转型路线图怎么画？</h5>
+                <ul className="question-details">
+                  <li>短期速赢 + 中期体系 + 长期战略</li>
+                  <li>可落地的分步行动计划</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div className="card-pricing-box">
+            <div className="pricing-row">
+              <span className="pricing-label">💰 投资</span>
+              <span className="pricing-value">¥1,000/小时</span>
+            </div>
+            <div className="pricing-row">
+              <span className="pricing-label">📈 价值</span>
+              <span className="pricing-value">避免错误投入数万~数十万</span>
+            </div>
+            <div className="pricing-row">
+              <span className="pricing-label">⏱️ 时长</span>
+              <span className="pricing-value">通常2-4小时深度对话</span>
+            </div>
+          </div>
+          
+          <button className="card-cta">
+            预约首次免费诊断(60分钟) →
+          </button>
+        </div>
+      </div>
+      
+      {/* 连接箭头 */}
+      <div className="solution-connector">
+        <div className="connector-line"></div>
+        <div className="connector-arrow">↓</div>
+        <div className="connector-text">完成诊断后</div>
+      </div>
+      
+      {/* 第二步：系统化培训 */}
+      <div className="solution-card card-training">
+        <div className="card-number">第二步</div>
+        <div className="card-icon-large">🎯</div>
+        <h3 className="card-title">系统化企业内训</h3>
+        <p className="card-subtitle">不是碎片化技能，是完整转型体系</p>
+        
+        <div className="card-content">
+          <div className="content-section">
+            <div className="feature-grid">
+              <div className="feature-item">
+                <div className="feature-icon">✓</div>
+                <div className="feature-text">10大核心模块覆盖全业务链</div>
+              </div>
+              <div className="feature-item">
+                <div className="feature-icon">✓</div>
+                <div className="feature-text">定制化设计，非标准化课件</div>
+              </div>
+              <div className="feature-item">
+                <div className="feature-icon">✓</div>
+                <div className="feature-text">配套工具包 + 模板 + 工作流</div>
+              </div>
+              <div className="feature-item">
+                <div className="feature-icon">✓</div>
+                <div className="feature-text">30天落地答疑支持</div>
+              </div>
+              <div className="feature-item">
+                <div className="feature-icon">✓</div>
+                <div className="feature-text">可选进阶技术模块</div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="training-flow">
+            <div className="flow-item">
+              <div className="flow-icon">🧠</div>
+              <div className="flow-text">认知升级</div>
+            </div>
+            <div className="flow-arrow">→</div>
+            <div className="flow-item">
+              <div className="flow-icon">🛠️</div>
+              <div className="flow-text">工具掌握</div>
+            </div>
+            <div className="flow-arrow">→</div>
+            <div className="flow-item">
+              <div className="flow-icon">🚀</div>
+              <div className="flow-text">体系落地</div>
+            </div>
+          </div>
+          
+          <div className="card-highlight-box">
+            <p className="highlight-text">
+              让AI能力成为企业的核心竞争力
+            </p>
+          </div>
+          
+          <button className="card-cta secondary">
+            查看完整课程体系 ↓
+          </button>
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+</section>
+<section className="courses-section" id="courses">
+  <div className="section-container">
+    {/* 区域标题 */}
+    <div className="section-header">
+      <div className="section-badge">
+        <span className="badge-icon">📚</span>
+        <span>课程体系</span>
+      </div>
+      <h2 className="section-title">
+        10大模块AI转型全景图<br />
+        从战略到执行的<span className="title-highlight">完整闭环</span>
+      </h2>
+      <p className="section-description">
+        每个模块都配备：实战案例拆解 + 工具模板包 + 落地指导手册 + 30天答疑支持
+      </p>
+    </div>
+    
+    {/* 手风琴式课程列表 */}
+    <div className="accordion-container">
+      
+      {/* 模块1 */}
+      <div className="accordion-item">
+        <button className="accordion-header">
+          <div className="header-left">
+            <span className="module-number">模块一</span>
+            <span className="module-title">战略认知篇 · AI洞察外贸新机遇</span>
+          </div>
+          <div className="header-right">
+            <span className="expand-icon">+</span>
+          </div>
+        </button>
+        <div className="accordion-content">
+          <div className="content-wrapper">
+            <div className="content-block">
+              <h4 className="block-title">📌 你将获得：</h4>
+              <ul className="bullet-list">
+                <li>AI时代外贸电商的竞争格局全景图</li>
+                <li>诊断你的业务AI化成熟度模型</li>
+                <li>识别你的3个AI优先突破点</li>
+              </ul>
+            </div>
+            
+            <div className="content-block">
+              <h4 className="block-title">🎁 交付物：</h4>
+              <div className="deliverable-grid">
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">企业AI转型诊断报告</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">AI应用优先级矩阵</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">90天行动路线图</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="outcome-badge">
+              <span className="outcome-icon">⏱️</span>
+              <span className="outcome-text">典型效果：避免盲目试错，节省3-6个月探索时间</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* 模块2 */}
+      <div className="accordion-item">
+        <button className="accordion-header">
+          <div className="header-left">
+            <span className="module-number">模块二</span>
+            <span className="module-title">高效获客篇 · 1分钟写出100封开发信</span>
+          </div>
+          <div className="header-right">
+            <span className="expand-icon">+</span>
+          </div>
+        </button>
+        <div className="accordion-content">
+          <div className="content-wrapper">
+            <div className="content-block">
+              <h4 className="block-title">📌 你将获得：</h4>
+              <ul className="bullet-list">
+                <li>AI批量生成个性化开发信的完整工作流</li>
+                <li>提升邮件打开率/回复率的提示词工程</li>
+                <li>自动化客户画像与精准匹配系统</li>
+              </ul>
+            </div>
+            
+            <div className="content-block">
+              <h4 className="block-title">🎁 交付物：</h4>
+              <div className="deliverable-grid">
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">开发信生成模板库(50+场景)</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">AI写作提示词手册</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">客户分层自动化流程图</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="outcome-badge">
+              <span className="outcome-icon">⏱️</span>
+              <span className="outcome-text">典型效果：获客效率提升50倍，成本降低70%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* 模块3+4 */}
+      <div className="accordion-item">
+        <button className="accordion-header">
+          <div className="header-left">
+            <span className="module-number">模块三+四</span>
+            <span className="module-title">视觉营销篇 · 10秒出大片+全球化</span>
+          </div>
+          <div className="header-right">
+            <span className="expand-icon">+</span>
+          </div>
+        </button>
+        <div className="accordion-content">
+          <div className="content-wrapper">
+            <div className="content-block">
+              <h4 className="block-title">📌 你将获得：</h4>
+              <ul className="bullet-list">
+                <li>AI快速生成专业产品图/场景图的方法</li>
+                <li>一键多语言/多文化适配的营销素材</li>
+                <li>Midjourney/SD等工具的深度应用</li>
+              </ul>
+            </div>
+            
+            <div className="content-block">
+              <h4 className="block-title">🎁 交付物：</h4>
+              <div className="deliverable-grid">
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">行业定制化提示词库</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">视觉营销素材生产线搭建指南</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">100+爆款案例拆解</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="outcome-badge">
+              <span className="outcome-icon">⏱️</span>
+              <span className="outcome-text">典型效果：设计成本降85%，产出提升10倍</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* 模块5 */}
+      <div className="accordion-item">
+        <button className="accordion-header">
+          <div className="header-left">
+            <span className="module-number">模块五</span>
+            <span className="module-title">产品创新篇 · 开模前定胜负</span>
+          </div>
+          <div className="header-right">
+            <span className="expand-icon">+</span>
+          </div>
+        </button>
+        <div className="accordion-content">
+          <div className="content-wrapper">
+            <div className="content-block">
+              <h4 className="block-title">📌 你将获得：</h4>
+              <ul className="bullet-list">
+                <li>AI辅助市场需求洞察与趋势预测</li>
+                <li>虚拟产品测试与快速试错方法</li>
+                <li>降低新品失败率的决策框架</li>
+              </ul>
+            </div>
+            
+            <div className="content-block">
+              <h4 className="block-title">🎁 交付物：</h4>
+              <div className="deliverable-grid">
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">AI产品市场验证工作流</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">新品决策评估模板</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">趋势预测工具包</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="outcome-badge">
+              <span className="outcome-icon">⏱️</span>
+              <span className="outcome-text">典型效果：新品失败率降低80%，研发周期缩短50%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* 模块6+7 */}
+      <div className="accordion-item">
+        <button className="accordion-header">
+          <div className="header-left">
+            <span className="module-number">模块六+七</span>
+            <span className="module-title">增长引擎篇 · 7×24小时AI直播</span>
+          </div>
+          <div className="header-right">
+            <span className="expand-icon">+</span>
+          </div>
+        </button>
+        <div className="accordion-content">
+          <div className="content-wrapper">
+            <div className="content-block">
+              <h4 className="block-title">📌 你将获得：</h4>
+              <ul className="bullet-list">
+                <li>AI数字人直播的价值逻辑与ROI分析</li>
+                <li>3步搭建无人直播间的完整流程</li>
+                <li>数字人话术优化与转化率提升技巧</li>
+              </ul>
+            </div>
+            
+            <div className="content-block">
+              <h4 className="block-title">🎁 交付物：</h4>
+              <div className="deliverable-grid">
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">数字人直播SOP手册</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">话术脚本模板库</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">直播间搭建技术指南</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="outcome-badge">
+              <span className="outcome-icon">⏱️</span>
+              <span className="outcome-text">典型效果：人力成本节省90%，直播时长扩展3倍</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* 模块8 */}
+      <div className="accordion-item">
+        <button className="accordion-header">
+          <div className="header-left">
+            <span className="module-number">模块八</span>
+            <span className="module-title">科学决策篇 · 告别拍脑袋</span>
+          </div>
+          <div className="header-right">
+            <span className="expand-icon">+</span>
+          </div>
+        </button>
+        <div className="accordion-content">
+          <div className="content-wrapper">
+            <div className="content-block">
+              <h4 className="block-title">📌 你将获得：</h4>
+              <ul className="bullet-list">
+                <li>AI数据分析与商业洞察方法</li>
+                <li>自动化报表与决策看板搭建</li>
+                <li>预测性分析降低战略失误</li>
+              </ul>
+            </div>
+            
+            <div className="content-block">
+              <h4 className="block-title">🎁 交付物：</h4>
+              <div className="deliverable-grid">
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">AI数据分析工作流</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">决策支持看板模板</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">关键指标监控体系</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="outcome-badge">
+              <span className="outcome-icon">⏱️</span>
+              <span className="outcome-text">典型效果：决策周期缩短60%，失误率降低70%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* 模块9 */}
+      <div className="accordion-item">
+        <button className="accordion-header">
+          <div className="header-left">
+            <span className="module-number">模块九</span>
+            <span className="module-title">利润中心篇 · 服务升级为利润引擎</span>
+          </div>
+          <div className="header-right">
+            <span className="expand-icon">+</span>
+          </div>
+        </button>
+        <div className="accordion-content">
+          <div className="content-wrapper">
+            <div className="content-block">
+              <h4 className="block-title">📌 你将获得：</h4>
+              <ul className="bullet-list">
+                <li>将AI能力对外输出的商业模式设计</li>
+                <li>AI服务产品化与定价策略</li>
+                <li>开辟第二增长曲线的路径规划</li>
+              </ul>
+            </div>
+            
+            <div className="content-block">
+              <h4 className="block-title">🎁 交付物：</h4>
+              <div className="deliverable-grid">
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">AI服务产品化方案</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">定价与商业模式画布</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">客户开发策略</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="outcome-badge">
+              <span className="outcome-icon">⏱️</span>
+              <span className="outcome-text">典型效果：新增年收入XX万-XXX万</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* 模块10 */}
+      <div className="accordion-item">
+        <button className="accordion-header">
+          <div className="header-left">
+            <span className="module-number">模块十</span>
+            <span className="module-title">体系制胜篇 · 从工具到战略</span>
+          </div>
+          <div className="header-right">
+            <span className="expand-icon">+</span>
+          </div>
+        </button>
+        <div className="accordion-content">
+          <div className="content-wrapper">
+            <div className="content-block">
+              <h4 className="block-title">📌 你将获得：</h4>
+              <ul className="bullet-list">
+                <li>构建组织级AI能力的方法论</li>
+                <li>AI时代的团队协作与绩效管理</li>
+                <li>形成长期竞争壁垒的战略路径</li>
+              </ul>
+            </div>
+            
+            <div className="content-block">
+              <h4 className="block-title">🎁 交付物：</h4>
+              <div className="deliverable-grid">
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">企业AI能力成熟度模型</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">AI时代绩效考核新范式</span>
+                </div>
+                <div className="deliverable-item">
+                  <span className="deliverable-icon">✓</span>
+                  <span className="deliverable-text">长期战略规划图</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="outcome-badge">
+              <span className="outcome-icon">⏱️</span>
+              <span className="outcome-text">典型效果：构建难以复制的组织能力</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    {/* 进阶模块区 */}
+    <div className="advanced-modules">
+      <div className="advanced-header">
+        <h3 className="advanced-title">🔥 进阶技术模块（按需选配）</h3>
+        <p className="advanced-description">深度技术能力提升，适合有一定基础的企业</p>
+      </div>
+      
+      <div className="advanced-grid">
+        <div className="advanced-card">
+          <div className="advanced-icon">🎨</div>
+          <h4 className="advanced-card-title">Comfy UI工作流深度应用</h4>
+          <p className="advanced-card-desc">电商/设计/自媒体视效方向定制</p>
+        </div>
+        
+        <div className="advanced-card">
+          <div className="advanced-icon">🤖</div>
+          <h4 className="advanced-card-title">AI Agent(智能体)搭建实战</h4>
+          <p className="advanced-card-desc">自动化业务流程的核心技术</p>
+        </div>
+        
+        <div className="advanced-card">
+          <div className="advanced-icon">📚</div>
+          <h4 className="advanced-card-title">企业知识库与RAG框架</h4>
+          <p className="advanced-card-desc">让AI成为你的专属智囊团</p>
+        </div>
+        
+        <div className="advanced-card">
+          <div className="advanced-icon">🧠</div>
+          <h4 className="advanced-card-title">模型训练与微调</h4>
+          <p className="advanced-card-desc">打造企业专属AI能力</p>
+        </div>
+        
+        <div className="advanced-card">
+          <div className="advanced-icon">👥</div>
+          <h4 className="advanced-card-title">AI时代协作及绩效考核新范式</h4>
+          <p className="advanced-card-desc">组织转型的配套管理体系</p>
+        </div>
+        
+        <div className="advanced-card">
+          <div className="advanced-icon">⚙️</div>
+          <h4 className="advanced-card-title">其他企业定制化内训</h4>
+          <p className="advanced-card-desc">根据你的特殊需求设计</p>
+        </div>
+      </div>
+    </div>
+    
+    {/* 模块包含内容说明 */}
+    <div className="module-includes">
+      <h3 className="includes-title">每个模块都包含：</h3>
+      <div className="includes-grid">
+        <div className="includes-item">
+          <div className="includes-icon">📖</div>
+          <div className="includes-text">理论框架 + 实战案例 + 工具模板</div>
+        </div>
+        <div className="includes-item">
+          <div className="includes-icon">🎯</div>
+          <div className="includes-text">现场演练 + 落地指导 + 答疑支持</div>
+        </div>
+        <div className="includes-item">
+          <div className="includes-icon">🔄</div>
+          <div className="includes-text">线上线下结合，灵活定制</div>
+        </div>
+      </div>
+    </div>
+    
+    {/* CTA */}
+    <div className="courses-cta">
+      <button className="cta-button">
+        <span>获取定制化培训方案</span>
+        <span className="cta-arrow">→</span>
+      </button>
+    </div>
+    
+  </div>
+</section>
+<section className="cases-section" id="cases">
+  <div className="section-container">
+    {/* 区域标题 */}
+    <div className="section-header">
+      <div className="section-badge">
+        <span className="badge-icon">🏆</span>
+        <span>客户案例</span>
+      </div>
+      <h2 className="section-title">
+        他们已经用AI<br />
+        <span className="title-highlight">重构了竞争力</span>
+      </h2>
+      <p className="section-description">
+        真实数据，可验证的转型成果
+      </p>
+    </div>
+    
+    {/* 案例卡片 */}
+    <div className="cases-grid">
+      
+      {/* 案例1 */}
+      <div className="case-card">
+        <div className="case-header">
+          <div className="case-company">
+            <h3 className="company-name">某跨境3C配件企业</h3>
+            <p className="company-size">年营收5000万</p>
+          </div>
+          <div className="case-timeline">
+            <span className="timeline-icon">📅</span>
+            <span className="timeline-text">转型周期：3个月</span>
+          </div>
+        </div>
+        
+        <div className="case-quote">
+          <div className="quote-mark">"</div>
+          <p className="quote-text">接受咨询+培训3个月后：</p>
+        </div>
+        
+        <div className="case-metrics">
+          <h4 className="metrics-title">📊 核心数据变化：</h4>
+          <div className="metrics-grid">
+            <div className="metric-item">
+              <div className="metric-label">获客成本</div>
+              <div className="metric-change">
+                <span className="metric-before">¥85</span>
+                <span className="metric-arrow">→</span>
+                <span className="metric-after">¥32</span>
+                <span className="metric-improvement down">↓62%</span>
+              </div>
+            </div>
+            
+            <div className="metric-item">
+              <div className="metric-label">开发信响应率</div>
+              <div className="metric-change">
+                <span className="metric-before">2%</span>
+                <span className="metric-arrow">→</span>
+                <span className="metric-after">8%</span>
+                <span className="metric-improvement up">↑4倍</span>
+              </div>
+            </div>
+            
+            <div className="metric-item">
+              <div className="metric-label">营销素材产出</div>
+              <div className="metric-change">
+                <span className="metric-before">10张/周</span>
+                <span className="metric-arrow">→</span>
+                <span className="metric-after">200张/周</span>
+              </div>
+            </div>
+            
+            <div className="metric-item">
+              <div className="metric-label">设计团队</div>
+              <div className="metric-change">
+                <span className="metric-before">5人</span>
+                <span className="metric-arrow">→</span>
+                <span className="metric-after">2人</span>
+                <span className="metric-savings">(节省¥36万/年)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="case-testimonial">
+          <div className="testimonial-icon">💬</div>
+          <div className="testimonial-content">
+            <p className="testimonial-role">CEO评价：</p>
+            <p className="testimonial-text">
+              "最大的收获不是学会工具，而是用AI思维重新设计了业务流程。现在我们的效率是同行的10倍。"
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      {/* 案例2 */}
+      <div className="case-card">
+        <div className="case-header">
+          <div className="case-company">
+            <h3 className="company-name">某家居出口品牌</h3>
+            <p className="company-size">年营收8000万</p>
+          </div>
+          <div className="case-timeline">
+            <span className="timeline-icon">📅</span>
+            <span className="timeline-text">转型周期：4个月</span>
+          </div>
+        </div>
+        
+        <div className="case-quote">
+          <div className="quote-mark">"</div>
+          <p className="quote-text">深度咨询+系统培训后：</p>
+        </div>
+        
+        <div className="case-metrics">
+          <h4 className="metrics-title">📊 核心数据变化：</h4>
+          <div className="metrics-grid">
+            <div className="metric-item">
+              <div className="metric-label">视觉营销点击率</div>
+              <div className="metric-change">
+                <span className="metric-before">1.2%</span>
+                <span className="metric-arrow">→</span>
+                <span className="metric-after">4.8%</span>
+                <span className="metric-improvement up">↑4倍</span>
+              </div>
+            </div>
+            
+            <div className="metric-item">
+              <div className="metric-label">新品上市周期</div>
+              <div className="metric-change">
+                <span className="metric-before">45天</span>
+                <span className="metric-arrow">→</span>
+                <span className="metric-after">18天</span>
+                <span className="metric-improvement down">↓60%</span>
+              </div>
+            </div>
+            
+            <div className="metric-item">
+              <div className="metric-label">AI数字人直播</div>
+              <div className="metric-change">
+                <span className="metric-before">0</span>
+                <span className="metric-arrow">→</span>
+                <span className="metric-after">24h在线</span>
+              </div>
+            </div>
+            
+            <div className="metric-item">
+              <div className="metric-label">年度营销成本</div>
+              <div className="metric-change">
+                <span className="metric-savings large">↓¥120万</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="case-testimonial">
+          <div className="testimonial-icon">💬</div>
+          <div className="testimonial-content">
+            <p className="testimonial-role">CMO评价：</p>
+            <p className="testimonial-text">
+              "我们把节省的成本重新投入AI研发，现在AI能力本身成了新的利润中心，去年靠AI服务外包就赚了200万。"
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      {/* 案例3 */}
+      <div className="case-card">
+        <div className="case-header">
+          <div className="case-company">
+            <h3 className="company-name">某服装外贸公司</h3>
+            <p className="company-size">年营收3000万</p>
+          </div>
+          <div className="case-timeline">
+            <span className="timeline-icon">📅</span>
+            <span className="timeline-text">转型周期：3个月</span>
+          </div>
+        </div>
+        
+        <div className="case-quote">
+          <div className="quote-mark">"</div>
+          <p className="quote-text">90天AI转型计划后：</p>
+        </div>
+        
+        <div className="case-metrics">
+          <h4 className="metrics-title">📊 核心数据变化：</h4>
+          <div className="metrics-grid">
+            <div className="metric-item">
+              <div className="metric-label">直播间</div>
+              <div className="metric-change">
+                <span className="metric-before">3班倒</span>
+                <span className="metric-arrow">→</span>
+                <span className="metric-after">24h无人直播</span>
+              </div>
+            </div>
+            
+            <div className="metric-item">
+              <div className="metric-label">直播转化率</div>
+              <div className="metric-change">
+                <span className="metric-before">2.3%</span>
+                <span className="metric-arrow">→</span>
+                <span className="metric-after">2.8%</span>
+                <span className="metric-note">(真人vs AI)</span>
+              </div>
+            </div>
+            
+            <div className="metric-item">
+              <div className="metric-label">主播人力成本</div>
+              <div className="metric-change">
+                <span className="metric-before">¥30万/年</span>
+                <span className="metric-arrow">→</span>
+                <span className="metric-after">¥3万/年</span>
+              </div>
+            </div>
+            
+            <div className="metric-item">
+              <div className="metric-label">产品上新速度</div>
+              <div className="metric-change">
+                <span className="metric-improvement up">提升300%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="case-testimonial">
+          <div className="testimonial-icon">💬</div>
+          <div className="testimonial-content">
+            <p className="testimonial-role">运营总监评价：</p>
+            <p className="testimonial-text">
+              "AI数字人竟然比真人主播还稳定，而且可以同时跑多个直播间测试，现在我们的选品决策快准狠。"
+            </p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    {/* 行业覆盖 */}
+    <div className="industry-coverage">
+      <h3 className="coverage-title">已服务企业覆盖行业：</h3>
+      <div className="industry-tags">
+        <span className="industry-tag">3C数码</span>
+        <span className="industry-tag">家居家纺</span>
+        <span className="industry-tag">服装配饰</span>
+        <span className="industry-tag">工业品出口</span>
+        <span className="industry-tag">美妆个护</span>
+        <span className="industry-tag">母婴用品</span>
+        <span className="industry-tag">运动户外</span>
+        <span className="industry-tag">汽配电器</span>
+      </div>
+    </div>
+    
+    {/* 查看更多 */}
+    <div className="cases-footer">
+      <button className="view-more-btn">
+        <span>查看更多案例</span>
+        <span className="btn-arrow">→</span>
+      </button>
+    </div>
+    
+  </div>
+</section>
+<section className="process-section">
+  <div className="section-container">
+    {/* 区域标题 */}
+    <div className="section-header">
+      <div className="section-badge">
+        <span className="badge-icon">🚀</span>
+        <span>服务流程</span>
+      </div>
+      <h2 className="section-title">
+        从接触到落地的<br />
+        <span className="title-highlight">4步转型之旅</span>
+      </h2>
+      <p className="section-description">
+        清晰的路径，可预期的结果
+      </p>
+    </div>
+    
+    {/* 流程步骤 */}
+    <div className="process-timeline">
+      
+      {/* 步骤1 */}
+      <div className="process-step">
+        <div className="step-number">
+          <span className="number-bg">01</span>
+        </div>
+        <div className="step-content">
+          <div className="step-header">
+            <h3 className="step-title">免费诊断</h3>
+            <div className="step-badge">价值¥1,000</div>
+          </div>
+          
+          <div className="step-details">
+            <div className="detail-row">
+              <div className="detail-icon">⏱️</div>
+              <div className="detail-text">60分钟深度对话</div>
+            </div>
+            
+            <div className="detail-block">
+              <h4 className="detail-title">🎯 输出内容：</h4>
+              <ul className="detail-list">
+                <li>AI化成熟度诊断报告</li>
+                <li>3个优先突破点建议</li>
+                <li>初步转型路线图</li>
+              </ul>
+            </div>
+          </div>
+          
+          <button className="step-cta">
+            <span>立即预约诊断</span>
+            <span className="cta-icon">→</span>
+          </button>
+        </div>
+      </div>
+      
+      {/* 连接线 */}
+      <div className="process-connector">
+        <div className="connector-line"></div>
+        <div className="connector-arrow">↓</div>
+      </div>
+      
+      {/* 步骤2 */}
+      <div className="process-step">
+        <div className="step-number">
+          <span className="number-bg">02</span>
+        </div>
+        <div className="step-content">
+          <div className="step-header">
+            <h3 className="step-title">深度咨询</h3>
+            <div className="step-badge pricing">¥1,000/小时</div>
+          </div>
+          
+          <div className="step-details">
+            <div className="detail-row">
+              <div className="detail-icon">⏱️</div>
+              <div className="detail-text">通常2-4小时</div>
+            </div>
+            
+            <div className="detail-block">
+              <h4 className="detail-title">🎯 输出内容：</h4>
+              <ul className="detail-list">
+                <li>详细业务诊断与分析</li>
+                <li>完整90天转型规划</li>
+                <li>工具选型与预算方案</li>
+                <li>风险点与应对策略</li>
+              </ul>
+            </div>
+          </div>
+          
+          <button className="step-cta secondary">
+            <span>预约深度咨询</span>
+            <span className="cta-icon">→</span>
+          </button>
+        </div>
+      </div>
+      
+      {/* 连接线 */}
+      <div className="process-connector">
+        <div className="connector-line"></div>
+        <div className="connector-arrow">↓</div>
+      </div>
+      
+      {/* 步骤3 */}
+      <div className="process-step">
+        <div className="step-number">
+          <span className="number-bg">03</span>
+        </div>
+        <div className="step-content">
+          <div className="step-header">
+            <h3 className="step-title">定制化培训</h3>
+            <div className="step-badge custom">按需报价</div>
+          </div>
+          
+          <div className="step-details">
+            <div className="detail-row">
+              <div className="detail-icon">⏱️</div>
+              <div className="detail-text">根据模块数量定制</div>
+            </div>
+            
+            <div className="detail-block">
+              <h4 className="detail-title">🎯 交付内容：</h4>
+              <ul className="detail-list">
+                <li>10大核心模块系统培训</li>
+                <li>配套工具包+模板+工作流</li>
+                <li>现场实操演练</li>
+                <li>定制化内训内容</li>
+              </ul>
+            </div>
+          </div>
+          
+          <button className="step-cta secondary">
+            <span>获取培训方案</span>
+            <span className="cta-icon">→</span>
+          </button>
+        </div>
+      </div>
+      
+      {/* 连接线 */}
+      <div className="process-connector">
+        <div className="connector-line"></div>
+        <div className="connector-arrow">↓</div>
+      </div>
+      
+      {/* 步骤4 */}
+      <div className="process-step">
+        <div className="step-number">
+          <span className="number-bg">04</span>
+        </div>
+        <div className="step-content">
+          <div className="step-header">
+            <h3 className="step-title">落地陪跑</h3>
+            <div className="step-badge included">30天</div>
+          </div>
+          
+          <div className="step-details">
+            <div className="detail-row">
+              <div className="detail-icon">⏱️</div>
+              <div className="detail-text">培训后30天答疑期</div>
+            </div>
+            
+            <div className="detail-block">
+              <h4 className="detail-title">🎯 支持内容：</h4>
+              <ul className="detail-list">
+                <li>实施过程答疑指导</li>
+                <li>工具使用问题解决</li>
+                <li>定期回顾与优化建议</li>
+                <li>持续迭代支持</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    {/* 灵活性说明 */}
+    <div className="flexibility-note">
+      <div className="note-icon">💡</div>
+      <div className="note-content">
+        <h3 className="note-title">灵活选择：</h3>
+        <p className="note-text">
+          可以只做咨询、只做培训，或咨询+培训组合<br />
+          我们根据你的实际需求定制服务方案
+        </p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+<section className="pricing-section" id="pricing">
+  <div className="section-container">
+    {/* 区域标题 */}
+    <div className="section-header">
+      <div className="section-badge">
+        <span className="badge-icon">💰</span>
+        <span>投资回报</span>
+      </div>
+      <h2 className="section-title">
+        这不是费用，是<br />
+        <span className="title-highlight">投资回报率计算</span>
+      </h2>
+      <p className="section-description">
+        真正的问题不是"贵不贵"，而是"不转型的成本有多高"
+      </p>
+    </div>
+    
+    {/* ROI计算器 */}
+    <div className="roi-calculator">
+      <div className="calculator-header">
+        <h3 className="calculator-title">假设你是年营收5000万的外贸电商企业：</h3>
+      </div>
+      
+      <div className="comparison-blocks">
+        {/* 传统模式 */}
+        <div className="cost-block traditional">
+          <div className="block-header">
+            <div className="block-icon">❌</div>
+            <h4 className="block-title">传统模式年度成本</h4>
+          </div>
+          
+          <div className="cost-items">
+            <div className="cost-item">
+              <span className="cost-label">设计团队(5人)</span>
+              <span className="cost-value">¥50万</span>
+            </div>
+            <div className="cost-item">
+              <span className="cost-label">直播团队(6人)</span>
+              <span className="cost-value">¥72万</span>
+            </div>
+            <div className="cost-item">
+              <span className="cost-label">市场研究</span>
+              <span className="cost-value">¥30万</span>
+            </div>
+            <div className="cost-item">
+              <span className="cost-label">低效试错损失</span>
+              <span className="cost-value">¥80万</span>
+            </div>
+          </div>
+          
+          <div className="cost-total traditional-total">
+            <span className="total-label">年度总成本</span>
+            <span className="total-value">¥232万</span>
+          </div>
+        </div>
+        
+        {/* 转换箭头 */}
+        <div className="transformation-arrow">
+          <div className="arrow-icon">→</div>
+          <div className="arrow-text">AI化转型后</div>
+        </div>
+        
+        {/* AI化后 */}
+        <div className="cost-block ai-mode">
+          <div className="block-header">
+            <div className="block-icon">✨</div>
+            <h4 className="block-title">AI化后年度成本</h4>
+          </div>
+          
+          <div className="cost-items">
+            <div className="cost-item">
+              <span className="cost-label">设计团队(2人)</span>
+              <span className="cost-value">¥20万</span>
+            </div>
+            <div className="cost-item">
+              <span className="cost-label">AI直播系统</span>
+              <span className="cost-value">¥5万</span>
+            </div>
+            <div className="cost-item">
+              <span className="cost-label">AI工具订阅</span>
+              <span className="cost-value">¥10万</span>
+            </div>
+            <div className="cost-item">
+              <span className="cost-label">试错损失降低</span>
+              <span className="cost-value">¥16万 <span className="reduction">(-80%)</span></span>
+            </div>
+          </div>
+          
+          <div className="cost-total ai-total">
+            <span className="total-label">年度总成本</span>
+            <span className="total-value">¥51万</span>
+          </div>
+          
+          <div className="savings-highlight">
+            <span className="savings-icon">💰</span>
+            <span className="savings-text">年度节省：<strong>¥181万</strong></span>
+          </div>
+        </div>
+      </div>
+      
+      {/* 我们的投入 */}
+      <div className="investment-block">
+        <div className="investment-header">
+          <h4 className="investment-title">我们的服务投入</h4>
+        </div>
+        
+        <div className="investment-breakdown">
+          <div className="investment-item">
+            <span className="investment-label">深度咨询(4h)</span>
+            <span className="investment-value">¥4,000</span>
+          </div>
+          <div className="investment-item">
+            <span className="investment-label">系统培训</span>
+            <span className="investment-value">¥8-15万<span className="note-text">(按需)</span></span>
+          </div>
+        </div>
+        
+        <div className="investment-total">
+          <span className="total-label">总投入</span>
+          <span className="total-value">约¥10万</span>
+        </div>
+        
+        <div className="roi-metrics">
+          <div className="roi-metric">
+            <div className="metric-label">投资回报率(ROI)</div>
+            <div className="metric-value highlight">1,810%</div>
+          </div>
+          <div className="roi-metric">
+            <div className="metric-label">回本周期</div>
+            <div className="metric-value highlight">&lt; 3个月</div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    {/* 额外价值 */}
+    <div className="additional-value">
+      <h3 className="value-title">而且这还没算：</h3>
+      <div className="value-grid">
+        <div className="value-item">
+          <div className="value-icon">✓</div>
+          <div className="value-text">效率提升带来的营收增长</div>
+        </div>
+        <div className="value-item">
+          <div className="value-icon">✓</div>
+          <div className="value-text">市场响应速度提升的竞争优势</div>
+        </div>
+        <div className="value-item">
+          <div className="value-icon">✓</div>
+          <div className="value-text">员工从重复劳动中解放的价值</div>
+        </div>
+        <div className="value-item">
+          <div className="value-icon">✓</div>
+          <div className="value-text">AI能力对外输出的新收入</div>
+        </div>
+      </div>
+    </div>
+    
+    {/* 底部强调 */}
+    <div className="pricing-emphasis">
+      <p className="emphasis-text">
+        真正的问题不是"贵不贵"<br />
+        而是"不转型的成本有多高"
+      </p>
+      <button className="emphasis-cta">
+        <span>计算我的企业能节省多少</span>
+        <span className="cta-arrow">→</span>
+      </button>
+    </div>
+    
+  </div>
+</section>
+<section className="final-cta-section" id="contact">
+  <div className="section-container">
+    
+    {/* 紧迫感标题 */}
+    <div className="urgency-header">
+      <h2 className="urgency-title">
+        AI转型的窗口期只有<span className="time-highlight">18个月</span><br />
+        早一天行动 = 多一年领先优势
+      </h2>
+    </div>
+    
+    {/* 主CTA卡片 */}
+    <div className="main-cta-card">
+      <div className="cta-badge">
+        <span className="badge-icon">🎁</span>
+        <span className="badge-text">限时福利</span>
+      </div>
+      
+      <h3 className="cta-title">免费AI转型诊断</h3>
+      <p className="cta-subtitle">价值¥1,000的60分钟深度咨询</p>
+      
+      <div className="cta-benefits">
+        <h4 className="benefits-title">我们帮你：</h4>
+        <div className="benefits-grid">
+          <div className="benefit-item">
+            <span className="benefit-icon">✓</span>
+            <span className="benefit-text">诊断你的业务AI化成熟度</span>
+          </div>
+          <div className="benefit-item">
+            <span className="benefit-icon">✓</span>
+            <span className="benefit-text">识别3个最快见效的AI应用点</span>
+          </div>
+          <div className="benefit-item">
+            <span className="benefit-icon">✓</span>
+            <span className="benefit-text">规划90天转型路线图</span>
+          </div>
+          <div className="benefit-item">
+            <span className="benefit-icon">✓</span>
+            <span className="benefit-text">评估预期投资回报率</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="quota-indicator">
+        <div className="quota-header">
+          <span className="quota-icon">⚠️</span>
+          <span className="quota-text">每月仅开放 <strong>5</strong> 个免费名额</span>
+        </div>
+        <div className="quota-progress">
+          <div className="progress-bar-container">
+            <div className="progress-bar-fill" style={{width: '60%'}}>
+              <div className="progress-shine"></div>
+            </div>
+          </div>
+          <div className="progress-label">已预约 3/5</div>
+        </div>
+      </div>
+      
+      <button className="primary-cta-button">
+        <span className="button-text">立即预约诊断</span>
+        <span className="button-subtext">2分钟填写需求表</span>
+      </button>
+    </div>
+    
+    {/* 联系方式 */}
+    <div className="contact-methods">
+      <h3 className="contact-title">或直接联系我们：</h3>
+      
+      <div className="contact-grid">
+        <div className="contact-card">
+          <div className="contact-icon">📞</div>
+          <div className="contact-info">
+            <div className="contact-label">咨询热线</div>
+            <div className="contact-value">XXX-XXXX-XXXX</div>
+            <div className="contact-note">工作日 9:00-18:00</div>
+          </div>
+        </div>
+        
+        <div className="contact-card">
+          <div className="contact-icon">💬</div>
+          <div className="contact-info">
+            <div className="contact-label">微信咨询</div>
+            <div className="contact-qr">
+              <div className="qr-placeholder">
+                <div className="qr-code">[二维码]</div>
+                <div className="qr-text">扫码添加企业微信</div>
+              </div>
+            </div>
+            <div className="contact-note">1对1顾问服务</div>
+          </div>
+        </div>
+        
+        <div className="contact-card">
+          <div className="contact-icon">📧</div>
+          <div className="contact-info">
+            <div className="contact-label">邮件咨询</div>
+            <div className="contact-value">consulting@yourcompany.com</div>
+            <div className="contact-note">24小时内回复</div>
+          </div>
+        </div>
+        
+        <div className="contact-card">
+          <div className="contact-icon">🏢</div>
+          <div className="contact-info">
+            <div className="contact-label">公司地址</div>
+            <div className="contact-value">[具体地址]</div>
+            <div className="contact-note">欢迎预约到访深度交流</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {/* 最终激励 */}
+    <div className="final-motivation">
+      <div className="motivation-icon">⏰</div>
+      <div className="motivation-content">
+        <p className="motivation-text">
+          你的竞争对手已经在行动<br />
+          每晚一个月，领先优势就少一年
+        </p>
+        <p className="motivation-slogan">
+          当别人还在犹豫时，你已经在超越
+        </p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+{/* 固定悬浮CTA */}
+<div className="floating-cta">
+  <button className="floating-button" id="floatingChatBtn">
+    <span className="floating-icon">💬</span>
+    <span className="floating-text">在线咨询</span>
+  </button>
+  
+  <button className="floating-button" id="floatingPhoneBtn">
+    <span className="floating-icon">📞</span>
+    <span className="floating-text">电话预约</span>
+  </button>
+  
+  <button className="floating-button primary" id="floatingDiagnosisBtn">
+    <span className="floating-icon">🎁</span>
+    <span className="floating-text">免费诊断</span>
+    <span className="floating-badge">剩2名额</span>
+  </button>
+</div>
+
+{/* 底部悬浮条（移动端） */}
+<div className="mobile-bottom-bar">
+  <button className="bottom-bar-button" id="mobileConsultBtn">
+    <span className="bar-icon">💬</span>
+    <span className="bar-text">咨询</span>
+  </button>
+  <button className="bottom-bar-button primary" id="mobileDiagnosisBtn">
+    <span className="bar-icon">🎁</span>
+    <span className="bar-text">免费诊断</span>
+  </button>
+  <button className="bottom-bar-button" id="mobilePhoneBtn">
+    <span className="bar-icon">📞</span>
+    <span className="bar-text">电话</span>
+  </button>
+</div>
+<script>
+// 悬浮按钮交互
+document.getElementById('floatingChatBtn')?.addEventListener('click', () => {
+  // 打开在线咨询
+  console.log('打开在线咨询');
+});
+
+document.getElementById('floatingPhoneBtn')?.addEventListener('click', () => {
+  // 拨打电话或显示电话号码
+  window.location.href = 'tel:XXX-XXXX-XXXX';
+});
+
+document.getElementById('floatingDiagnosisBtn')?.addEventListener('click', () => {
+  // 跳转到预约表单
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+});
+
+// 移动端按钮交互
+document.getElementById('mobileConsultBtn')?.addEventListener('click', () => {
+  console.log('打开在线咨询');
+});
+
+document.getElementById('mobileDiagnosisBtn')?.addEventListener('click', () => {
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+});
+
+document.getElementById('mobilePhoneBtn')?.addEventListener('click', () => {
+  window.location.href = 'tel:XXX-XXXX-XXXX';
+});
+</script>
+
+
+<footer className="site-footer">
+  <div className="footer-container">
+    <div className="footer-content">
+      <div className="footer-column">
+        <div className="footer-logo">
+          <img src="/assets/logo.svg" alt="公司Logo" className="footer-logo-img" />
+        </div>
+        <p className="footer-tagline">
+          外贸电商AI数智化转型专家<br />
+          让效率提升10倍
+        </p>
+      </div>
+      
+      <div className="footer-column">
+        <h4 className="footer-title">服务</h4>
+        <ul className="footer-links">
+          <li><a href="#solutions">深度咨询</a></li>
+          <li><a href="#courses">企业内训</a></li>
+          <li><a href="#cases">客户案例</a></li>
+          <li><a href="#pricing">服务价格</a></li>
+        </ul>
+      </div>
+      
+      <div className="footer-column">
+        <h4 className="footer-title">联系我们</h4>
+        <ul className="footer-contacts">
+          <li>📞 XXX-XXXX-XXXX</li>
+          <li>📧 consulting@yourcompany.com</li>
+          <li>🏢 [具体地址]</li>
+        </ul>
+      </div>
+      
+      <div className="footer-column">
+        <h4 className="footer-title">关注我们</h4>
+        <div className="social-links">
+          <a href="#" className="social-link">微信</a>
+          <a href="#" className="social-link">微博</a>
+          <a href="#" className="social-link">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    
+    <div className="footer-bottom">
+      <p className="copyright">© 2025 [公司名称]. All rights reserved.</p>
+      <div className="footer-legal">
+        <a href="#">隐私政策</a>
+        <span className="divider">|</span>
+        <a href="#">服务条款</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script type="module" src="/src/main.ts"></script>
+  

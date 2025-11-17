@@ -1,0 +1,17 @@
+{
+	"name": "waimao-ai-transformation",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"lint": "biome check ."
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"typescript": "^5.5.4",
+		"vite": "^5.2.0"
+	}
+}
