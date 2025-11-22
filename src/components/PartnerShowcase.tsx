@@ -189,17 +189,17 @@ const PartnerShowcase = () => {
   };
 
   return (
-    <section id="partners" className="py-24" style={{ backgroundColor: '#F9F8F6' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="partners" className="py-12 md:py-20 lg:py-24" style={{ backgroundColor: '#F9F8F6' }}>
+      <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <h2 
-            className="text-heading text-5xl lg:text-6xl text-black mb-6"
+            className="text-heading text-3xl md:text-5xl lg:text-6xl text-black mb-4 md:mb-6 px-4"
           >
             信任源自专业，创新来自合作
           </h2>
           <p 
-            className="text-body text-xl lg:text-2xl text-gray-700"
+            className="text-body text-base md:text-xl lg:text-2xl text-gray-700 px-4"
           >
             已与100+全球领先企业和机构达成深度合作
           </p>

@@ -68,10 +68,10 @@ const ServiceMatrix = () => {
     const isImageLeft = service.imagePosition === 'left';
     
     return (
-      <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-16 last:mb-0">
-        {/* Image Block */}
-        <div className={`${isImageLeft ? 'lg:order-1' : 'lg:order-2'}`}>
-          <div className="bg-orange-100 rounded-2xl p-8 h-80 flex items-center justify-center relative overflow-hidden">
+      <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-12 lg:mb-16 last:mb-0">
+        {/* Image Block - Always first on mobile */}
+        <div className={`order-1 ${isImageLeft ? 'lg:order-1' : 'lg:order-2'}`}>
+          <div className="bg-orange-100 rounded-2xl p-6 md:p-8 h-64 md:h-80 flex items-center justify-center relative overflow-hidden">
             {/* Orange gradient background */}
             <div className="absolute inset-0 bg-gradient-to-br from-orange-200 to-orange-300 opacity-50"></div>
             
@@ -95,12 +95,12 @@ const ServiceMatrix = () => {
           </div>
         </div>
 
-        {/* Text Block */}
-        <div className={`${isImageLeft ? 'lg:order-2' : 'lg:order-1'} space-y-7`}>
+        {/* Text Block - Always second on mobile */}
+        <div className={`order-2 ${isImageLeft ? 'lg:order-2' : 'lg:order-1'} space-y-4 md:space-y-7`}>
           {/* Number Badge - Bold Outlined Style */}
-          <div className="inline-flex items-center mb-4">
+          <div className="inline-flex items-center mb-2 md:mb-4">
             <div 
-              className="w-12 h-12 rounded-full flex items-center justify-center text-2xl font-bold"
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-xl md:text-2xl font-bold"
               style={{
                 fontFamily: 'var(--font-heading)',
                 color: '#EA580C',
@@ -116,7 +116,7 @@ const ServiceMatrix = () => {
           {/* Title with Underline Decoration */}
           <div className="relative">
             <h3 
-              className="text-4xl lg:text-5xl text-gray-900 font-bold"
+              className="text-2xl md:text-4xl lg:text-5xl text-gray-900 font-bold"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               {service.title}
@@ -132,7 +132,7 @@ const ServiceMatrix = () => {
 
           {/* Description with Better Typography */}
           <p 
-            className="text-lg lg:text-xl text-gray-600 max-w-xl pt-2"
+            className="text-base md:text-lg lg:text-xl text-gray-600 max-w-xl pt-2"
             style={{ fontFamily: 'var(--font-body)', lineHeight: '1.7' }}
           >
             {service.description}
@@ -292,19 +292,19 @@ const ServiceMatrix = () => {
   };
 
   return (
-    <section id="matrix" className="py-24" style={{ backgroundColor: '#F9F8F6' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="matrix" className="py-12 md:py-20 lg:py-24" style={{ backgroundColor: '#F9F8F6' }}>
+      <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-20">
           <h2 
-            className="text-5xl lg:text-6xl text-black mb-6 font-bold"
+            className="text-3xl md:text-5xl lg:text-6xl text-black mb-4 md:mb-6 font-bold px-4"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             用AI赋能企业，
-            <span> 打造智能化转型闭环</span>
+            <span className="block md:inline"> 打造智能化转型闭环</span>
           </h2>
           <p 
-            className="text-xl lg:text-2xl text-gray-700 max-w-3xl mx-auto"
+            className="text-base md:text-xl lg:text-2xl text-gray-700 max-w-3xl mx-auto px-4"
             style={{ fontFamily: 'var(--font-body)' }}
           >
             从战略咨询到技术实施，我们提供全方位的AI解决方案

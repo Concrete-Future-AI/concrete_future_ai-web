@@ -2,7 +2,7 @@ import React from 'react';
 
 const ServiceCapabilities = () => {
   return (
-    <section id="services" className="bg-white py-20 lg:py-28 relative overflow-hidden">
+    <section id="services" className="bg-white py-12 md:py-20 lg:py-28 relative overflow-hidden">
       {/* 背景装饰 */}
       <div 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] opacity-[0.03]"
@@ -11,11 +11,11 @@ const ServiceCapabilities = () => {
         }}
       ></div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8 relative z-10">
         {/* Main Headline */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-20">
           <h2 
-            className="text-heading text-4xl lg:text-5xl font-bold"
+            className="text-heading text-2xl md:text-4xl lg:text-5xl font-bold px-4"
             style={{ color: '#0A0A0A' }}
           >
             我们不只是AI服务商，更是您的长期增长伙伴
@@ -25,10 +25,10 @@ const ServiceCapabilities = () => {
         {/* Editorial List Layout - Three Rows with Dividers */}
         <div className="max-w-4xl mx-auto">
           {/* Row 1: 商业洞察 */}
-          <div className="grid md:grid-cols-[200px_1fr] gap-8 py-12 border-t border-gray-300">
+          <div className="flex flex-col md:grid md:grid-cols-[200px_1fr] gap-4 md:gap-8 py-8 md:py-12 border-t border-gray-300">
             <div className="flex items-start">
               <h3 
-                className="text-lg lg:text-xl font-bold tracking-wider text-gray-900 uppercase"
+                className="text-base md:text-lg lg:text-xl font-bold tracking-wider text-gray-900 uppercase"
                 style={{ fontFamily: 'monospace' }}
               >
                 01 — 商业洞察
@@ -36,7 +36,7 @@ const ServiceCapabilities = () => {
             </div>
             <div>
               <p 
-                className="text-body text-base lg:text-lg leading-relaxed text-gray-700"
+                className="text-body text-sm md:text-base lg:text-lg leading-relaxed text-gray-700"
                 style={{ lineHeight: '1.8' }}
               >
                 <span style={{ fontWeight: '600' }}>95%的AI项目死于"规划很美好，落地很骨感"。</span>
@@ -48,10 +48,10 @@ const ServiceCapabilities = () => {
           </div>
 
           {/* Row 2: 技术底座 */}
-          <div className="grid md:grid-cols-[200px_1fr] gap-8 py-12 border-t border-gray-300">
+          <div className="flex flex-col md:grid md:grid-cols-[200px_1fr] gap-4 md:gap-8 py-8 md:py-12 border-t border-gray-300">
             <div className="flex items-start">
               <h3 
-                className="text-lg lg:text-xl font-bold tracking-wider text-gray-900 uppercase"
+                className="text-base md:text-lg lg:text-xl font-bold tracking-wider text-gray-900 uppercase"
                 style={{ fontFamily: 'monospace' }}
               >
                 02 — 技术底座
@@ -59,7 +59,7 @@ const ServiceCapabilities = () => {
             </div>
             <div>
               <p 
-                className="text-body text-base lg:text-lg leading-relaxed text-gray-700"
+                className="text-body text-sm md:text-base lg:text-lg leading-relaxed text-gray-700"
                 style={{ lineHeight: '1.8' }}
               >
                 <span style={{ fontWeight: '600' }}>拒绝"拼接式"开发，我们要的是企业级稳定交付。</span>
@@ -70,10 +70,10 @@ const ServiceCapabilities = () => {
           </div>
 
           {/* Row 3: 权威背书 */}
-          <div className="grid md:grid-cols-[200px_1fr] gap-8 py-12 border-t border-gray-300 border-b">
+          <div className="flex flex-col md:grid md:grid-cols-[200px_1fr] gap-4 md:gap-8 py-8 md:py-12 border-t border-gray-300 border-b">
             <div className="flex items-start">
               <h3 
-                className="text-lg lg:text-xl font-bold tracking-wider text-gray-900 uppercase"
+                className="text-base md:text-lg lg:text-xl font-bold tracking-wider text-gray-900 uppercase"
                 style={{ fontFamily: 'monospace' }}
               >
                 03 — 权威背书
@@ -81,7 +81,7 @@ const ServiceCapabilities = () => {
             </div>
             <div>
               <p 
-                className="text-body text-base lg:text-lg leading-relaxed text-gray-700"
+                className="text-body text-sm md:text-base lg:text-lg leading-relaxed text-gray-700"
                 style={{ lineHeight: '1.8' }}
               >
                 <span style={{ fontWeight: '700', color: '#D97757' }}>炬象未来</span> 拥有复合型实战团队，在<span style={{ fontWeight: '700', color: '#D97757' }}>湖南股权交易所挂牌</span>（310127HN），荣获"<span style={{ fontWeight: '700', color: '#D97757' }}>国家级先进制造业集群</span>"认证及<span style={{ fontWeight: '700', color: '#D97757' }}>阿里巴巴官方讲师</span>资质。

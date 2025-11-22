@@ -156,24 +156,24 @@ const ContactForm = () => {
   const isFormValid = formData.name && formData.company;
 
   return (
-    <section id="contact" className="py-20" style={{ backgroundColor: '#F9F8F6' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+    <section id="contact" className="py-12 md:py-16 lg:py-20" style={{ backgroundColor: '#F9F8F6' }}>
+      <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8">
+        <div className="text-center mb-10 md:mb-12">
           <h2 
-            className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 mb-6"
+            className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight text-gray-900 mb-4 md:mb-6 px-4"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             让转型不再是试错，从这里开始落地
           </h2>
           <p 
-            className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
+            className="text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto px-4"
             style={{ fontFamily: 'var(--font-body)' }}
           >
             每月仅开放 5 个深度陪跑名额。填写表单，锁定您的转型席位。
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           {/* Contact Form */}
           <div className="bg-white rounded-2xl p-8 border border-gray-100">
             <form onSubmit={handleSubmit} className="space-y-6">
