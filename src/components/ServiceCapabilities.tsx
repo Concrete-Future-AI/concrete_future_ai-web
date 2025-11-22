@@ -12,58 +12,83 @@ const ServiceCapabilities = () => {
       ></div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        {/* 标题 */}
-        <div className="text-center mb-16">
+        {/* Main Headline */}
+        <div className="text-center mb-20">
           <h2 
-            className="text-heading text-5xl lg:text-7xl mb-6"
+            className="text-heading text-4xl lg:text-5xl font-bold"
             style={{ color: '#0A0A0A' }}
           >
-            <span className="relative inline-block">
-              我们不只是AI服务商
-              <span 
-                className="absolute left-0 right-0"
-                style={{
-                  bottom: '-8px',
-                  height: '6px',
-                  background: 'linear-gradient(90deg, #D97757 0%, #C96543 100%)',
-                  opacity: 0.3,
-                  borderRadius: '3px'
-                }}
-              ></span>
-            </span>
+            我们不只是AI服务商，更是您的长期增长伙伴
           </h2>
-          <p 
-            className="text-body text-2xl lg:text-3xl text-gray-600"
-          >
-            更是您的长期增长伙伴
-          </p>
         </div>
 
-        {/* 2段核心文案 - 简约版 */}
-        <div className="max-w-4xl mx-auto space-y-6">
-          <p 
-            className="text-body text-xl lg:text-2xl leading-relaxed text-center"
-            style={{ color: '#374151', lineHeight: '1.8' }}
-          >
-            <span style={{ color: '#D97757', fontWeight: '600' }}>95%的AI项目死于"规划很美好，落地很骨感"。</span>
-            深耕零售、金融、制造、跨境电商等15+垂直行业，我们说的每一个痛点，都是你昨天刚经历的。
-            站在微软、Google、NUS等顶级生态肩膀上，
-            <span style={{ color: '#D97757', fontWeight: '600' }}> 我们承诺：2周上线MVP，60天见到ROI，否则不收费。</span>
-            不懂你的行业？那就不合作。先验证，再投入——每一分钱都花在刀刃上。
-          </p>
+        {/* Editorial List Layout - Three Rows with Dividers */}
+        <div className="max-w-4xl mx-auto">
+          {/* Row 1: 商业洞察 */}
+          <div className="grid md:grid-cols-[200px_1fr] gap-8 py-12 border-t border-gray-300">
+            <div className="flex items-start">
+              <h3 
+                className="text-lg lg:text-xl font-bold tracking-wider text-gray-900 uppercase"
+                style={{ fontFamily: 'monospace' }}
+              >
+                01 — 商业洞察
+              </h3>
+            </div>
+            <div>
+              <p 
+                className="text-body text-base lg:text-lg leading-relaxed text-gray-700"
+                style={{ lineHeight: '1.8' }}
+              >
+                <span style={{ fontWeight: '600' }}>95%的AI项目死于"规划很美好，落地很骨感"。</span>
+                深耕零售、金融、制造、跨境电商等15+垂直行业，我们说的每一个痛点，都是你昨天刚经历的。
+                我们承诺：<span style={{ fontWeight: '700', color: '#D97757' }}>2周上线MVP，60天见到ROI</span>，否则不收费。
+                不懂你的行业？那就不合作。
+              </p>
+            </div>
+          </div>
 
-          <p 
-            className="text-body text-xl lg:text-2xl leading-relaxed text-center"
-            style={{ color: '#374151', lineHeight: '1.8' }}
-          >
-            <span style={{ color: '#D97757', fontWeight: '600' }}>CONCRETE FUTURE (炬象未来)</span> 拥有复合型团队，融合AI技术与电商实战经验。
-            团队曾创下
-            <span className="text-data" style={{ color: '#D97757', fontWeight: '700' }}>一年赋能20,000+企业</span>、
-            <span className="text-data" style={{ color: '#D97757', fontWeight: '700' }}>人效500万</span>、
-            <span className="text-data" style={{ color: '#D97757', fontWeight: '700' }}>业绩100%年增长</span>
-            的实战纪录。
-            已在湖南股权交易所挂牌（310127HN），荣获"国家级先进制造业集群"认证，拥有阿里巴巴官方认证的明星/钻石讲师资质，是AI生意助手首批官方评测师。
-          </p>
+          {/* Row 2: 技术底座 */}
+          <div className="grid md:grid-cols-[200px_1fr] gap-8 py-12 border-t border-gray-300">
+            <div className="flex items-start">
+              <h3 
+                className="text-lg lg:text-xl font-bold tracking-wider text-gray-900 uppercase"
+                style={{ fontFamily: 'monospace' }}
+              >
+                02 — 技术底座
+              </h3>
+            </div>
+            <div>
+              <p 
+                className="text-body text-base lg:text-lg leading-relaxed text-gray-700"
+                style={{ lineHeight: '1.8' }}
+              >
+                <span style={{ fontWeight: '600' }}>拒绝"拼接式"开发，我们要的是企业级稳定交付。</span>
+                作为 <span style={{ fontWeight: '700', color: '#D97757' }}>影刀RPA、飞书(Lark)、Coze(字节跳动)及阿里巴巴</span> 的深度生态合作伙伴，我们拥有原厂级的技术开发能力。
+                为您构建的不再是割裂的工具，而是能无缝融入您现有业务流、安全可扩展的<span style={{ fontWeight: '700', color: '#D97757' }}>企业级智能化底座</span>。
+              </p>
+            </div>
+          </div>
+
+          {/* Row 3: 权威背书 */}
+          <div className="grid md:grid-cols-[200px_1fr] gap-8 py-12 border-t border-gray-300 border-b">
+            <div className="flex items-start">
+              <h3 
+                className="text-lg lg:text-xl font-bold tracking-wider text-gray-900 uppercase"
+                style={{ fontFamily: 'monospace' }}
+              >
+                03 — 权威背书
+              </h3>
+            </div>
+            <div>
+              <p 
+                className="text-body text-base lg:text-lg leading-relaxed text-gray-700"
+                style={{ lineHeight: '1.8' }}
+              >
+                <span style={{ fontWeight: '700', color: '#D97757' }}>炬象未来</span> 拥有复合型实战团队，在<span style={{ fontWeight: '700', color: '#D97757' }}>湖南股权交易所挂牌</span>（310127HN），荣获"<span style={{ fontWeight: '700', color: '#D97757' }}>国家级先进制造业集群</span>"认证及<span style={{ fontWeight: '700', color: '#D97757' }}>阿里巴巴官方讲师</span>资质。
+                先验证，再投入——每一分钱都花在刀刃上。
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
