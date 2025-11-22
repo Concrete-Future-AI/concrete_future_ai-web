@@ -1,21 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ConsultationModal from './ConsultationModal';
 
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { href: '#partners', label: '合作伙伴' },
@@ -27,155 +18,122 @@ const Navigation = () => {
   return (
     <>
     <nav 
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      className="sticky top-0 z-50 transition-all duration-300 backdrop-blur-md border-b border-black/5"
       style={{
-        backdropFilter: isScrolled ? 'blur(20px)' : 'blur(0px)',
-        background: isScrolled 
-          ? 'rgba(255, 255, 255, 0.85)' 
-          : 'rgba(255, 255, 255, 0)',
-        borderBottom: isScrolled 
-          ? '1px solid rgba(0, 0, 0, 0.06)' 
-          : '1px solid transparent',
-        boxShadow: isScrolled 
-          ? '0 2px 20px rgba(0, 0, 0, 0.04)' 
-          : 'none'
+        background: 'rgba(249, 248, 246, 0.8)'
       }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo - 现代几何字体 */}
+          {/* Typographic Logo - Brand Command Center */}
           <Link 
             to="/" 
             className="flex flex-col group"
           >
-            <div 
-              className="text-display text-2xl lg:text-3xl transition-all duration-300"
-              style={{ 
-                color: '#0A0A0A',
-                lineHeight: '1'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#D97757';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#0A0A0A';
-              }}
-            >
-              炬象未来
+            {/* Chinese Brand Name with Accent */}
+            <div className="flex items-center gap-1.5">
+              <span 
+                className="text-2xl font-extrabold text-gray-900 transition-colors duration-300 group-hover:text-[#D97757]"
+                style={{ 
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif',
+                  lineHeight: '1'
+                }}
+              >
+                炬象未来
+              </span>
+              {/* Brand Spark Accent */}
+              <span 
+                className="w-1.5 h-1.5 rounded-sm transition-transform duration-300 group-hover:scale-125"
+                style={{ backgroundColor: '#D97757' }}
+              ></span>
             </div>
+            
+            {/* English Tagline */}
             <div 
-              className="text-data text-[9px] lg:text-[10px] tracking-wider"
+              className="text-[10px] uppercase tracking-[0.2em] text-gray-500 transition-colors duration-300 group-hover:text-gray-700"
               style={{ 
-                color: '#9CA3AF',
-                marginTop: '2px',
-                letterSpacing: '0.15em'
+                fontFamily: 'var(--font-display)',
+                marginTop: '2px'
               }}
             >
               CONCRETE FUTURE AI
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
+          {/* Desktop Navigation - Refined Links */}
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link, index) => (
               isHomePage ? (
                 <a
                   key={index}
                   href={link.href}
-                  className="relative px-4 py-2 text-sm transition-all duration-300 rounded-lg group"
+                  className="relative text-sm text-gray-600 transition-colors duration-300 group"
                   style={{
-                    color: '#374151',
                     fontFamily: 'var(--font-body)',
-                    fontWeight: '400'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#D97757';
-                    e.currentTarget.style.background = 'rgba(217, 119, 87, 0.06)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = '#374151';
-                    e.currentTarget.style.background = 'transparent';
+                    fontWeight: '500'
                   }}
                 >
-                  {link.label}
+                  <span className="group-hover:text-black transition-colors duration-300">
+                    {link.label}
+                  </span>
+                  {/* Smooth Underline Animation - Left to Right */}
                   <span 
-                    className="absolute bottom-1 left-1/2 -translate-x-1/2 h-0.5 w-0 rounded-full transition-all duration-300 group-hover:w-6"
-                    style={{ background: '#D97757' }}
+                    className="absolute left-0 -bottom-1 h-[2px] w-0 bg-black transition-all duration-300 ease-out group-hover:w-full"
                   ></span>
                 </a>
               ) : (
                 <Link
                   key={index}
                   to={`/${link.href}`}
-                  className="relative px-4 py-2 text-sm transition-all duration-300 rounded-lg group"
+                  className="relative text-sm text-gray-600 transition-colors duration-300 group"
                   style={{
-                    color: '#374151',
                     fontFamily: 'var(--font-body)',
-                    fontWeight: '400'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#D97757';
-                    e.currentTarget.style.background = 'rgba(217, 119, 87, 0.06)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = '#374151';
-                    e.currentTarget.style.background = 'transparent';
+                    fontWeight: '500'
                   }}
                 >
-                  {link.label}
+                  <span className="group-hover:text-black transition-colors duration-300">
+                    {link.label}
+                  </span>
+                  {/* Smooth Underline Animation - Left to Right */}
                   <span 
-                    className="absolute bottom-1 left-1/2 -translate-x-1/2 h-0.5 w-0 rounded-full transition-all duration-300 group-hover:w-6"
-                    style={{ background: '#D97757' }}
+                    className="absolute left-0 -bottom-1 h-[2px] w-0 bg-black transition-all duration-300 ease-out group-hover:w-full"
                   ></span>
                 </Link>
               )
             ))}
             
-            {/* CTA Button - 精致设计 */}
+            {/* Header CTA Button - Refined Pill Design */}
             <button 
               onClick={() => setIsModalOpen(true)}
-              className="ml-4 px-6 py-2.5 rounded-xl text-sm transition-all duration-300 relative overflow-hidden group"
+              className="ml-6 px-6 py-2 rounded-lg text-sm text-white font-bold transition-all duration-300 shadow-lg hover:-translate-y-0.5 hover:shadow-xl bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600"
               style={{
-                background: 'linear-gradient(135deg, #D97757 0%, #C96543 100%)',
-                color: '#FFFFFF',
-                boxShadow: '0 2px 12px rgba(217, 119, 87, 0.3)',
-                fontFamily: 'var(--font-display)',
-                fontWeight: '800'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(217, 119, 87, 0.4)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 2px 12px rgba(217, 119, 87, 0.3)';
+                fontFamily: 'var(--font-display)'
               }}
             >
-              <span className="relative z-10">立即咨询</span>
-              <div 
-                className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"
-              ></div>
+              立即咨询
             </button>
           </div>
 
-          {/* Mobile menu button - 精致设计 */}
-          <div className="md:hidden">
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center gap-3">
+            {/* Mobile CTA Button */}
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="px-4 py-1.5 rounded-lg text-xs text-white font-bold transition-all duration-300 shadow-md bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600"
+              style={{
+                fontFamily: 'var(--font-display)'
+              }}
+            >
+              咨询
+            </button>
+            
+            {/* Hamburger Menu */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300"
               style={{
                 background: isMenuOpen ? 'rgba(217, 119, 87, 0.1)' : 'transparent',
-                color: isMenuOpen ? '#D97757' : '#374151'
-              }}
-              onMouseEnter={(e) => {
-                if (!isMenuOpen) {
-                  e.currentTarget.style.background = 'rgba(217, 119, 87, 0.06)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isMenuOpen) {
-                  e.currentTarget.style.background = 'transparent';
-                }
+                color: isMenuOpen ? '#D97757' : '#4B5563'
               }}
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -189,15 +147,12 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation - 精致设计 */}
+        {/* Mobile Navigation Menu */}
         {isMenuOpen && (
           <div 
-            className="md:hidden mt-2 mb-4 rounded-2xl overflow-hidden"
+            className="md:hidden mt-2 mb-4 rounded-2xl overflow-hidden backdrop-blur-lg border border-black/5 shadow-xl"
             style={{
-              background: 'rgba(255, 255, 255, 0.95)',
-              backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(0, 0, 0, 0.06)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)'
+              background: 'rgba(249, 248, 246, 0.95)'
             }}
           >
             <div className="px-4 py-4 space-y-1">
@@ -205,41 +160,15 @@ const Navigation = () => {
                 <a
                   key={index}
                   href={link.href}
-                  className="block px-4 py-3 rounded-xl text-sm transition-all duration-300"
+                  className="block px-4 py-3 rounded-xl text-sm text-gray-600 transition-all duration-300 hover:bg-orange-50 hover:text-black font-medium"
                   style={{
-                    color: '#374151',
-                    fontFamily: 'var(--font-body)',
-                    fontWeight: '400'
+                    fontFamily: 'var(--font-body)'
                   }}
                   onClick={() => setIsMenuOpen(false)}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(217, 119, 87, 0.06)';
-                    e.currentTarget.style.color = '#D97757';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'transparent';
-                    e.currentTarget.style.color = '#374151';
-                  }}
                 >
                   {link.label}
                 </a>
               ))}
-              
-              <button 
-                onClick={() => {
-                  setIsModalOpen(true);
-                  setIsMenuOpen(false);
-                }}
-                className="w-full mt-3 px-4 py-3 rounded-xl text-sm transition-all duration-300"
-                style={{
-                  background: 'linear-gradient(135deg, #D97757 0%, #C96543 100%)',
-                  color: '#FFFFFF',
-                  fontFamily: 'var(--font-display)',
-                  fontWeight: '800'
-                }}
-              >
-                立即咨询
-              </button>
             </div>
           </div>
         )}

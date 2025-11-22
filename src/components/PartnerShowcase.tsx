@@ -91,7 +91,7 @@ const PartnerShowcase = () => {
       { name: 'Dell', logo: '/assets/dell-2.svg' },
       { name: 'VIVO', logo: '/assets/vivo-2.svg' },
       { name: '腾讯', logo: '/assets/tencent.svg' },
-      { name: '阿里巴巴', logo: '/assets/alibaba-brand-color.svg' },
+      // { name: '阿里巴巴', logo: '/assets/alibaba-brand-color.svg' },
       { name: 'Coca-Cola', logo: '/assets/coca-cola-2021.svg' },
       { name: '友邦保险', logo: '/assets/aia-5.svg' },
     ],
@@ -141,8 +141,10 @@ const PartnerShowcase = () => {
   );
 
   const PartnerCard = ({ partner, isThirdRow = false }: { partner: { name: string; logo: string }; isThirdRow?: boolean }) => {
-    // 第三行需要放大的Logo
-    const largerLogos = ['飞书', 'Coze', '阿里巴巴', '新加坡国立大学', 'Google DeepMind'];
+    // 第三行需要特别放大的Logo（飞书、Coze、阿里巴巴2倍大小）
+    const doubleLogos = ['飞书', 'Coze', '阿里巴巴'];
+    const largerLogos = ['新加坡国立大学', 'Google DeepMind'];
+    const shouldBeDouble = isThirdRow && doubleLogos.includes(partner.name);
     const shouldBeLarger = isThirdRow && largerLogos.includes(partner.name);
     
     return (
@@ -159,8 +161,8 @@ const PartnerShowcase = () => {
             src={partner.logo} 
             alt={partner.name}
             style={{
-              maxHeight: shouldBeLarger ? '70px' : '40px',
-              maxWidth: shouldBeLarger ? '256px' : '128px',
+              maxHeight: shouldBeDouble ? '140px' : shouldBeLarger ? '70px' : '40px',
+              maxWidth: shouldBeDouble ? '512px' : shouldBeLarger ? '256px' : '128px',
               objectFit: 'contain'
             }}
             onError={(e) => {
@@ -187,7 +189,7 @@ const PartnerShowcase = () => {
   };
 
   return (
-    <section id="partners" className="bg-stone-50 py-24">
+    <section id="partners" className="py-24" style={{ backgroundColor: '#F9F8F6' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">

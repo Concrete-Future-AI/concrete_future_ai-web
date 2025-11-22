@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import CustomSelect from './CustomSelect';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -10,8 +11,17 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
     name: '',
     company: '',
     phone: '',
-    requirement: 'AI化转型落地开发与部署'
+    requirement: '企业AI全案转型咨询'
   });
+
+  // 需求选项配置
+  const requirementOptions = [
+    { value: '企业AI全案转型咨询', label: '企业AI全案转型咨询' },
+    { value: '外贸/电商降本增效方案', label: '外贸/电商降本增效方案' },
+    { value: '智能客服/销售/RPA自动化部署', label: '智能客服/销售/RPA自动化部署' },
+    { value: 'AI+硬件/产品智能化定制', label: 'AI+硬件/产品智能化定制' },
+    { value: '企业内训与AI团队赋能', label: '企业内训与AI团队赋能' }
+  ];
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -292,27 +302,12 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
             >
               您的需求 <span className="text-red-500">*</span>
             </label>
-            <select
-              id="modal-requirement"
-              name="requirement"
+            <CustomSelect
               value={formData.requirement}
-              onChange={handleChange}
-              className="text-body w-full px-4 py-3 border-2 rounded-lg 
-                focus:outline-none
-                hover:border-gray-300
-                transition-all duration-300"
-              style={{
-                borderColor: '#D97757',
-                boxShadow: '0 0 0 3px rgba(217, 119, 87, 0.1)'
-              }}
-            >
-              <option value="AI化转型落地开发与部署">AI化转型落地开发与部署</option>
-              <option value="战略咨询与培训">战略咨询与培训</option>
-              <option value="技术实施">技术实施</option>
-              <option value="产品开发">产品开发</option>
-              <option value="人才培养">人才培养</option>
-              <option value="其他">其他</option>
-            </select>
+              onChange={(value) => setFormData({ ...formData, requirement: value })}
+              options={requirementOptions}
+              placeholder="请选择您的需求"
+            />
           </div>
 
           {/* 提交状态提示 */}
