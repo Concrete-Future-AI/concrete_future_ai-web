@@ -4,6 +4,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: process.env.GITHUB_ACTIONS ? '/concrete_future_ai-web/' : '/',
   build: {
     sourcemap: 'hidden',
     // 确保静态资源被正确复制到dist目录
