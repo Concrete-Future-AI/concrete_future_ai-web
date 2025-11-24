@@ -365,7 +365,7 @@ const ResultsShowcase = () => {
         }
       `}</style>
       
-    <section id="results" className="relative py-32 overflow-hidden" style={{ backgroundColor: '#F9F8F6' }}>
+    <section id="results" className="relative py-12 md:py-20 lg:py-32 overflow-hidden" style={{ backgroundColor: '#F9F8F6' }}>
       {/* 顶部渐变光效 */}
       <div 
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[300px] opacity-10 blur-[100px]"
@@ -374,17 +374,17 @@ const ResultsShowcase = () => {
         }}
       ></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8 relative z-10">
         {/* Stats Section */}
-        <div id="stats-section" className="mb-24">
+        <div id="stats-section" className="mb-12 md:mb-16 lg:mb-24">
           {/* Header with Urgency */}
-          <div className="text-center mb-6">
+          <div className="text-center mb-4 md:mb-6">
             <h2 
-              className="mb-8 font-bold"
+              className="mb-6 md:mb-8 font-bold"
               style={{
                 fontFamily: 'var(--font-heading)',
                 color: '#0A0A0A',
-                fontSize: 'clamp(2.5rem, 8vw, 5rem)',
+                fontSize: 'clamp(1.75rem, 6vw, 5rem)',
                 lineHeight: '1.2'
               }}
             >
@@ -396,26 +396,28 @@ const ResultsShowcase = () => {
           </div>
 
           {/* 紧迫感提示条 */}
-          <div className="max-w-2xl mx-auto mb-16">
+          <div className="max-w-2xl mx-auto mb-8 md:mb-12 lg:mb-16">
             <div 
-              className="rounded-xl p-4 border flex items-center justify-center gap-3"
+              className="rounded-xl p-3 md:p-4 border flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3"
               style={{
                 background: 'rgba(217, 119, 87, 0.06)',
                 borderColor: 'rgba(217, 119, 87, 0.2)'
               }}
             >
-              <div className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: '#D97757' }}></span>
-                <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: '#D97757' }}></span>
+              <div className="flex items-center gap-2">
+                <div className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: '#D97757' }}></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: '#D97757' }}></span>
+                </div>
+                <span 
+                  className="text-data text-xs sm:text-sm"
+                  style={{ color: '#C96543' }}
+                >
+                  今日已有 <span style={{ color: '#D97757', fontSize: '14px', fontWeight: '800' }}>{todayConsultations}</span> 家企业咨询
+                </span>
               </div>
               <span 
-                className="text-data text-sm"
-                style={{ color: '#C96543' }}
-              >
-                今日已有 <span style={{ color: '#D97757', fontSize: '16px', fontWeight: '800' }}>{todayConsultations}</span> 家企业咨询
-              </span>
-              <span 
-                className="text-body text-sm"
+                className="text-body text-xs sm:text-sm"
                 style={{ color: '#6B7280' }}
               >
                 • 您的竞争对手已在行动
@@ -423,7 +425,7 @@ const ResultsShowcase = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-10 gap-6 lg:gap-6 max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-10 gap-4 md:gap-6 max-w-7xl mx-auto">
             {stats.map((stat, index) => {
               const value = animatedNumbers[stat.key as keyof typeof animatedNumbers];
               
@@ -440,8 +442,8 @@ const ResultsShowcase = () => {
                     border: stat.isRealTime 
                       ? '1px solid rgba(217, 119, 87, 0.3)'
                       : '1px solid rgba(0, 0, 0, 0.08)',
-                    borderRadius: '20px',
-                    padding: '40px 32px',
+                    borderRadius: '16px',
+                    padding: '24px 20px',
                     transition: 'all 0.3s ease',
                     boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
                   }}
@@ -462,14 +464,14 @@ const ResultsShowcase = () => {
                 >
                   {/* 副标题 - 极简标签 */}
                   <div 
-                    className="text-label mb-8"
+                    className="text-label mb-4 md:mb-6 lg:mb-8 text-xs md:text-sm"
                     style={{ color: '#6B7280' }}
                   >
                     {stat.subtitle}
                   </div>
                   
                   {/* 数字显示 - 超大字号 */}
-                  <div className="mb-8">
+                  <div className="mb-4 md:mb-6 lg:mb-8">
                     {stat.isRealTime ? (
                       <div>
                         <div 
@@ -581,9 +583,9 @@ const ResultsShowcase = () => {
         {/* Testimonials Section - 重新设计 */}
         <div>
           {/* 标题 */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 md:mb-12 lg:mb-16">
             <h3 
-              className="text-4xl text-black mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl text-black mb-3 md:mb-4"
               style={{
                 fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
                 fontWeight: '700'
@@ -592,7 +594,7 @@ const ResultsShowcase = () => {
               他们对我们的评价
             </h3>
             <p 
-              className="text-lg text-gray-600"
+              className="text-base md:text-lg text-gray-600"
               style={{
                 fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
                 fontWeight: '400'
@@ -604,14 +606,14 @@ const ResultsShowcase = () => {
 
           {/* 第一层：权威观点 */}
           <div 
-            className="max-w-4xl mx-auto mb-16 p-12 rounded-3xl"
+            className="max-w-4xl mx-auto mb-8 md:mb-12 lg:mb-16 p-6 md:p-10 lg:p-12 rounded-2xl md:rounded-3xl"
             style={{
               background: 'linear-gradient(135deg, rgba(217, 119, 87, 0.05) 0%, rgba(255, 255, 255, 0.95) 100%)',
               border: '1px solid rgba(217, 119, 87, 0.15)'
             }}
           >
             <blockquote 
-              className="text-2xl text-gray-800 leading-relaxed mb-8"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-800 leading-relaxed mb-6 md:mb-8"
               style={{
                 fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
                 fontWeight: '400',
@@ -620,25 +622,25 @@ const ResultsShowcase = () => {
             >
               "中国99%的企业还没有真正理解AI的价值。那些先行者已经在成本、效率、创新上甩开了同行。窗口期只有18个月。"
             </blockquote>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 md:gap-4">
               <img 
                 src="/img/刘润-1.jpg"
                 alt="刘润"
-                className="w-16 h-16 rounded-full object-cover"
+                className="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover flex-shrink-0"
                 style={{
                   border: '2px solid rgba(217, 119, 87, 0.2)'
                 }}
               />
               <div>
                 <div 
-                  className="text-xl text-gray-900"
+                  className="text-lg md:text-xl text-gray-900"
                   style={{
                     fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
                     fontWeight: '700'
                   }}
                 >刘润</div>
                 <div 
-                  className="text-sm text-gray-600"
+                  className="text-xs md:text-sm text-gray-600"
                   style={{
                     fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
                     fontWeight: '400'
@@ -665,17 +667,17 @@ const ResultsShowcase = () => {
           </div>
 
           {/* 第二层：案例 + 照片 */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
             {/* 左侧：3个客户案例 - 占2/3宽度 */}
             <div 
               className="lg:col-span-2 relative"
-              style={{ height: '594px' }}
+              style={{ height: 'auto', minHeight: '400px' }}
               onMouseEnter={() => setIsTestimonialPaused(true)}
               onMouseLeave={() => setIsTestimonialPaused(false)}
             >
               {/* 提示文本 */}
-              <div className="mb-6 flex items-center justify-between">
-                <div className="flex items-center gap-3 text-sm">
+              <div className="mb-4 md:mb-6 flex items-center justify-between">
+                <div className="flex items-center gap-2 md:gap-3 text-xs md:text-sm">
                   <div className="relative flex h-2.5 w-2.5">
                     <span className={`${isTestimonialPaused ? '' : 'animate-ping'} absolute inline-flex h-full w-full rounded-full opacity-75 bg-orange-400`}></span>
                     <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500"></span>
@@ -706,10 +708,10 @@ const ResultsShowcase = () => {
               </div>
 
               {/* 卡片容器 - 连续滚动 */}
-              <div className="relative overflow-hidden" style={{ height: '528px' }}>
+              <div className="relative overflow-hidden" style={{ height: '400px', maxHeight: '528px' }}>
                 {/* 顶部渐隐遮罩 */}
                 <div 
-                  className="absolute top-0 left-0 right-0 h-16 z-20 pointer-events-none"
+                  className="absolute top-0 left-0 right-0 h-12 md:h-16 z-20 pointer-events-none"
                   style={{
                     background: 'linear-gradient(to bottom, rgba(249, 248, 246, 1) 0%, rgba(249, 248, 246, 0) 100%)'
                   }}
@@ -717,7 +719,7 @@ const ResultsShowcase = () => {
                 
                 {/* 底部渐隐遮罩 */}
                 <div 
-                  className="absolute bottom-0 left-0 right-0 h-16 z-20 pointer-events-none"
+                  className="absolute bottom-0 left-0 right-0 h-12 md:h-16 z-20 pointer-events-none"
                   style={{
                     background: 'linear-gradient(to top, rgba(249, 248, 246, 1) 0%, rgba(249, 248, 246, 0) 100%)'
                   }}
@@ -736,10 +738,10 @@ const ResultsShowcase = () => {
                     return (
                       <div
                         key={`testimonial-${index}`}
-                        className="bg-white rounded-2xl border border-orange-100 hover:border-orange-300 mb-4"
+                        className="bg-white rounded-xl md:rounded-2xl border border-orange-100 hover:border-orange-300 mb-3 md:mb-4"
                         style={{
-                          padding: '2rem',
-                          minHeight: '260px',
+                          padding: '1.25rem',
+                          minHeight: '240px',
                           boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
                           transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
                         }}
@@ -751,9 +753,9 @@ const ResultsShowcase = () => {
                         }}
                       >
                   {/* 头像和信息 */}
-                  <div className="flex items-start gap-4 mb-6">
+                  <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
                     <div 
-                      className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden"
+                      className="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden"
                       style={{
                         background: 'linear-gradient(135deg, rgba(217, 119, 87, 0.15) 0%, rgba(217, 119, 87, 0.08) 100%)'
                       }}
@@ -764,16 +766,16 @@ const ResultsShowcase = () => {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <div 
-                        className="text-lg text-gray-900 mb-1"
+                        className="text-base md:text-lg text-gray-900 mb-1 truncate"
                         style={{
                           fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
                           fontWeight: '700'
                         }}
                       >{testimonial.name}</div>
                       <div 
-                        className="text-sm text-gray-600 mb-1"
+                        className="text-xs md:text-sm text-gray-600 mb-1"
                         style={{
                           fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
                           fontWeight: '500'
@@ -791,21 +793,21 @@ const ResultsShowcase = () => {
 
                   {/* 评价内容 */}
                   <p 
-                    className="text-gray-700 mb-6"
+                    className="text-gray-700 mb-4 md:mb-6"
                     style={{
                       fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
                       fontWeight: '400',
-                      fontSize: '15px',
-                      lineHeight: '1.8'
+                      fontSize: '14px',
+                      lineHeight: '1.7'
                     }}
                   >"{testimonial.content}"</p>
 
                   {/* 指标 */}
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2 md:gap-3">
                     {testimonial.metrics.map((metric, idx) => (
                       <div 
                         key={idx}
-                        className="px-4 py-2 rounded-lg"
+                        className="px-3 py-1.5 md:px-4 md:py-2 rounded-lg"
                         style={{
                           background: 'rgba(16, 185, 129, 0.08)',
                           border: '1px solid rgba(16, 185, 129, 0.2)'
@@ -820,7 +822,7 @@ const ResultsShowcase = () => {
                           }}
                         >{metric.label} </span>
                         <span 
-                          className="text-sm font-bold"
+                          className="text-xs md:text-sm font-bold"
                           style={{
                             color: '#059669',
                             fontFamily: "'JetBrains Mono', monospace"

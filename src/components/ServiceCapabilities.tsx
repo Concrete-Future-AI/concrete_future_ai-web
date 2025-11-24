@@ -13,9 +13,9 @@ const ServiceCapabilities = () => {
 
       <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8 relative z-10">
         {/* Main Headline */}
-        <div className="text-center mb-12 md:mb-20">
+        <div className="text-center mb-10 md:mb-12 lg:mb-20">
           <h2 
-            className="text-heading text-2xl md:text-4xl lg:text-5xl font-bold px-4"
+            className="text-heading text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold px-4"
             style={{ color: '#0A0A0A' }}
           >
             我们不只是AI服务商，更是您的长期增长伙伴

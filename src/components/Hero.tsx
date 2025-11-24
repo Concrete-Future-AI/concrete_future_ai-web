@@ -22,14 +22,14 @@ const Hero = () => {
         <div className="max-w-5xl mx-auto text-center">
           {/* 主标题 - Premium Typography */}
           <h1 
-            className={`text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight text-gray-900 mb-8 md:mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            className={`text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight text-gray-900 mb-6 md:mb-8 lg:mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           >
             让AI真正落地，转化为核心生产力
           </h1>
 
           {/* Sub-headline - Premium Spacing & Typography */}
           <p 
-            className={`text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-10 md:mb-16 transition-all duration-700 delay-75 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            className={`text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-8 md:mb-10 lg:mb-16 transition-all duration-700 delay-75 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           >
             拒绝概念空谈。2周上线MVP，60天见效ROI。
             <br className="hidden md:block" />

@@ -29,20 +29,20 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-white py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+    <footer className="bg-black text-white py-12 md:py-16">
+      <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 md:gap-8">
           {/* Logo and Description */}
-          <div className="lg:col-span-2">
-            <div className="mb-6">
+          <div className="lg:col-span-2 text-center sm:text-left">
+            <div className="mb-4 md:mb-6">
               <div 
-                className="text-display text-2xl"
+                className="text-display text-xl md:text-2xl"
               >
                 炬象未来
               </div>
             </div>
             <p 
-              className="text-body text-sm text-gray-300 mb-6"
+              className="text-body text-xs md:text-sm text-gray-300 mb-4 md:mb-6"
             >
               专注于企业AI化转型，为各行各业提供专业的AI解决方案。
               让每一家企业都能享受AI技术带来的增长红利。
@@ -50,18 +50,18 @@ const Footer = () => {
           </div>
 
           {/* Products */}
-          <div>
+          <div className="text-center sm:text-left">
             <h3 
-              className="text-label text-gray-400 mb-4"
+              className="text-label text-gray-400 mb-3 md:mb-4 text-xs md:text-sm"
             >
               产品服务
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2 md:space-y-3">
               {footerLinks.products.map((link) => (
                 <li key={link.name}>
                   <a 
                     href={link.href} 
-                    className="text-body text-sm text-gray-300 hover:text-white transition-colors"
+                    className="text-body text-xs md:text-sm text-gray-300 hover:text-white transition-colors"
                   >
                     {link.name}
                   </a>
@@ -71,18 +71,18 @@ const Footer = () => {
           </div>
 
           {/* Solutions */}
-          <div>
+          <div className="text-center sm:text-left">
             <h3 
-              className="text-label text-gray-400 mb-4"
+              className="text-label text-gray-400 mb-3 md:mb-4 text-xs md:text-sm"
             >
               解决方案
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2 md:space-y-3">
               {footerLinks.solutions.map((link) => (
                 <li key={link.name}>
                   <a 
                     href={link.href} 
-                    className="text-body text-sm text-gray-300 hover:text-white transition-colors"
+                    className="text-body text-xs md:text-sm text-gray-300 hover:text-white transition-colors"
                   >
                     {link.name}
                   </a>
@@ -92,18 +92,18 @@ const Footer = () => {
           </div>
 
           {/* Company */}
-          <div>
+          <div className="text-center sm:text-left">
             <h3 
-              className="text-label text-gray-400 mb-4"
+              className="text-label text-gray-400 mb-3 md:mb-4 text-xs md:text-sm"
             >
               公司信息
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2 md:space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <a 
                     href={link.href} 
-                    className="text-body text-sm text-gray-300 hover:text-white transition-colors"
+                    className="text-body text-xs md:text-sm text-gray-300 hover:text-white transition-colors"
                   >
                     {link.name}
                   </a>
@@ -113,18 +113,18 @@ const Footer = () => {
           </div>
 
           {/* Support */}
-          <div>
+          <div className="text-center sm:text-left">
             <h3 
-              className="text-label text-gray-400 mb-4"
+              className="text-label text-gray-400 mb-3 md:mb-4 text-xs md:text-sm"
             >
               支持帮助
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2 md:space-y-3">
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
                   <a 
                     href={link.href} 
-                    className="text-body text-sm text-gray-300 hover:text-white transition-colors"
+                    className="text-body text-xs md:text-sm text-gray-300 hover:text-white transition-colors"
                   >
                     {link.name}
                   </a>
@@ -135,17 +135,17 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-800 my-8"></div>
+        <div className="border-t border-gray-800 my-6 md:my-8"></div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
           <div 
-            className="text-body text-sm text-gray-400 mb-4 md:mb-0"
+            className="text-body text-xs md:text-sm text-gray-400 text-center md:text-left"
           >
             © 2025 炬象未来. 保留所有权利.
           </div>
           
-          <div className="flex space-x-6 text-sm text-gray-400">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-xs md:text-sm text-gray-400">
             <a 
               href="#privacy" 
               className="hover:text-white transition-colors"

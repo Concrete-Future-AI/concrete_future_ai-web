@@ -158,26 +158,26 @@ const ContactForm = () => {
   return (
     <section id="contact" className="py-12 md:py-16 lg:py-20" style={{ backgroundColor: '#F9F8F6' }}>
       <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8">
-        <div className="text-center mb-10 md:mb-12">
+        <div className="text-center mb-8 md:mb-10 lg:mb-12">
           <h2 
-            className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight text-gray-900 mb-4 md:mb-6 px-4"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight text-gray-900 mb-3 md:mb-4 lg:mb-6 px-4"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             让转型不再是试错，从这里开始落地
           </h2>
           <p 
-            className="text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto px-4"
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto px-4"
             style={{ fontFamily: 'var(--font-body)' }}
           >
             每月仅开放 5 个深度陪跑名额。填写表单，锁定您的转型席位。
           </p>
         </div>
 
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-16 items-start">
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-8 border border-gray-100">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-white rounded-xl md:rounded-2xl p-5 md:p-6 lg:p-8 border border-gray-100 w-full">
+            <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                 <div>
                   <label 
                     htmlFor="name" 
@@ -270,7 +270,7 @@ const ContactForm = () => {
               <button
                 type="submit"
                 disabled={!isFormValid || isSubmitting}
-                className={`w-full py-4 px-6 rounded-xl text-lg font-bold transition-all duration-300 ${
+                className={`w-full py-3 md:py-4 px-5 md:px-6 rounded-lg md:rounded-xl text-base md:text-lg font-bold transition-all duration-300 ${
                   isFormValid && !isSubmitting
                     ? 'bg-gradient-to-r from-orange-600 to-orange-500 text-white hover:from-orange-700 hover:to-orange-600 shadow-lg hover:shadow-xl'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -281,7 +281,7 @@ const ContactForm = () => {
               </button>
 
               <p 
-                className="text-body text-xs text-gray-500 text-center mt-2"
+                className="text-body text-xs text-gray-500 text-center mt-1 md:mt-2"
               >
                 24小时内快速响应
               </p>
@@ -313,17 +313,17 @@ const ContactForm = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8 w-full">
             {/* Direct Contact */}
-            <div className="bg-white rounded-xl p-6 border border-gray-100">
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-100">
               <h3 
-                className="text-lg text-black mb-4"
+                className="text-base md:text-lg text-black mb-3 md:mb-4"
                 style={{
                   fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
                   fontWeight: '700'
                 }}
               >欢迎主动联系我们</h3>
-              <div className="space-y-3">
+              <div className="space-y-2 md:space-y-3">
                 <div 
                   className="flex items-center space-x-3 cursor-pointer group relative"
                   onClick={() => copyToClipboard('guohao@concretefutuerai.com', 'email')}
@@ -392,13 +392,13 @@ const ContactForm = () => {
             </div>
 
             {/* Service Features */}
-            <div className="space-y-3">
-              <div className="bg-white rounded-lg p-4 border border-gray-100">
-                <div className="flex items-start space-x-3">
+            <div className="space-y-2 md:space-y-3">
+              <div className="bg-white rounded-lg p-3 md:p-4 border border-gray-100">
+                <div className="flex items-start space-x-2 md:space-x-3">
                   <div className="w-2 h-2 bg-orange-600 rounded-full mt-1 flex-shrink-0"></div>
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <h4 
-                      className="text-black mb-1 text-sm"
+                      className="text-black mb-1 text-xs md:text-sm"
                       style={{
                         fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
                         fontWeight: '600'
@@ -415,12 +415,12 @@ const ContactForm = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg p-4 border border-gray-100">
-                <div className="flex items-start space-x-3">
+              <div className="bg-white rounded-lg p-3 md:p-4 border border-gray-100">
+                <div className="flex items-start space-x-2 md:space-x-3">
                   <div className="w-2 h-2 bg-orange-600 rounded-full mt-1 flex-shrink-0"></div>
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <h4 
-                      className="text-black mb-1 text-sm"
+                      className="text-black mb-1 text-xs md:text-sm"
                       style={{
                         fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
                         fontWeight: '600'
