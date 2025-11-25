@@ -1,0 +1,2330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI应用落地服务 - 业务流程智能化改造</title>
+  <meta name="description" content="专注于商品视觉批量生产、短视频内容规模化、营销流程自动化和数据驱动决策，为企业提供可落地的AI应用服务。">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- React and ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  
+  <!-- Babel Standalone for JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Bitter:wght@300;400;600;700&family=Inconsolata:wght@400;600;800&display=swap');
+    
+    :root {
+      --color-primary: #0f172a;
+      --color-secondary: #1e293b;
+      --color-accent: #f59e0b;
+      --color-accent-dark: #d97706;
+      --color-bg: #fefce8;
+      --color-bg-secondary: #fef3c7;
+      --color-text: #1e293b;
+      --color-text-light: #64748b;
+      --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+    }
+    
+    * {
+      font-family: 'Bitter', Georgia, serif;
+      font-weight: 400;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Syne', -apple-system, sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+    
+    .mono {
+      font-family: 'Inconsolata', 'Courier New', monospace;
+      font-weight: 600;
+    }
+    
+    /* 轻量级文本 */
+    .font-light {
+      font-weight: 300;
+    }
+    
+    /* 超粗文本 */
+    .font-black {
+      font-weight: 800;
+    }
+    
+    /* 背景纹理 */
+    body {
+      background-color: var(--color-bg);
+      background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(15, 23, 42, 0.03) 2px, rgba(15, 23, 42, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(15, 23, 42, 0.03) 2px, rgba(15, 23, 42, 0.03) 4px);
+    }
+    
+    /* GPU加速优化 */
+    .parallax-layer,
+    .animate-in,
+    [data-animate],
+    .engine-visual,
+    .case-metric,
+    .magnetic-button {
+      will-change: transform, opacity;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(60px) scale(0.95);
+        filter: blur(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.9) translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+    
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-80px) rotate(-5deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+      }
+    }
+    
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(80px) rotate(5deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+      }
+    }
+    
+    .animate-fadeIn {
+      animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    /* 元素入场动画 - 增强的弹性效果 */
+    [data-animate] {
+      opacity: 0;
+      transform: translate3d(0, 60px, 0);
+      transition: opacity 1s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform, opacity;
+    }
+    
+    [data-animate].animate-in {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+    
+    [data-animate="fade-scale"] {
+      transform: scale3d(0.9, 0.9, 1) translate3d(0, 40px, 0);
+    }
+    
+    [data-animate="fade-scale"].animate-in {
+      transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+    }
+    
+    /* 工具卡片特殊节奏 */
+    .tool-item {
+      animation-delay: calc(var(--item-index, 0) * 0.08s);
+    }
+    
+    .tool-item:nth-child(3n+1) { --item-index: 0; }
+    .tool-item:nth-child(3n+2) { --item-index: 1; }
+    .tool-item:nth-child(3n+3) { --item-index: 2; }
+    
+    /* 光铸效果 */
+    @keyframes lightSweep {
+      0% {
+        background-position: -200% center;
+      }
+      100% {
+        background-position: 200% center;
+      }
+    }
+    
+    .title-light-cast {
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        transparent 40%, 
+        rgba(255,255,255,0.8) 50%, 
+        transparent 60%, 
+        transparent 100%);
+      background-size: 200% 100%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: lightSweep 2s ease-in-out 0.5s;
+    }
+    
+    /* 磁性按钮 */
+    .magnetic-button {
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+    }
+    
+    .magnetic-button::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(45deg, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.3));
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      filter: blur(10px);
+      z-index: -1;
+    }
+    
+    .magnetic-button:hover::before {
+      opacity: 1;
+    }
+    
+    /* 滚动驱动的叙事性动画 */
+    .scroll-driven {
+      transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    }
+    
+    /* 多层视差背景 */
+    .parallax-layer {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .parallax-layer-1 {
+      z-index: 1;
+    }
+    
+    .parallax-layer-2 {
+      z-index: 2;
+    }
+    
+    .parallax-layer-3 {
+      z-index: 3;
+    }
+    
+    /* 痛点板块 - 辉光连线 */
+    .glow-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 5;
+    }
+    
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+    
+    /* 图标微动效 */
+    .icon-hover-effect {
+      transition: all 0.3s ease;
+    }
+    
+    .icon-lightbulb {
+      filter: brightness(0.7);
+      transition: filter 0.3s ease;
+    }
+    
+    .icon-lightbulb:hover {
+      filter: brightness(1.2);
+      animation: flicker 0.6s ease;
+    }
+    
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      25% { opacity: 0.4; }
+      50% { opacity: 1; }
+      75% { opacity: 0.6; }
+    }
+    
+    .icon-gear {
+      animation: rotate-slow 8s linear infinite;
+    }
+    
+    .icon-gear:hover {
+      animation: rotate-fast 1s linear infinite;
+    }
+    
+    @keyframes rotate-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes rotate-fast {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .icon-trending {
+      transition: transform 0.3s ease;
+    }
+    
+    .icon-trending:hover {
+      animation: trendUp 0.6s ease;
+    }
+    
+    @keyframes trendUp {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    
+    /* 列表展开弹性动画 */
+    .tool-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    
+    .tool-item.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* 流程图路径点亮 */
+    .process-step {
+      opacity: 0;
+      transform: scale(0.8);
+      animation: processStepIn 0.6s ease-out forwards;
+    }
+    
+    @keyframes processStepIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    /* 案例卡片3D */
+    .case-card-3d {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+    }
+    
+    .case-card-glare {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      border-radius: inherit;
+    }
+    
+    .case-card-3d:hover .case-card-glare {
+      opacity: 1;
+    }
+    
+    /* 浮动标签表单 */
+    .floating-label-input {
+      position: relative;
+    }
+    
+    .floating-label-input label {
+      position: absolute;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: all 0.3s ease;
+      pointer-events: none;
+      color: rgba(255,255,255,0.6);
+      background: transparent;
+      padding: 0 4px;
+    }
+    
+    .floating-label-input input:focus + label,
+    .floating-label-input input:not(:placeholder-shown) + label,
+    .floating-label-input textarea:focus + label,
+    .floating-label-input textarea:not(:placeholder-shown) + label {
+      top: 0;
+      transform: translateY(-50%) scale(0.85);
+      background: rgba(79, 70, 229, 0.9);
+      color: white;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    
+    /* 提交按钮状态 */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .btn-loading {
+      position: relative;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+    
+    .btn-loading::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 50%;
+      left: 50%;
+      margin-left: -10px;
+      margin-top: -10px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.8;
+      }
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+    
+    html.lenis {
+      height: auto;
+    }
+    
+    .lenis.lenis-smooth {
+      scroll-behavior: auto;
+    }
+    
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+    
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+    
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
+    }
+    
+    /* 平滑滚动容器 */
+    body {
+      overflow-x: hidden;
+    }
+
+    /* 自定义滚动条 */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #6366f1, #a855f7);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #4f46e5, #9333ea);
+    }
+
+    .cta-glow:hover {
+      box-shadow: 0 0 30px rgba(99, 102, 241, 0.35), 0 0 60px rgba(168, 85, 247, 0.25);
+    }
+
+    .kenburns {
+      transition: transform 6s ease, opacity 0.6s ease;
+      transform: scale(1);
+    }
+    .kenburns-hover:hover .kenburns {
+      transform: scale(1.06);
+    }
+
+    .logo-gray {
+      filter: grayscale(100%);
+      opacity: 0.6;
+      transition: filter 0.3s ease, opacity 0.3s ease;
+    }
+    .logo-gray:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+    :root {
+      --bg-cream: #F6F0E7;
+      --panel-bg: #EFE6DA;
+      --text-color: #1F1D1D;
+      --accent-orange: #E76F51;
+      --panel-border: #D9CFC2;
+      --radius-xl: 1.5rem;
+      --shadow-soft: 0 8px 24px rgba(20,20,20,0.06);
+      --shadow-hover: 0 12px 32px rgba(20,20,20,0.10);
+    }
+
+    .rounded-premium { border-radius: var(--radius-xl); }
+    .shadow-premium { box-shadow: var(--shadow-soft); }
+    .shadow-premium:hover { box-shadow: var(--shadow-hover); }
+    .heading-premium { letter-spacing: -0.02em; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    }
+
+    /* 引擎板块显示顺序控制 (按业务流程优先级) */
+    #services .max-w-7xl {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* 保持标题在最上方 */
+    #services .text-center {
+      order: -1;
+    }
+    
+    /* 1. AI数字人直播 - 最直接创收，7x24无人直播 */
+    [data-engine="digital-human"] {
+      order: 1;
+    }
+    
+    /* 2. AI智能选品 - 选对品，事半功倍 */
+    [data-engine="selection"] {
+      order: 2;
+    }
+    
+    /* 3. 营销内容生成 - 图片+视频+文案一站式 */
+    [data-engine="content-creation"] {
+      order: 3;
+    }
+    
+    /* 4. AI广告投放优化 - 付费流量ROI最大化 */
+    [data-engine="ad-optimization"] {
+      order: 4;
+    }
+    
+    /* 5. AI矩阵运营 - 品牌资产构建 */
+    [data-engine="matrix-operation"] {
+      order: 5;
+    }
+    
+    /* 6. AI售后提效 - 口碑复购 */
+    [data-engine="after-sales"] {
+      order: 6;
+    }
+    
+    /* 7. 数据驱动决策 - 战略决策支持 */
+    [data-engine="operation"] {
+      order: 7;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+    // 使用lucide的data-lucide属性生成图标，不在此处解构以避免与全局Map等对象冲突
+
+    const AIServiceWebsite = () => {
+      const [expandedEngine, setExpandedEngine] = useState(null);
+      const [selectedIndustry, setSelectedIndustry] = useState('全部');
+      const [scrolled, setScrolled] = useState(false);
+      const [formData, setFormData] = useState({
+        name: '',
+        contact: '',
+        description: ''
+      });
+      const heroRef = useRef(null);
+      const bgRef = useRef(null);
+      const ctaButtonRef = useRef(null);
+
+      useEffect(() => {
+        lucide.createIcons();
+        
+        // ===== 全局动效1: 初始化Lenis平滑滚动（完整版本）=====
+        let lenis;
+        
+        const initLenis = () => {
+          if (typeof Lenis !== 'undefined') {
+            lenis = new Lenis({
+              duration: 1.2,
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // 惯性阻尼曲线
+              direction: 'vertical',
+              gestureDirection: 'vertical',
+              smooth: true,
+              mouseMultiplier: 1,
+              smoothTouch: false,
+              touchMultiplier: 2,
+              infinite: false,
+            });
+
+            function raf(time) {
+              lenis.raf(time);
+              requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+            
+            return lenis;
+          }
+          return null;
+        };
+        
+        // 尝试初始化，如果失败则延迟重试
+        lenis = initLenis();
+        if (!lenis) {
+          const retryTimeout = setTimeout(() => {
+            lenis = initLenis();
+          }, 1000);
+        }
+        
+        // 滚动监听
+        const handleScroll = () => {
+          setScrolled(window.scrollY > 50);
+        };
+        
+        if (lenis) {
+          lenis.on('scroll', handleScroll);
+        } else {
+          window.addEventListener('scroll', handleScroll);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.target && entry.target.classList && entry.isIntersecting) {
+              entry.target.classList.add('animate-in');
+            }
+          });
+        }, { 
+          threshold: 0.1,
+          rootMargin: '0px 0px -100px 0px'
+        });
+
+        // 延迟观察，确保DOM已渲染（增加延迟时间）
+        setTimeout(() => {
+          const animateElements = document.querySelectorAll('[data-animate]');
+          if (animateElements && animateElements.length > 0) {
+            animateElements.forEach((el) => {
+              if (el && el instanceof Element) {
+                observer.observe(el);
+              }
+            });
+          }
+        }, 500);
+        
+        // ===== 成功案例: 数字滚动观察器 =====
+        const numberObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.target && !entry.target.classList.contains('animated')) {
+              const targetText = entry.target.getAttribute('data-metric');
+              if (targetText) {
+                animateNumber(entry.target, targetText);
+                entry.target.classList.add('animated');
+              }
+            }
+          });
+        }, { threshold: 0.5 });
+        
+        setTimeout(() => {
+          const caseMetrics = document.querySelectorAll('.case-metric');
+          if (caseMetrics && caseMetrics.length > 0) {
+            caseMetrics.forEach((el) => {
+              if (el && el instanceof Element) {
+                numberObserver.observe(el);
+              }
+            });
+          }
+        }, 500);
+        
+        // ===== 四大引擎: 遮罩蒙版转场 =====
+        const engineObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.target && entry.target.classList) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                entry.target.classList.remove('transitioning');
+              } else {
+                entry.target.classList.add('transitioning');
+                entry.target.classList.remove('revealed');
+              }
+            }
+          });
+        }, { threshold: 0.3 });
+        
+        setTimeout(() => {
+          const engineSections = document.querySelectorAll('.engine-section');
+          if (engineSections && engineSections.length > 0) {
+            engineSections.forEach((el) => {
+              if (el && el instanceof Element) {
+                engineObserver.observe(el);
+              }
+            });
+          }
+        }, 500);
+
+        // ===== 全局动效2: 滚动驱动的叙事性动画（优化版）=====
+        let scrollTicking = false;
+        const handleScrollDriven = () => {
+          if (!scrollTicking) {
+            requestAnimationFrame(() => {
+              const scrollDrivenElements = document.querySelectorAll('.scroll-driven');
+              if (!scrollDrivenElements || scrollDrivenElements.length === 0) {
+                scrollTicking = false;
+                return;
+              }
+              
+              const windowHeight = window.innerHeight;
+              
+              scrollDrivenElements.forEach((el) => {
+                if (!el || !el.getBoundingClientRect) return;
+                
+                const rect = el.getBoundingClientRect();
+                const elementTop = rect.top;
+                const elementHeight = rect.height;
+                
+                // 计算元素在视窗中的进度 (0 to 1)
+                const progress = Math.max(0, Math.min(1, 
+                  (windowHeight - elementTop) / (windowHeight + elementHeight)
+                ));
+                
+                // 应用变换 - 使用translate3d GPU加速
+                const translateY = (1 - progress) * 50;
+                const opacity = progress;
+                const scale = 0.9 + progress * 0.1;
+                
+                if (el.style) {
+                  el.style.transform = `translate3d(0, ${translateY}px, 0) scale3d(${scale}, ${scale}, 1)`;
+                  el.style.opacity = opacity;
+                }
+              });
+              
+              scrollTicking = false;
+            });
+            scrollTicking = true;
+          }
+        };
+        
+        if (lenis) {
+          lenis.on('scroll', handleScrollDriven);
+        } else {
+          window.addEventListener('scroll', handleScrollDriven);
+        }
+        handleScrollDriven(); // 初始调用
+
+        // ===== 首屏动效1: 多层视差背景（优化版）=====
+        let mouseTicking = false;
+        const handleMouseMove = (e) => {
+          if (!heroRef.current || mouseTicking) return;
+          
+          requestAnimationFrame(() => {
+            if (!heroRef.current) return;
+            
+            const rect = heroRef.current.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            // 获取所有视差层
+            const layers = heroRef.current.querySelectorAll('.parallax-layer');
+            layers.forEach((layer, index) => {
+              if (layer && layer.style) {
+                // 不同层移动速度不同：远景慢、前景快
+                const speed = (index + 1) * 0.015;
+                layer.style.transform = `translate3d(${x * speed}px, ${y * speed}px, 0)`;
+              }
+            });
+            
+            mouseTicking = false;
+          });
+          
+          mouseTicking = true;
+        };
+        
+        if (heroRef.current) {
+          heroRef.current.addEventListener('mousemove', handleMouseMove, { passive: true });
+        }
+
+        // ===== 痛点板块: 关联辉光连线 =====
+        setTimeout(() => {
+          const canvas = document.getElementById('glowCanvas');
+          if (!canvas || !(canvas instanceof HTMLCanvasElement)) return;
+          
+          const ctx = canvas.getContext('2d');
+          if (!ctx) return;
+          const resizeCanvas = () => {
+            const section = canvas.closest('.grid');
+            if (section) {
+              canvas.width = section.offsetWidth;
+              canvas.height = section.offsetHeight;
+            }
+          };
+          resizeCanvas();
+          window.addEventListener('resize', resizeCanvas);
+          
+          const drawGlowLine = (startX, startY, endX, endY) => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // 创建渐变
+            const gradient = ctx.createLinearGradient(startX, startY, endX, endY);
+            gradient.addColorStop(0, 'rgba(99, 102, 241, 0)');
+            gradient.addColorStop(0.5, 'rgba(168, 85, 247, 0.8)');
+            gradient.addColorStop(1, 'rgba(236, 72, 153, 0)');
+            
+            // 绘制贝塞尔曲线
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            const cpX = (startX + endX) / 2;
+            const cpY = startY;
+            ctx.quadraticCurveTo(cpX, cpY, endX, endY);
+            
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = 3;
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = 'rgba(168, 85, 247, 0.6)';
+            ctx.stroke();
+            
+            // 绘制发光点
+            ctx.beginPath();
+            ctx.arc(endX, endY, 8, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(168, 85, 247, 0.4)';
+            ctx.fill();
+            
+            // 涟漪效果
+            for (let i = 1; i <= 3; i++) {
+              ctx.beginPath();
+              ctx.arc(endX, endY, 8 + i * 10, 0, Math.PI * 2);
+              ctx.strokeStyle = `rgba(168, 85, 247, ${0.3 / i})`;
+              ctx.lineWidth = 2;
+              ctx.stroke();
+            }
+          };
+          
+          // 为每个痛点添加鼠标事件
+          const painPoints = document.querySelectorAll('.pain-point-item');
+          const solutionBox = document.getElementById('painSolution');
+          
+          painPoints.forEach((item, index) => {
+            item.addEventListener('mouseenter', () => {
+              if (!solutionBox) return;
+              
+              const itemRect = item.getBoundingClientRect();
+              const sectionRect = canvas.closest('.grid').getBoundingClientRect();
+              const solutionRect = solutionBox.getBoundingClientRect();
+              
+              const startX = itemRect.right - sectionRect.left;
+              const startY = itemRect.top - sectionRect.top + itemRect.height / 2;
+              const endX = solutionRect.left - sectionRect.left + solutionRect.width / 2;
+              const endY = solutionRect.top - sectionRect.top + solutionRect.height / 2;
+              
+              drawGlowLine(startX, startY, endX, endY);
+            });
+            
+            item.addEventListener('mouseleave', () => {
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+            });
+          });
+        }, 1000);
+
+        // ===== 首屏动效3: 磁性按钮效果（优化版）=====
+        let buttonTicking = false;
+        const handleButtonMouseMove = (e) => {
+          if (!ctaButtonRef.current || buttonTicking) return;
+          
+          requestAnimationFrame(() => {
+            if (!ctaButtonRef.current) return;
+            
+            const rect = ctaButtonRef.current.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const distance = Math.sqrt(x * x + y * y);
+            const maxDistance = 150;
+            
+            if (distance < maxDistance) {
+              const strength = (maxDistance - distance) / maxDistance;
+              const moveX = x * strength * 0.3;
+              const moveY = y * strength * 0.3;
+              ctaButtonRef.current.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) scale3d(1.05, 1.05, 1)`;
+            } else {
+              ctaButtonRef.current.style.transform = `translate3d(0, 0, 0) scale3d(1, 1, 1)`;
+            }
+            
+            buttonTicking = false;
+          });
+          
+          buttonTicking = true;
+        };
+        
+        const handleButtonMouseLeave = () => {
+          if (ctaButtonRef.current && ctaButtonRef.current.style) {
+            ctaButtonRef.current.style.transform = `translate3d(0, 0, 0) scale3d(1, 1, 1)`;
+          }
+        };
+        
+        document.addEventListener('mousemove', handleButtonMouseMove, { passive: true });
+        if (ctaButtonRef.current) {
+          ctaButtonRef.current.addEventListener('mouseleave', handleButtonMouseLeave);
+        }
+
+        return () => {
+          if (lenis) {
+            lenis.destroy();
+          } else {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleScrollDriven);
+          }
+          if (heroRef.current) {
+            heroRef.current.removeEventListener('mousemove', handleMouseMove);
+          }
+          document.removeEventListener('mousemove', handleButtonMouseMove);
+          if (ctaButtonRef.current) {
+            ctaButtonRef.current.removeEventListener('mouseleave', handleButtonMouseLeave);
+          }
+        };
+      }, []);
+
+      useEffect(() => {
+        lucide.createIcons();
+      }, [expandedEngine, selectedIndustry]);
+
+      const handleFormSubmit = (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        if (!btn) return;
+        
+        // ===== 表单: 提交按钮状态变化 =====
+        btn.textContent = '提交中...';
+        btn.classList.add('btn-loading');
+        
+        // 模拟提交过程
+        setTimeout(() => {
+          btn.classList.remove('btn-loading');
+          btn.textContent = '✓ 提交成功!';
+          btn.style.background = 'linear-gradient(to right, #10b981, #059669)';
+          
+          setTimeout(() => {
+            alert('🎉 提交成功！我们的AI专家会在24小时内联系您，并发送专属ROI评估报告！');
+            setFormData({ name: '', contact: '', description: '' });
+            btn.textContent = '🎁 免费领取价值2万元ROI报告';
+            btn.style.background = '';
+          }, 1500);
+        }, 2000);
+      };
+
+      const toggleEngine = (engineId) => {
+        const newState = expandedEngine === engineId ? null : engineId;
+        setExpandedEngine(newState);
+        
+        // ===== 四大引擎: 列表展开弹性动画 =====
+        if (newState) {
+          setTimeout(() => {
+            const toolItems = document.querySelectorAll('.tool-item');
+            if (toolItems && toolItems.length > 0) {
+              toolItems.forEach((item, index) => {
+                if (item && item.classList) {
+                  setTimeout(() => {
+                    item.classList.add('show');
+                  }, index * 30); // 每项间隔30ms
+                }
+              });
+            }
+          }, 100);
+        }
+      };
+
+      const scrollToSection = (sectionId) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+      
+      // ===== 成功案例: 数字滚动增长动画 =====
+      const animateNumber = (element, targetText) => {
+        if (!element) return;
+        
+        // 提取数字 (如 "+215%" -> 215)
+        const match = targetText.match(/(\d+)/);
+        if (!match) return;
+        
+        const targetNumber = parseInt(match[1]);
+        const prefix = targetText.match(/[↑↓\+\-]/)?.[0] || '';
+        const suffix = targetText.match(/[%]/)?.[0] || '';
+        
+        let current = 0;
+        const duration = 2000; // 2秒
+        const increment = targetNumber / (duration / 16); // 60fps
+        
+        const animate = () => {
+          current += increment;
+          if (current >= targetNumber) {
+            element.textContent = prefix + targetNumber + suffix;
+            return;
+          }
+          element.textContent = prefix + Math.floor(current) + suffix;
+          requestAnimationFrame(animate);
+        };
+        
+        animate();
+      };
+
+      // AI智能选品工具列表
+      const selectionTools = [
+        { icon: '🔥', name: '全网爆款实时监控', desc: '实时抓取抖音/小红书/淘宝热榜、谷歌趋势、亚马逊BSR。检测到"冲锋衣"搜索量暴涨200%→立即预警,抢占窗口期。' },
+        { icon: '📊', name: '趋势预判AI模型', desc: '分析3年历史数据+季节性规律,预测未来3个月爆款品类。准确率70%,某客户提前2个月备货"围炉煮茶"周边,销量翻5倍。' },
+        { icon: '💰', name: '利润空间智能测算', desc: '输入1688采购价,AI计算各平台售价、广告成本、物流费。推荐最优定价策略,预估毛利率和ROI。' },
+        { icon: '🎯', name: '竞品爆款深度拆解', desc: '输入竞品链接,AI分析销量曲线、评价关键词、价格策略、广告投放手法。生成"爆款复刻手册",找到突破点。' },
+        { icon: '🛒', name: '供应链智能匹配', desc: '输入产品需求(如"纯棉T恤,月产能5万件"),AI筛选1688/阿里国际站供应商。自动比价、核验资质、生成报价对比表。' },
+        { icon: '🌍', name: '出海市场机会雷达', desc: '分析目标国消费数据(如"日本Z世代偏好莫兰迪色")、准入门槛(CE认证/FDA)、物流成本。推荐最适合出海的品类。' },
+        { icon: '📈', name: '选品评分系统', desc: '综合评估:市场热度(30%)+竞争强度(25%)+利润空间(25%)+供应链稳定性(20%)。满分100,>75分推荐进货。' },
+        { icon: '🔮', name: '季节性备货预警', desc: 'AI预测"618前30天羽绒服搜索量下跌80%"→建议清仓。"双11前60天保温杯需求激增"→提前备货2万件。' },
+        { icon: '⚡', name: '快速测款系统', desc: '小批量进货(100件),AI生成10组广告素材投放测试。72小时跑出ROI数据,决定是否规模化进货。降低试错成本80%。' },
+        { icon: '🎨', name: '选品数据可视化看板', desc: '实时显示:在售SKU热度、库存周转率、滞销预警、爆款潜力值。一目了然,辅助决策。' },
+        { icon: '💡', name: '差异化卖点挖掘', desc: 'AI分析竞品评价,提取用户痛点(如"杯盖容易漏")。推荐产品改进方向或差异化营销角度("我们的防漏技术通过SGS认证")。' },
+        { icon: '📦', name: '成功案例数据', desc: '某家居品牌用AI选品后:选品周期从2周→3天,爆款命中率从30%→70%,库存积压从50万→8万。ROI回收期4个月。' }
+      ];
+
+      // 营销内容生成工具列表（图片+视频+文案）
+      const contentCreationTools = [
+        { icon: '🎨', name: '一键生成全套营销素材', desc: '输入产品信息,AI生成:商品主图(5张不同场景)+详情页(含卖点文案)+短视频脚本+小红书笔记+朋友圈文案。30分钟完成。' },
+        { icon: '🏞️', name: '商品图场景批量生成', desc: '1张白底图→50种场景(沙滩/咖啡厅/卧室)。保留光影一致性,适配不同平台。处理速度:100张/10分钟,成本降90%。' },
+        { icon: '👕', name: 'AI模特试穿(0成本)', desc: '上传平铺服装,生成穿在模特身上效果。可选身高/肤色/体型,匹配全球市场审美。某服装品牌月省摄影费8万。' },
+        { icon: '✂️', name: '3小时直播→100条短视频', desc: 'AI识别产品演示、价格播报、互动爆点。自动切片+字幕+BGM,生成抖音/小红书投流素材。日产500条。' },
+        { icon: '🔥', name: '爆款视频像素级复刻', desc: '输入竞品爆款链接,AI解构镜头节奏(前3秒钩子/5秒痛点/10秒方案)、BGM卡点、文案公式。一键套用你的产品。' },
+        { icon: '✍️', name: '全平台文案智能生成', desc: 'AI生成:小红书种草笔记、抖音短视频脚本、淘宝详情页、朋友圈推广文案、电商评价话术。学习头部账号风格,A/B测试找最高转化版本。' },
+        { icon: '🎬', name: '多SKU批量内容生成', desc: '1个视频模板,AI自动替换50个SKU(颜色/包装)。日产500条投流素材,快速测出爆款。某美妆品牌月产量从50→2000条。' },
+        { icon: '📱', name: '小红书爆款笔记生成器', desc: '分析10万+爆款笔记,提取封面公式(大字标题/产品角度/色调)+正文钩子+评论区截流话术。CTR提升3倍。' },
+        { icon: '🌍', name: '一键多语言本地化', desc: '中文素材→自动翻译英/日/韩/西班牙语+AI配音(克隆原声)+替换场景元素(人民币→美元)。适配全球市场。' },
+        { icon: '💎', name: '产品卖点智能提炼', desc: 'AI分析产品参数+竞品评价,提炼3-5个核心卖点。自动生成"痛点-方案-证据"文案结构,转化率提升40%。' },
+        { icon: '🎭', name: '品牌IP形象生成', desc: '输入品牌理念,AI生成卡通IP形象+表情包+应用场景(包装/周边/海报)。建立品牌记忆点,用户认知度提升50%。' },
+        { icon: '⚡', name: '内容产能对比', desc: '传统团队:3人日产10条内容,月成本5万。AI系统:日产500条,月成本1.2万。产能提升50倍,成本降75%。' }
+      ];
+
+
+
+      // AI矩阵运营工具列表（品牌资产构建）
+      const matrixOperationTools = [
+        { icon: '🌐', name: '50-500账号矩阵自动养号', desc: '部署50-500个高权重账号矩阵(抖音/小红书/视频号)。AI模拟真人行为(浏览时长/点赞/评论),建立"数字品牌资产池"。' },
+        { icon: '🎭', name: 'KOC人设智能构建', desc: '定义5-10个人设角色(宝妈/健身达人/职场白领)。AI为每个人设生成一致的言行风格、内容日历、互动话术,建立长期信任。' },
+        { icon: '📱', name: '全域内容智能分发', desc: 'AI将内容精准分发到各平台(抖音/小红书/B站/知乎)。根据平台特性微调标题/封面/标签,最大化传播效果。' },
+        { icon: '💬', name: '社媒评论精准截流', desc: '监控竞品/大V评论区,识别意向客户(如"求链接")。AI自动点赞+神评抢位+私信引导,日加粉500+,获客成本<5元。' },
+        { icon: '🔥', name: '高热内容机会雷达', desc: '实时监控与品牌相关的高热度内容(10W+播放/5000+点赞)。AI自动生成与内容相关的"神评",在黄金位置获取海量曝光。' },
+        { icon: '🤖', name: 'AI智能体集群管理', desc: '每个账号背后是独立AI智能体,拥有"人设"和"性格"。7x24自动浏览/点赞/评论/发布,像真人一样运营账号。' },
+        { icon: '🎯', name: '柔性私域引导系统', desc: '在互动中,以合规、友好方式将高意向用户引导至品牌主阵地(企微/公众号)。话术自然,避免硬广,转化率提升3倍。' },
+        { icon: '📊', name: '品牌声量实时监控', desc: '追踪全网品牌提及量、情感倾向、关键词热度。AI生成"品牌健康度报告",预警负面舆情,指导公关策略。' },
+        { icon: '🌍', name: '多平台协同作战', desc: '小红书种草→抖音短视频引流→企微私域转化。AI打通全链路,实现"公域引流+私域转化"双飞轮增长。' },
+        { icon: '⚡', name: '账号资产风险隔离', desc: '企业级隔离设备矩阵,每个账号独立运行环境。单一账号问题不连带,建立"资产防火墙",保护品牌安全。' },
+        { icon: '📈', name: '品牌资产价值评估', desc: '账号矩阵总粉丝量、月均互动量、内容传播力、私域转化率→综合评估"品牌资产价值"。资产持续增值,不再是"消耗流量"。' },
+        { icon: '💰', name: 'ROBA模型对比', desc: '传统广告:花100万买流量,次月归零。AI矩阵:投100万建资产,持续产生自然流量,3年价值>500万。品牌资产回报率ROBA>5:1。' }
+      ];
+
+      // 智慧经营AI工具列表
+      const operationTools = [
+        { icon: '📦⏰', name: '库存智能预测(准确率90%)', desc: '分析历史销量、季节性、促销活动、天气,预测未来30天各SKU销量。自动生成补货建议,减少50%缺货和滞销损失。' },
+        { icon: '🏷️⇅', name: '动态定价(毛利提升15%)', desc: '实时监控竞品价格、库存水平、用户支付意愿。自动调价(如库存积压→降价促销/爆款缺货→涨价)。日均调价500次。' },
+        { icon: '🛒🔍', name: 'AI选品(爆款命中率70%)', desc: '分析抖音/小红书热搜、亚马逊BSR、1688上新数据。推荐潜力爆品(如"检测到腰包搜索量暴涨300%,建议进货")。' },
+        { icon: '👥💘', name: '客户分层自动化运营', desc: '根据RFM模型(最近购买/频次/金额)分7类客户。沉睡客户→推送大额券,VIP客户→新品优先购,自动化执行,复购率提升40%。' },
+        { icon: '🚚🔗🚢', name: '供应链智能协同', desc: '打通供应商/仓库/物流系统。AI推荐"A商品走义乌仓发顺丰,比杭州仓发EMS省1.2元/单"。预警"春节前10天锁仓,提前备货"。' },
+        { icon: '✅⚖️', name: '出海合规自动检测', desc: '输入商品链接,检测欧盟CE认证/美国FDA/各国关税。标注风险项(如"该款充电宝锂电池容量超美国航空禁令")。' },
+        { icon: '🌍⚖️💡', name: '知识产权侵权预警', desc: '上传产品图,AI比对全球专利库/商标库。检测侵权风险(如"该外观与苹果2019年专利相似度87%,建议规避")。' },
+        { icon: '🗺️🧐', name: '目标市场本地化洞察', desc: '分析目标国社媒热点(如"日本Z世代偏好莫兰迪色系")、文化禁忌(如"中东不能用左手图案")、定价策略(购买力/支付习惯)。' },
+        { icon: '📊💰', name: '成本对比数据', desc: '人工选品/定价/库存管理:50万积压损失/年。AI系统:试错成本降80%,毛利率提升15%,ROI回收期6个月。' }
+      ];
+
+      // AI广告投放优化工具列表
+      const adOptimizationTools = [
+        { icon: '🎯', name: '素材A/B测试自动化', desc: '1条原始素材,AI生成50组变体(不同开头/文案/CTA按钮)。自动投放到千川/广点通,72小时跑出ROI最高组合。' },
+        { icon: '💰', name: '智能出价实时优化', desc: 'AI每5分钟调整出价策略。检测到"这组素材CTR>5%"→提高出价抢量;"转化成本>目标"→降低出价或暂停。日均优化2000次。' },
+        { icon: '🔮', name: 'ROI预测模型', desc: '投放前预判素材ROI。分析画面节奏/文案钩子/BGM,对比10万+历史数据。预测"该素材ROI 1:4.2,建议投放预算5万"。准确率85%。' },
+        { icon: '📊', name: '跨平台数据归因', desc: '打通抖音/快手/小红书/淘宝数据。追踪"用户在抖音看广告→小红书搜索→淘宝下单"全路径。算清每个渠道真实ROI,避免重复归因。' },
+        { icon: '🎬', name: '竞品广告情报监控', desc: '追踪竞品在千川/Meta Ads投放素材(创意/文案/落地页)。识别爆款广告(投放>30天=跑量大),一键复刻到你的产品。' },
+        { icon: '⚡', name: '自动化投放策略', desc: '设置规则"ROI<1:3自动暂停"、"爆量素材自动提预算"。AI接管日常操作,优化师只需审核异常,人效提升10倍。' },
+        { icon: '🧪', name: '落地页智能优化', desc: '生成10种落地页变体(不同标题/按钮颜色/图片顺序)。自动分流测试,找出转化率最高版本。某客户转化率从2.3%→5.8%。' },
+        { icon: '💡', name: '创意疲劳自动预警', desc: '监控素材数据(CTR/转化率持续下跌=创意疲劳)。提前3天预警"该素材即将失效",自动启用备用素材,避免ROI断崖。' },
+        { icon: '🌍', name: '全球广告平台对接', desc: '支持:国内(巨量千川/腾讯广告/磁力金牛),海外(Meta Ads/Google Ads/TikTok Ads)。统一后台管理,一键复制策略。' },
+        { icon: '📈', name: '实时ROI看板', desc: '按素材/时段/地域/人群实时显示ROI。AI建议"23-24点ROI最高,建议加大预算"、"男性用户转化成本高20%,建议排除"。' },
+        { icon: '🎓', name: '智能投放策略推荐', desc: 'AI学习账户历史数据,推荐最优策略(如"该产品适合放量投放+自动出价")。新账户冷启动期从7天缩短到3天。' },
+        { icon: '💸', name: '成本对比数据', desc: '人工投放:ROI 1:3,优化师月薪2万。AI投放:ROI 1:5,每月100万广告费多赚67万。某品牌用后广告ROI提升67%,6个月回本。' }
+      ];
+
+      // AI数字人工具列表
+      const digitalHumanTools = [
+        { icon: '🎭', name: '秒播级数字人克隆', desc: '拍摄5分钟素材(5个产品手持动作),72小时交付专属数字人。面部微表情、头发丝级细节,观众无法分辨真假。' },
+        { icon: '🎙️', name: '声音高保真克隆', desc: '录制10分钟音频(约2000字),还原音色、语气、停顿习惯。支持7种情绪模式切换(热情推销/专业讲解/亲切唠嗑)。' },
+        { icon: '💬', name: '话术智能改写引擎', desc: '预设500条基础话术,AI每轮自动改写30%内容。连播8小时不重复,避免平台"录播"检测限流。' },
+        { icon: '🤖', name: 'GPT-4驱动智能问答', desc: '接入200+产品知识库,理解方言、网络用语。响应延迟<2秒,90%问题无需人工介入,高峰期顶20个客服。' },
+        { icon: '🔑', name: '关键词精准截流', desc: '自定义500+触发词("怎么买"、"多少钱"、"发什么快递"),瞬间弹出优惠/链接,转化率提升40%。' },
+        { icon: '🎉', name: '氛围自动烘托系统', desc: '检测进入/点赞/关注动作,3秒内口播感谢+弹幕特效。模拟"老铁来了"、"感谢榜一大哥"等真人直播话术。' },
+        { icon: '🛍️', name: '产品智能弹窗', desc: '根据话术节奏自动弹出商品图/视频(如讲到"这款面霜"立刻展示使用效果)。支持一键跳转购物车。' },
+        { icon: '🌐', name: '全球10+平台矩阵', desc: '国内:快手、视频号(抖音有限制)。出海:TikTok、YouTube Live、Facebook Live、Amazon Live、Shopee Live等。一键多开。' },
+        { icon: '📹', name: '直播自动切片成短视频', desc: '每场直播AI提取20-50个高光片段(产品演示/互动爆点),自动加字幕、BGM,生成抖音/小红书投流素材。' },
+        { icon: '🔄', name: '矩阵化运营管理', desc: '1人操作50个数字人账号。批量设置直播时间表、话术库、产品库。异常监控(掉线/违规警告)自动重启。' },
+        { icon: '📊', name: '数据驱动优化', desc: '实时看板:各账号在线人数、停留时长、点击率、GMV。AI推荐最佳开播时段、话术A/B测试结果。' },
+        { icon: '💰', name: '成本与回本周期', desc: '试点版(6路直播):首年22.6万,第3周见效,62天回本。规模版(60路):首年157万,次年仅15万维护费,ROI>500%。' }
+      ];
+
+      // AI售后提效工具列表
+      const afterSalesTools = [
+        { icon: '💬', name: 'AI客服秒级自动回复', desc: '客户咨询瞬间响应,理解多轮对话("这款有黑色吗"→"黑色M码还有30件库存")。解决90%常见问题,仅10%转人工,顶20个客服。' },
+        { icon: '🔍', name: '全网舆情5分钟预警', desc: '监控淘宝/京东/抖音评价、小红书/微博提及、黑猫投诉。检测到"售后态度差"等负面,5分钟推送钉钉/企微预警。' },
+        { icon: '😊', name: '客户情绪实时识别', desc: 'AI判断客户情绪等级(满意/中性/不满/愤怒)。识别到"投诉"、"退款"等高危词,自动转人工+标注优先级,避免升级纠纷。' },
+        { icon: '📋', name: '工单智能分流系统', desc: '自动识别问题类型(物流/质量/退换货),分配给对应部门。紧急工单置顶,超时未处理自动提醒主管,处理效率提升3倍。' },
+        { icon: '🤝', name: '售后话术智能推荐', desc: '根据问题类型+客户情绪,推荐最佳回复(如愤怒客户→先道歉+补偿方案)。学习优秀客服话术,新人也能达到老员工水平。' },
+        { icon: '🎯', name: '一键生成个性化回复', desc: 'AI读取订单历史、聊天记录,生成定制化回复("王女士您好,您购买的连衣裙已从杭州仓发出...")。支持人工微调后发送。' },
+        { icon: '📞', name: '全渠道统一工作台', desc: '聚合微信/电话/邮件/App/淘宝旺旺消息。客服在一个界面处理所有咨询,切换无需登录多个后台,响应速度提升50%。' },
+        { icon: '📧', name: '客户反馈AI挖掘', desc: '分析10万+评价,提取高频问题("拉链容易坏"出现2300次)→生成产品改进报告。按问题严重度排序,指导下季度优化重点。' },
+        { icon: '📈', name: '售后数据可视化看板', desc: '实时显示:咨询量、平均响应时间、解决率、满意度、各类问题占比。AI预测"618大促咨询量将激增300%,建议增派5名临时客服"。' },
+        { icon: '🔔', name: '主动服务自动触达', desc: '订单签收3天后自动发微信"使用满意吗?晒图返10元"。检测物流异常自动道歉+补偿,降低因物流导致的差评率40%。' },
+        { icon: '💡', name: '知识库自学习进化', desc: '从每天1000+对话中学习新问题、新答案。客服标注"答案准确"→纳入知识库。AI覆盖率从60%→90%仅需3个月。' },
+        { icon: '⚡', name: '效率提升数据', desc: '人工客服:响应时间2分钟,日处理80单。AI客服:响应<10秒,日处理2000单。某品牌用后客服成本降60%,满意度反升35%。' }
+      ];
+
+      // 成功案例数据 - 精简版
+      const showcaseCases = [
+        {
+          id: 1,
+          company: '某服装品牌',
+          industry: '服装电商',
+          problem: '设计师产能不足，上新慢',
+          solution: 'AI商品图批量生产',
+          metric: '8万→1.2万',
+          metricLabel: '月成本',
+          result: '设计师从画图解放，专注创意策划',
+          timeline: '2周上线，首月节省6.8万',
+          icon: '👔'
+        },
+        {
+          id: 2,
+          company: '某美妆品牌',
+          industry: '美妆护肤',
+          problem: '视频内容产量低，测款慢',
+          solution: 'AI直播切片+批量剪辑',
+          metric: '50→2000',
+          metricLabel: '月视频产量',
+          result: '爆款视频找到率提升3倍',
+          timeline: '3周部署，单月ROI 280%',
+          icon: '💄'
+        },
+        {
+          id: 3,
+          company: '某出海品牌',
+          industry: '跨境电商',
+          problem: '获客成本高，人工运营累',
+          solution: 'AI社媒矩阵+自动获客',
+          metric: '120→48',
+          metricLabel: '单客成本',
+          result: '10个平台24小时自动运营',
+          timeline: '62天回本，每月净省18万',
+          icon: '🌍'
+        }
+      ];
+
+      // 合作伙伴Logo
+      const partners = [
+        { name: '阿里巴巴', logo: 'Alibaba' },
+        { name: '腾讯', logo: 'Tencent' },
+        { name: '京东', logo: 'JD.com' },
+        { name: '字节跳动', logo: 'ByteDance' },
+        { name: 'SHEIN', logo: 'SHEIN' },
+        { name: 'Anker', logo: 'Anker' }
+      ];
+
+      return (
+        <div className="min-h-screen bg-[var(--bg-cream)]">
+          {/* 导航栏 */}
+          <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-sm border-b border-gray-200' : 'bg-white/95 backdrop-blur-sm'}`}>
+            <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+              <div className="text-xl font-semibold text-gray-900 mono tracking-tight">
+                AI APPLICATION SERVICES
+              </div>
+              <div className="hidden md:flex gap-8 items-center">
+                <a href="#services" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors cursor-pointer">服务能力</a>
+                <a href="#cases" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors cursor-pointer">案例</a>
+                <a href="#process" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors cursor-pointer">流程</a>
+                <button 
+                  onClick={() => scrollToSection('contact')}
+                  className="px-5 py-2 bg-gray-900 text-white text-sm font-medium rounded hover:bg-gray-800 transition-all"
+                >
+                  联系我们
+                </button>
+              </div>
+            </div>
+          </nav>
+
+          {/* 开篇价值主张 */}
+          <section className="pt-32 pb-16 bg-slate-900 text-white relative overflow-hidden">
+            {/* 背景装饰 */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+            </div>
+            {/* 网格背景 */}
+            <div className="absolute inset-0 opacity-5" style={{backgroundImage: 'linear-gradient(var(--color-accent) 1px, transparent 1px), linear-gradient(90deg, var(--color-accent) 1px, transparent 1px)', backgroundSize: '40px 40px'}}></div>
+            
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
+              <div className="grid md:grid-cols-2 gap-16 items-center">
+                {/* 左侧：核心价值 */}
+                <div>
+                  <div className="text-xs font-light text-amber-400 mb-6 mono tracking-widest uppercase">Enterprise AI Transformation</div>
+                  <h1 className="text-6xl md:text-8xl font-black text-white mb-8 leading-none">
+                    2周部署，60天回本<br/>这是AI该有的ROI
+                  </h1>
+                  <p className="text-xl md:text-2xl font-light text-gray-300 leading-relaxed mb-10">
+                    不是又一个需要学习的AI工具。而是直接植入您业务流程的自动化系统。让机器干重复的活，人做创造性的事。成本降70%，产能翻10倍，这才是AI的正确打开方式。
+                  </p>
+                  <div className="flex flex-col gap-3 mb-8">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+                      <span className="text-gray-200 font-medium">2周上线，无需改变现有工作流</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+                      <span className="text-gray-200 font-medium">首月即见效，60天收回投资成本</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+                      <span className="text-gray-200 font-medium">专属定制，竞争对手无法复制</span>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={() => scrollToSection('contact')}
+                    className="px-8 py-4 bg-amber-500 text-slate-900 font-bold text-lg rounded hover:bg-amber-400 transition-all inline-flex items-center gap-3 shadow-xl hover:shadow-2xl"
+                  >
+                    免费获取ROI评估报告
+                    <i data-lucide="arrow-right" className="w-5 h-5"></i>
+                  </button>
+                </div>
+
+                {/* 右侧：关键业务指标 */}
+                <div className="bg-slate-800 border-2 border-amber-500/30 p-10 rounded-2xl text-white relative overflow-hidden">
+                  {/* 装饰线条 */}
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
+                  <div className="text-sm font-bold text-amber-400 mb-8 tracking-wide mono">💰 REAL DATA · VERIFIED</div>
+                  <div className="space-y-8 relative z-10">
+                    <div>
+                      <div className="flex items-baseline gap-3 mb-2">
+                        <span className="text-6xl font-black">8万→1.2万</span>
+                      </div>
+                      <p className="text-base font-light text-gray-300 leading-relaxed">某服装品牌商品图月成本，<span className="text-amber-400 font-semibold">省下的钱直接多雇3个设计师</span></p>
+                    </div>
+                    <div>
+                      <div className="flex items-baseline gap-3 mb-2">
+                        <span className="text-6xl font-black">50→2000</span>
+                      </div>
+                      <p className="text-base font-light text-gray-300 leading-relaxed">某美妆品牌月短视频产量，<span className="text-amber-400 font-semibold">测款速度快了20倍</span></p>
+                    </div>
+                    <div>
+                      <div className="flex items-baseline gap-3 mb-2">
+                        <span className="text-6xl font-black">62天</span>
+                      </div>
+                      <p className="text-base font-light text-gray-300 leading-relaxed">某出海品牌投资回收周期，<span className="text-amber-400 font-semibold">此后每月净省18万</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 合作客户logo带 */}
+              <div className="mt-16 pt-8 border-t border-gray-200">
+                <div className="text-xs text-gray-400 mb-4 mono tracking-wider">TRUSTED BY</div>
+                <div className="flex flex-wrap items-center gap-8 opacity-40">
+                  {partners.map((partner, idx) => (
+                    <span key={idx} className="text-gray-400 font-medium text-sm">{partner.logo}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 痛点与共鸣板块 */}
+          <section className="py-24 bg-white relative">
+            <div className="max-w-7xl mx-auto px-6">
+              <h2 className="text-5xl md:text-7xl font-black text-center mb-20 leading-tight text-slate-900">
+                这些痛点，正在吞噬你的利润
+              </h2>
+
+              <div className="grid md:grid-cols-5 gap-12 items-center relative">
+                {/* Canvas for glow lines */}
+                <canvas id="glowCanvas" className="glow-canvas"></canvas>
+                {/* 左栏 - 痛点列表 */}
+                <div className="md:col-span-2 space-y-6 relative z-10">
+                  {[
+                    { icon: 'image', title: '内容产能卡脖子', desc: '设计师画一张图要半天，上新慢、测款慢，爆款机会稍纵即逝。对手已经AI量产，你还在手工作坊' },
+                    { icon: 'trending-up', title: '获客成本失控', desc: '去年50块拿一个客户，今年要120。广告费年年涨，转化率年年跌，利润被平台和流量主吃干净' },
+                    { icon: 'bar-chart-3', title: '决策全凭拍脑袋', desc: '库存积压50万，不知道哪款会爆。定价高了没人买，低了利润薄。每次试错都是真金白银' },
+                    { icon: 'users', title: '想扩张，招不起人', desc: '业务翻倍要多招10个人，工资、社保、管理成本翻倍。人效上不去，规模做不大' }
+                  ].map((pain, idx) => (
+                    <div 
+                      key={idx} 
+                      className="pain-point-item flex gap-4 p-5 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all" 
+                      data-animate
+                    >
+                      <div className="w-1.5 h-1.5 bg-amber-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <div className="font-semibold text-gray-900 mb-1">{pain.title}</div>
+                        <div className="text-gray-600 text-sm">{pain.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* 右栏 - 解决方案 */}
+                <div id="painSolution" className="md:col-span-3 bg-slate-900 border-2 border-amber-500/30 p-8 md:p-12 rounded-2xl text-white relative z-10 overflow-hidden">
+                  {/* 装饰网格 */}
+                  <div className="absolute inset-0 opacity-5" style={{backgroundImage: 'linear-gradient(#f59e0b 1px, transparent 1px), linear-gradient(90deg, #f59e0b 1px, transparent 1px)', backgroundSize: '30px 30px'}}></div>
+                  <div className="inline-block px-4 py-2 bg-amber-500 rounded-full text-sm font-bold mb-6">
+                    ⚡ 我们的解法
+                  </div>
+                  <h3 className="text-3xl font-black mb-6 leading-tight">
+                    机器干重活，人做聪明事<br/>这才是AI正确用法
+                  </h3>
+                  <p className="text-gray-200 text-lg leading-relaxed mb-8 font-light">
+                    我们做的不是卖工具，而是<span className="text-amber-400 font-bold">重新设计你的工作流程</span>。把设计师从重复劳动中解放出来，让数据告诉你该进什么货、定什么价，用自动化系统24小时帮你挖客户。
+                  </p>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="text-black font-black text-sm">1</span>
+                      </div>
+                      <span className="text-gray-100 text-base"><span className="font-bold">边际成本趋零：</span>做1个和做1000个，成本几乎一样</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="text-black font-black text-sm">2</span>
+                      </div>
+                      <span className="text-gray-100 text-base"><span className="font-bold">数据驱动决策：</span>算法告诉你答案，不再凭感觉赌</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="text-black font-black text-sm">3</span>
+                      </div>
+                      <span className="text-gray-100 text-base"><span className="font-bold">人效翻10倍：</span>3个人的团队，干30个人的活</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 七大AI引擎板块 */}
+          <section id="services" className="py-24 bg-gradient-to-b from-stone-50 to-white">
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="text-center mb-16">
+                <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight">
+                  七大引擎，按ROI优先级重构业务
+                </h2>
+                <p className="text-xl md:text-2xl font-light text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                  从最直接创造收入的数字人直播，到最烧钱的广告优化。<span className="font-bold text-gray-900">先解决燃眉之急，再建立长期壁垒。</span>
+                </p>
+              </div>
+
+              {/* 引擎二:AI智能选品 */}
+              <div className="mb-24 engine-section" data-engine="selection">
+                <div className="grid md:grid-cols-2 gap-12 items-center mb-8">
+                  {/* 左侧视觉区 */}
+                  <div className="relative h-96 bg-gradient-to-br from-orange-100 to-red-100 rounded-2xl overflow-hidden group shadow-premium engine-visual">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-6xl mb-4">🛒</div>
+                        <p className="text-gray-600 px-6">爆款预判 → 选品命中率70%</p>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+
+                  {/* 右侧文案区 */}
+                  <div>
+                    <h3 className="text-4xl font-black mb-6 flex items-center gap-4 leading-tight">
+                      <span className="w-14 h-14 bg-slate-900 border-2 border-orange-500 rounded-xl flex items-center justify-center text-orange-400 text-2xl flex-shrink-0">
+                        🛒
+                      </span>
+                      选品，AI帮你找爆款
+                    </h3>
+                    <p className="text-xl font-light text-slate-700 mb-8 leading-relaxed">
+                      <span className="font-bold text-slate-900">全网爆款监控+趋势预判+利润测算。</span>AI分析3年数据，预测未来3个月爆款品类。<span className="text-orange-600 font-bold">选品周期从2周→3天，命中率从30%→70%。</span>
+                    </p>
+                    
+                    <div className="space-y-4 mb-6">
+                      {[
+                        { title: '全网爆款实时监控', desc: '抖音/小红书/淘宝热榜实时追踪，抢占窗口期' },
+                        { title: '趋势预判AI模型', desc: '预测未来3个月爆款，准确率70%' },
+                        { title: '快速测款系统', desc: '小批量投放测试，72小时跑出ROI数据' }
+                      ].map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0" />
+                          <div>
+                            <span className="font-semibold text-gray-800">{feature.title}:</span>
+                            <span className="text-gray-600"> {feature.desc}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <button 
+                      onClick={() => toggleEngine('selection')}
+                      className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all"
+                    >
+                      查看更多功能
+                      <i data-lucide="chevron-down" className={`w-5 h-5 transition-transform ${expandedEngine === 'selection' ? 'rotate-180' : ''}`}></i>
+                    </button>
+                  </div>
+                </div>
+
+                {/* 展开的工具列表 */}
+                {expandedEngine === 'selection' && (
+                  <div className="bg-white rounded-2xl p-8 shadow-lg animate-fadeIn">
+                    <div className="grid md:grid-cols-3 gap-6">
+                      {selectionTools.map((tool, idx) => (
+                        <div key={idx} className="tool-item p-6 bg-white border-2 border-slate-200 rounded-xl hover:border-amber-400 hover:shadow-2xl transition-all duration-300 cursor-pointer group flex gap-5 items-start transform hover:-translate-y-1 relative overflow-hidden" data-animate>
+                          {/* 背景装饰 */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                          
+                          <svg className="w-14 h-14 flex-shrink-0 text-amber-600 group-hover:text-amber-500 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <path d="M9 9h6M9 15h6" strokeLinecap="round"/>
+                          </svg>
+                          <div className="flex-1 relative z-10">
+                            <h4 className="font-black text-xl text-slate-900 mb-3 group-hover:text-amber-600 transition-colors leading-tight">{tool.name}</h4>
+                            <p className="text-base font-light text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors">{tool.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* 引擎三:营销内容生成 */}
+              <div className="mb-24 engine-section" data-engine="content-creation">
+                <div className="grid md:grid-cols-2 gap-12 items-center mb-8">
+                  {/* 左侧文案区 */}
+                  <div className="order-2 md:order-1">
+                    <h3 className="text-4xl font-black mb-6 flex items-center gap-4 leading-tight">
+                      <span className="w-14 h-14 bg-slate-900 border-2 border-blue-500 rounded-xl flex items-center justify-center text-blue-400 text-2xl flex-shrink-0">
+                        🎨
+                      </span>
+                      内容生成，图片+视频+文案
+                    </h3>
+                    <p className="text-xl font-light text-slate-700 mb-8 leading-relaxed">
+                      <span className="font-bold text-slate-900">一键生成全套营销素材：商品图+短视频+文案。</span>输入产品信息，30分钟完成主图、详情页、短视频脚本、小红书笔记。<span className="text-blue-600 font-bold">产能提升50倍，成本降75%。</span>
+                    </p>
+                    
+                    <div className="space-y-4 mb-6">
+                      {[
+                        { title: '一键生成全套素材', desc: '商品图+详情页+短视频+文案，30分钟全搞定' },
+                        { title: '商品图场景批量生成', desc: '1张白底图→50种场景，成本降90%' },
+                        { title: '3小时直播→100条短视频', desc: 'AI自动切片+字幕+BGM，日产500条' }
+                      ].map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0" />
+                          <div>
+                            <span className="font-semibold text-gray-800">{feature.title}:</span>
+                            <span className="text-gray-600"> {feature.desc}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <button 
+                      onClick={() => toggleEngine('content-creation')}
+                      className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all"
+                    >
+                      查看更多功能
+                      <i data-lucide="chevron-down" className={`w-5 h-5 transition-transform ${expandedEngine === 'content-creation' ? 'rotate-180' : ''}`}></i>
+                    </button>
+                  </div>
+
+                  {/* 右侧视觉区 */}
+                  <div className="relative h-96 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl overflow-hidden group order-1 md:order-2 shadow-premium engine-visual">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-6xl mb-4">🎨</div>
+                        <p className="text-gray-600 px-6">全套素材 → 30分钟完成</p>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                </div>
+
+                {/* 展开的工具列表 */}
+                {expandedEngine === 'content-creation' && (
+                  <div className="bg-white rounded-2xl p-8 shadow-lg animate-fadeIn">
+                    <div className="grid md:grid-cols-3 gap-6">
+                      {contentCreationTools.map((tool, idx) => (
+                        <div key={idx} className="tool-item p-6 bg-white border-2 border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-2xl transition-all duration-300 cursor-pointer group flex gap-5 items-start transform hover:-translate-y-1 relative overflow-hidden" data-animate>
+                          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                          
+                          <svg className="w-14 h-14 flex-shrink-0 text-blue-600 group-hover:text-blue-500 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="12" cy="12" r="3"/>
+                          </svg>
+                          <div className="flex-1 relative z-10">
+                            <h4 className="font-black text-xl text-slate-900 mb-3 group-hover:text-blue-600 transition-colors leading-tight">{tool.name}</h4>
+                            <p className="text-base font-light text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors">{tool.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* 引擎五:AI矩阵运营·品牌资产 */}
+              <div className="mb-24 engine-section" data-engine="matrix-operation">
+                <div className="grid md:grid-cols-2 gap-12 items-center mb-8">
+                  {/* 左侧视觉区 */}
+                  <div className="relative h-96 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl overflow-hidden group shadow-premium engine-visual">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-6xl mb-4">🌐</div>
+                        <p className="text-gray-600 px-6">500账号矩阵 → 品牌资产池</p>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+
+                  {/* 右侧文案区 */}
+                  <div>
+                    <h3 className="text-4xl font-black mb-6 flex items-center gap-4 leading-tight">
+                      <span className="w-14 h-14 bg-slate-900 border-2 border-green-500 rounded-xl flex items-center justify-center text-green-400 text-2xl flex-shrink-0">
+                        🌐
+                      </span>
+                      矩阵运营，建立品牌资产
+                    </h3>
+                    <p className="text-xl font-light text-slate-700 mb-8 leading-relaxed">
+                      <span className="font-bold text-slate-900">50-500个账号矩阵7x24自动运营，建立数字品牌资产池。</span>AI智能体模拟真人，全域内容分发，评论截流，私域引导。<span className="text-green-600 font-bold">品牌资产回报率ROBA>5:1。</span>
+                    </p>
+                    
+                    <div className="space-y-4 mb-6">
+                      {[
+                        { title: '账号矩阵自动养号', desc: '50-500个高权重账号，建立数字品牌资产池' },
+                        { title: 'KOC人设智能构建', desc: '5-10个人设角色，一致的言行风格建立信任' },
+                        { title: '全域内容智能分发', desc: 'AI精准分发到各平台，最大化传播效果' }
+                      ].map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0" />
+                          <div>
+                            <span className="font-semibold text-gray-800">{feature.title}:</span>
+                            <span className="text-gray-600"> {feature.desc}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <button 
+                      onClick={() => toggleEngine('matrix-operation')}
+                      className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all"
+                    >
+                      查看更多功能
+                      <i data-lucide="chevron-down" className={`w-5 h-5 transition-transform ${expandedEngine === 'matrix-operation' ? 'rotate-180' : ''}`}></i>
+                    </button>
+                  </div>
+                </div>
+
+                {/* 展开的工具列表 */}
+                {expandedEngine === 'matrix-operation' && (
+                  <div className="bg-white rounded-2xl p-8 shadow-lg animate-fadeIn">
+                    <div className="grid md:grid-cols-3 gap-6">
+                      {matrixOperationTools.map((tool, idx) => (
+                        <div key={idx} className="tool-item p-6 bg-white border-2 border-slate-200 rounded-xl hover:border-green-400 hover:shadow-2xl transition-all duration-300 cursor-pointer group flex gap-5 items-start transform hover:-translate-y-1 relative overflow-hidden" data-animate>
+                          <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="absolute top-0 right-0 w-32 h-32 bg-green-500 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                          
+                          <svg className="w-14 h-14 flex-shrink-0 text-green-600 group-hover:text-green-500 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <path d="M8 12l3 3 5-5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                          <div className="flex-1 relative z-10">
+                            <h4 className="font-black text-xl text-slate-900 mb-3 group-hover:text-green-600 transition-colors leading-tight">{tool.name}</h4>
+                            <p className="text-base font-light text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors">{tool.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* 引擎七:智慧经营·决策分析 */}
+              <div className="mb-24 engine-section" data-engine="operation">
+                <div className="grid md:grid-cols-2 gap-12 items-center mb-8">
+                  {/* 左侧文案区 */}
+                  <div className="order-2 md:order-1">
+                    <h3 className="text-4xl font-black mb-6 flex items-center gap-4 leading-tight">
+                      <span className="w-14 h-14 bg-slate-900 border-2 border-red-500 rounded-xl flex items-center justify-center text-red-400 text-2xl flex-shrink-0">
+                        📊
+                      </span>
+                      决策，数据告诉你答案
+                    </h3>
+                    <p className="text-xl font-light text-slate-700 mb-8 leading-relaxed">
+                      <span className="font-bold text-slate-900">进什么货、定什么价、推哪款，算法算给你看。</span>不再拍脑袋，不用赌运气。AI预测库存、优化定价、推荐爆款。<span className="text-red-600 font-bold">试错成本降80%，毛利率提升15%。</span>
+                    </p>
+                    
+                    <div className="space-y-4 mb-6">
+                      {[
+                        { title: '库存预测调度', desc: '准确率90%，减少50%滞销和缺货损失' },
+                        { title: '动态定价系统', desc: '实时调价，毛利率提升15-20%' },
+                        { title: '选品趋势分析', desc: '提前3个月预判爆款，命中率70%+' }
+                      ].map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0" />
+                          <div>
+                            <span className="font-semibold text-gray-800">{feature.title}:</span>
+                            <span className="text-gray-600"> {feature.desc}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <button 
+                      onClick={() => toggleEngine('operation')}
+                      className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all"
+                    >
+                      查看更多功能
+                      <i data-lucide="chevron-down" className={`w-5 h-5 transition-transform ${expandedEngine === 'operation' ? 'rotate-180' : ''}`}></i>
+                    </button>
+                  </div>
+
+                  {/* 右侧视觉区 */}
+                  <div className="relative h-96 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl overflow-hidden group order-1 md:order-2 engine-visual">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-6xl mb-4">📈</div>
+                        <p className="text-gray-600 px-6">数据洞察 → 最优决策</p>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                </div>
+
+                {/* 展开的工具列表 */}
+                {expandedEngine === 'operation' && (
+                  <div className="bg-white rounded-2xl p-8 shadow-lg animate-fadeIn">
+                    <div className="grid md:grid-cols-3 gap-6">
+                      {operationTools.map((tool, idx) => (
+                        <div key={idx} className="tool-item p-6 bg-white border-2 border-slate-200 rounded-xl hover:border-red-400 hover:shadow-2xl transition-all duration-300 cursor-pointer group flex gap-5 items-start transform hover:-translate-y-1 relative overflow-hidden" data-animate>
+                          <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="absolute top-0 right-0 w-32 h-32 bg-red-500 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                          
+                          <svg className="w-14 h-14 flex-shrink-0 text-red-600 group-hover:text-red-500 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <path d="M7 12h10M12 7v10" strokeLinecap="round"/>
+                          </svg>
+                          <div className="flex-1 relative z-10">
+                            <h4 className="font-black text-xl text-slate-900 mb-3 group-hover:text-red-600 transition-colors leading-tight">{tool.name}</h4>
+                            <p className="text-base font-light text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors">{tool.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* 引擎一:AI数字人·7x24直播 */}
+              <div className="mb-24 engine-section" data-engine="digital-human">
+                <div className="grid md:grid-cols-2 gap-12 items-center mb-8">
+                  {/* 左侧视觉区 */}
+                  <div className="relative h-96 bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl overflow-hidden group shadow-premium engine-visual">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-6xl mb-4">🤖</div>
+                        <p className="text-gray-600 px-6">真人克隆 → 7x24小时直播</p>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+
+                  {/* 右侧文案区 */}
+                  <div>
+                    <h3 className="text-4xl font-black mb-6 flex items-center gap-4 leading-tight">
+                      <span className="w-14 h-14 bg-slate-900 border-2 border-purple-500 rounded-xl flex items-center justify-center text-purple-400 text-2xl flex-shrink-0">
+                        🤖
+                      </span>
+                      数字人，主播不下班
+                    </h3>
+                    <p className="text-xl font-light text-slate-700 mb-8 leading-relaxed">
+                      <span className="font-bold text-slate-900">克隆真人形象和声音，7x24小时直播带货。</span>无需真人值守，AI自动互动、改写话术、回答问题。全球多平台同步开播，<span className="text-purple-600 font-bold">人力成本降为0，直播时长提升10倍。</span>
+                    </p>
+                    
+                    <div className="space-y-4 mb-6">
+                      {[
+                        { title: '超写实数字人克隆', desc: '5分钟视频素材，1:1还原真人形象和声音' },
+                        { title: '智能话术实时改写', desc: 'AI自动优化话术，每次直播都是新内容' },
+                        { title: '全球多平台矩阵', desc: '抖音、TikTok、YouTube等10+平台同时开播' }
+                      ].map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0" />
+                          <div>
+                            <span className="font-semibold text-gray-800">{feature.title}:</span>
+                            <span className="text-gray-600"> {feature.desc}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <button 
+                      onClick={() => toggleEngine('digital-human')}
+                      className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all"
+                    >
+                      查看更多功能
+                      <i data-lucide="chevron-down" className={`w-5 h-5 transition-transform ${expandedEngine === 'digital-human' ? 'rotate-180' : ''}`}></i>
+                    </button>
+                  </div>
+                </div>
+
+                {/* 展开的工具列表 */}
+                {expandedEngine === 'digital-human' && (
+                  <div className="bg-white rounded-2xl p-8 shadow-lg animate-fadeIn">
+                    <div className="grid md:grid-cols-3 gap-6">
+                      {digitalHumanTools.map((tool, idx) => (
+                        <div key={idx} className="tool-item p-6 bg-white border-2 border-slate-200 rounded-xl hover:border-purple-400 hover:shadow-2xl transition-all duration-300 cursor-pointer group flex gap-5 items-start transform hover:-translate-y-1 relative overflow-hidden" data-animate>
+                          <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                          
+                          <svg className="w-14 h-14 flex-shrink-0 text-purple-600 group-hover:text-purple-500 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="9" cy="9" r="2"/>
+                            <circle cx="15" cy="9" r="2"/>
+                            <path d="M9 15s1 2 3 2 3-2 3-2" strokeLinecap="round"/>
+                          </svg>
+                          <div className="flex-1 relative z-10">
+                            <h4 className="font-black text-xl text-slate-900 mb-3 group-hover:text-purple-600 transition-colors leading-tight">{tool.name}</h4>
+                            <p className="text-base font-light text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors">{tool.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* 引擎六:AI售后提效·智能客服 */}
+              <div className="mb-24 engine-section" data-engine="after-sales">
+                <div className="grid md:grid-cols-2 gap-12 items-center mb-8">
+                  {/* 左侧文案区 */}
+                  <div className="order-2 md:order-1">
+                    <h3 className="text-4xl font-black mb-6 flex items-center gap-4 leading-tight">
+                      <span className="w-14 h-14 bg-slate-900 border-2 border-teal-500 rounded-xl flex items-center justify-center text-teal-400 text-2xl flex-shrink-0">
+                        💬
+                      </span>
+                      售后，AI秒回不下班
+                    </h3>
+                    <p className="text-xl font-light text-slate-700 mb-8 leading-relaxed">
+                      <span className="font-bold text-slate-900">客户反馈自动分析，舆情实时监控，工单智能处理。</span>AI客服7x24小时在线，秒级响应，多轮对话解决90%常见问题。<span className="text-teal-600 font-bold">客服成本降60%，满意度提升35%。</span>
+                    </p>
+                    
+                    <div className="space-y-4 mb-6">
+                      {[
+                        { title: '全渠道舆情监控', desc: '实时监控全网评价，负面舆情5分钟内预警' },
+                        { title: '智能工单系统', desc: '自动分类、分配、跟进，处理效率提升3倍' },
+                        { title: '客户情感分析', desc: 'AI识别客户情绪，高危客户优先人工介入' }
+                      ].map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0" />
+                          <div>
+                            <span className="font-semibold text-gray-800">{feature.title}:</span>
+                            <span className="text-gray-600"> {feature.desc}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <button 
+                      onClick={() => toggleEngine('after-sales')}
+                      className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all"
+                    >
+                      查看更多功能
+                      <i data-lucide="chevron-down" className={`w-5 h-5 transition-transform ${expandedEngine === 'after-sales' ? 'rotate-180' : ''}`}></i>
+                    </button>
+                  </div>
+
+                  {/* 右侧视觉区 */}
+                  <div className="relative h-96 bg-gradient-to-br from-teal-100 to-cyan-100 rounded-2xl overflow-hidden group order-1 md:order-2 shadow-premium engine-visual">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-6xl mb-4">🎧</div>
+                        <p className="text-gray-600 px-6">客户反馈 → 智能处理</p>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                </div>
+
+                {/* 展开的工具列表 */}
+                {expandedEngine === 'after-sales' && (
+                  <div className="bg-white rounded-2xl p-8 shadow-lg animate-fadeIn">
+                    <div className="grid md:grid-cols-3 gap-6">
+                      {afterSalesTools.map((tool, idx) => (
+                        <div key={idx} className="tool-item p-6 bg-white border-2 border-slate-200 rounded-xl hover:border-teal-400 hover:shadow-2xl transition-all duration-300 cursor-pointer group flex gap-5 items-start transform hover:-translate-y-1 relative overflow-hidden" data-animate>
+                          <div className="absolute inset-0 bg-gradient-to-br from-teal-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                          
+                          <svg className="w-14 h-14 flex-shrink-0 text-teal-600 group-hover:text-teal-500 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <path d="M8 12h8M8 16h6" strokeLinecap="round"/>
+                            <path d="M12 3v5" strokeLinecap="round"/>
+                          </svg>
+                          <div className="flex-1 relative z-10">
+                            <h4 className="font-black text-xl text-slate-900 mb-3 group-hover:text-teal-600 transition-colors leading-tight">{tool.name}</h4>
+                            <p className="text-base font-light text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors">{tool.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* 引擎四:AI广告投放优化 */}
+              <div className="mb-24 engine-section" data-engine="ad-optimization">
+                <div className="grid md:grid-cols-2 gap-12 items-center mb-8">
+                  {/* 左侧视觉区 */}
+                  <div className="relative h-96 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-2xl overflow-hidden group shadow-premium engine-visual">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-6xl mb-4">📊</div>
+                        <p className="text-gray-600 px-6">100万广告费 → ROI从1:3到1:5</p>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+
+                  {/* 右侧文案区 */}
+                  <div>
+                    <h3 className="text-4xl font-black mb-6 flex items-center gap-4 leading-tight">
+                      <span className="w-14 h-14 bg-slate-900 border-2 border-indigo-500 rounded-xl flex items-center justify-center text-indigo-400 text-2xl flex-shrink-0">
+                        📊
+                      </span>
+                      广告投放，AI替你省67万
+                    </h3>
+                    <p className="text-xl font-light text-slate-700 mb-8 leading-relaxed">
+                      <span className="font-bold text-slate-900">AI自动测试50组素材，实时优化出价，预判ROI。</span>每月100万广告费的客户，ROI从1:3提升到1:5。<span className="text-indigo-600 font-bold">相当于每月多赚67万，6个月回本。</span>
+                    </p>
+                    
+                    <div className="space-y-4 mb-6">
+                      {[
+                        { title: '素材A/B测试自动化', desc: '1条素材生成50组变体，72小时跑出最佳组合' },
+                        { title: '智能出价实时优化', desc: 'AI每5分钟调整策略，日均优化2000次' },
+                        { title: '跨平台数据归因', desc: '打通全渠道，算清每个平台真实ROI' }
+                      ].map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0" />
+                          <div>
+                            <span className="font-semibold text-gray-800">{feature.title}:</span>
+                            <span className="text-gray-600"> {feature.desc}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <button 
+                      onClick={() => toggleEngine('ad-optimization')}
+                      className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all"
+                    >
+                      查看更多功能
+                      <i data-lucide="chevron-down" className={`w-5 h-5 transition-transform ${expandedEngine === 'ad-optimization' ? 'rotate-180' : ''}`}></i>
+                    </button>
+                  </div>
+                </div>
+
+                {/* 展开的工具列表 */}
+                {expandedEngine === 'ad-optimization' && (
+                  <div className="bg-white rounded-2xl p-8 shadow-lg animate-fadeIn">
+                    <div className="grid md:grid-cols-3 gap-6">
+                      {adOptimizationTools.map((tool, idx) => (
+                        <div key={idx} className="tool-item p-6 bg-white border-2 border-slate-200 rounded-xl hover:border-indigo-400 hover:shadow-2xl transition-all duration-300 cursor-pointer group flex gap-5 items-start transform hover:-translate-y-1 relative overflow-hidden" data-animate>
+                          <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                          
+                          <svg className="w-14 h-14 flex-shrink-0 text-indigo-600 group-hover:text-indigo-500 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <path d="M3 10h18M9 3v4M15 3v4" strokeLinecap="round"/>
+                            <path d="M9 14l2 2 4-4" strokeLinecap="round"/>
+                          </svg>
+                          <div className="flex-1 relative z-10">
+                            <h4 className="font-black text-xl text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors leading-tight">{tool.name}</h4>
+                            <p className="text-base font-light text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors">{tool.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </section>
+
+          {/* 企业级定制·AI中枢 */}
+          <section id="customSection" className="py-24 bg-black text-white relative overflow-hidden transition-all duration-700">
+            {/* 背景装饰 */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl" />
+            </div>
+
+            <div className="relative z-10 max-w-7xl mx-auto px-6">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                {/* 左栏 - 文案与服务流程 */}
+                <div>
+                  <h3 className="text-4xl font-bold mb-6">
+                    企业级定制开发
+                  </h3>
+                  
+                  <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+                    当标准化系统无法满足您独特的业务流程时，我们提供深度定制开发服务，将多个自动化系统打通整合，构建专属的数字化运营平台。
+                  </p>
+
+                  <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+                    不是简单的功能叠加，而是站在业务全局的角度，重新设计工作流程、打通数据孤岛、实现跨部门协同，让技术真正成为业务增长的核心驱动力。
+                  </p>
+
+                  {/* 服务流程 */}
+                  <div className="space-y-4 mb-8">
+                    {[
+                      { num: '01', title: '战略咨询与需求诊断', desc: '深度访谈,理解您的业务全貌与核心痛点。' },
+                      { num: '02', title: 'AI转型蓝图规划', desc: '共同设计分阶段、可落地的AI转型路线图。' },
+                      { num: '03', title: '数据治理与模型构建', desc: '清洗、整合企业数据,训练专属的AI模型。' },
+                      { num: '04', title: '系统集成与私有化部署', desc: '将AI系统无缝对接到您现有的ERP、CRM等系统。' },
+                      { num: '05', title: '持续优化与赋能培训', desc: '长期跟踪系统表现,持续迭代优化。' }
+                    ].map((step, idx) => (
+                      <div key={idx} className="process-step flex gap-4 items-start" data-animate style={{animationDelay: `${idx * 0.1}s`}}>
+                        <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center font-bold text-sm flex-shrink-0">
+                          {step.num}
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-1">{step.title}</h4>
+                          <p className="text-gray-400 text-sm">{step.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <button 
+                    onClick={() => scrollToSection('contact')}
+                    className="px-8 py-4 bg-black text-white rounded-full text-lg font-semibold hover:bg-neutral-800 transition-all"
+                  >
+                    预约首席架构师1对1诊断
+                  </button>
+                </div>
+
+                {/* 右栏 - 视觉与案例 */}
+                <div>
+                  {/* 中心大脑视觉 */}
+                  <div className="relative h-96 bg-gradient-to-br from-indigo-800 to-purple-800 rounded-2xl mb-8 overflow-hidden">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <i data-lucide="brain" className="w-32 h-32 mx-auto mb-4 text-cyan-400"></i>
+                        <p className="text-gray-300">AI中枢 · 多智能体协作系统</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 案例背书 */}
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                    <h4 className="text-xl font-bold mb-4">部分深度合作案例</h4>
+                    <div className="space-y-4">
+                      <div className="flex items-start gap-4">
+                        <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                          🏢
+                        </div>
+                        <div>
+                          <p className="text-sm text-gray-300">
+                            为某时尚集团打造AI设计系统,新品开发周期缩短<span className="font-bold text-cyan-400">40%</span>。
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-4">
+                        <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                          🌍
+                        </div>
+                        <div>
+                          <p className="text-sm text-gray-300">
+                            为某出海品牌构建全球社媒监控与响应系统,营销ROI提升<span className="font-bold text-cyan-400">25%</span>。
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 成功案例板块 - 全新设计 */}
+          <section id="cases" className="py-24 bg-gradient-to-b from-gray-50 to-white">
+            <div className="max-w-7xl mx-auto px-6">
+              {/* 标题 */}
+              <div className="text-center mb-16">
+                <div className="inline-block px-6 py-2 bg-slate-900 border-2 border-amber-500 rounded-full text-amber-400 font-bold text-sm mb-6 mono">
+                  💰 REAL CASES · VERIFIED DATA
+                </div>
+                <h2 className="text-5xl md:text-7xl font-black mb-6 leading-tight text-slate-900">
+                  看看别人怎么用AI赚钱
+                </h2>
+                <p className="text-xl font-light text-slate-600 max-w-2xl mx-auto">
+                  过去6个月真实客户，<span className="font-bold text-amber-600">数据可查，老板可约见</span>
+                </p>
+              </div>
+
+              {/* 案例卡片 - 新设计 */}
+              <div className="grid md:grid-cols-3 gap-8">
+                {showcaseCases.map((caseItem) => (
+                  <div 
+                    key={caseItem.id} 
+                    className="group bg-white rounded-2xl border-2 border-slate-200 overflow-hidden hover:border-amber-400 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2" 
+                    data-animate
+                  >
+                    {/* 图标和行业 */}
+                    <div className="bg-slate-900 p-6 relative overflow-hidden">
+                      {/* 装饰网格 */}
+                      <div className="absolute inset-0 opacity-10" style={{backgroundImage: 'linear-gradient(#f59e0b 1px, transparent 1px), linear-gradient(90deg, #f59e0b 1px, transparent 1px)', backgroundSize: '20px 20px'}}></div>
+                      <div className="flex items-center justify-between mb-4 relative z-10">
+                        <span className="text-5xl">{caseItem.icon}</span>
+                        <span className="px-3 py-1 bg-amber-500 rounded-full text-xs font-bold text-slate-900 mono">
+                          {caseItem.industry}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-black text-white relative z-10">{caseItem.company}</h3>
+                    </div>
+
+                    {/* 内容 */}
+                    <div className="p-6">
+                      {/* 痛点 */}
+                      <div className="mb-4">
+                        <div className="text-xs font-bold text-red-500 mb-1">❌ 痛点</div>
+                        <p className="text-sm text-gray-700">{caseItem.problem}</p>
+                      </div>
+
+                      {/* 解决方案 */}
+                      <div className="mb-4">
+                        <div className="text-xs font-bold text-blue-500 mb-1">💡 方案</div>
+                        <p className="text-sm font-semibold text-gray-800">{caseItem.solution}</p>
+                      </div>
+
+                      {/* 核心数据 */}
+                      <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-4 mb-4">
+                        <div className="text-4xl font-black bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent mb-1">
+                          {caseItem.metric}
+                        </div>
+                        <div className="text-xs font-bold text-gray-600">{caseItem.metricLabel}</div>
+                      </div>
+
+                      {/* 结果 */}
+                      <div className="mb-4">
+                        <div className="text-xs font-bold text-green-500 mb-1">✅ 效果</div>
+                        <p className="text-sm font-semibold text-gray-800">{caseItem.result}</p>
+                      </div>
+
+                      {/* 时间线 */}
+                      <div className="pt-4 border-t border-gray-200">
+                        <p className="text-xs text-indigo-600 font-bold">⏱️ {caseItem.timeline}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* 核心价值板块 */}
+          <section id="value" className="py-24 bg-white relative overflow-hidden">
+            {/* 背景装饰 */}
+            <div className="absolute inset-0 opacity-5" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, #0f172a 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
+            
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
+              {/* 标题 */}
+              <div className="text-center mb-16" data-animate>
+                <div className="inline-block px-6 py-2 bg-slate-900 border-2 border-amber-500 rounded-full text-amber-400 font-bold text-sm mb-6 mono">
+                  💡 WHY US
+                </div>
+                <h2 className="text-5xl md:text-7xl font-black mb-6 leading-tight text-slate-900">
+                  我们交付的不只是AI<br/>
+                  <span className="text-amber-600">更是可复制的业务增长</span>
+                </h2>
+              </div>
+              
+              {/* 核心理念 - 横向大卡片 */}
+              <div className="grid md:grid-cols-3 gap-8 mb-20">
+                {[
+                  {
+                    icon: '🎯',
+                    label: 'TECH DEPTH',
+                    title: '技术深度',
+                    subtitle: '算法科学家 + 资深工程师',
+                    desc: '我们不卖"AI皮肤"。团队来自字节、阿里、微软，专注计算机视觉和NLP前沿。',
+                    highlight: '每个模型都是为你的场景从零训练'
+                  },
+                  {
+                    icon: '💰',
+                    label: 'BUSINESS FIRST',
+                    title: '业务优先',
+                    subtitle: 'ROI才是唯一指标',
+                    desc: '不谈"AI赋能"，只谈降本增效的具体数字。上线前就算好回本周期。',
+                    highlight: '签合同时就锁死你的ROI承诺'
+                  },
+                  {
+                    icon: '⚡',
+                    label: 'FAST DEPLOY',
+                    title: '极速落地',
+                    subtitle: '2周上线，60天见效',
+                    desc: '无需改架构，无需招AI工程师。我们对接你现有的系统，员工无感知切换。',
+                    highlight: '第3周就能看到成本下降曲线'
+                  }
+                ].map((principle, idx) => (
+                  <div key={idx} className="group bg-white border-2 border-slate-200 rounded-2xl p-8 hover:border-amber-400 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 relative overflow-hidden" data-animate>
+                    {/* 背景装饰 */}
+                    <div className="absolute top-0 right-0 w-40 h-40 bg-amber-500 rounded-full blur-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    
+                    <div className="relative z-10">
+                      {/* 图标和标签 */}
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="text-6xl">{principle.icon}</div>
+                        <div className="text-xs font-bold text-amber-600 mono tracking-wider">{principle.label}</div>
+                      </div>
+                      
+                      {/* 标题 */}
+                      <h3 className="text-3xl font-black text-slate-900 mb-2 group-hover:text-amber-600 transition-colors">{principle.title}</h3>
+                      <p className="text-sm font-bold text-slate-500 mb-4">{principle.subtitle}</p>
+                      
+                      {/* 描述 */}
+                      <p className="text-base font-light text-slate-600 leading-relaxed mb-4">{principle.desc}</p>
+                      
+                      {/* 高亮信息 */}
+                      <div className="bg-slate-900 border-l-4 border-amber-500 rounded-r-lg p-4">
+                        <p className="text-sm font-bold text-amber-400">✨ {principle.highlight}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* 合作流程 */}
+              <div className="bg-slate-900 rounded-2xl p-12 relative overflow-hidden">
+                {/* 背景网格 */}
+                <div className="absolute inset-0 opacity-5" style={{backgroundImage: 'linear-gradient(#f59e0b 1px, transparent 1px), linear-gradient(90deg, #f59e0b 1px, transparent 1px)', backgroundSize: '60px 60px'}}></div>
+                
+                <div className="relative z-10">
+                  <h3 className="text-4xl font-black text-center mb-4 text-white">合作流程</h3>
+                  <p className="text-center text-amber-400 mb-12 text-lg font-bold mono">TRANSPARENT · FAST · PREDICTABLE</p>
+                
+                <div className="grid md:grid-cols-4 gap-8">
+                  {[
+                    {
+                      num: '01',
+                      icon: '🔍',
+                      title: '免费诊断',
+                      subtitle: '1小时算清ROI',
+                      desc: '专家1对1沟通，列出你的业务痛点，当场算出AI能省多少钱、多久回本。',
+                      time: '当天预约，当天出结果'
+                    },
+                    {
+                      num: '02',
+                      icon: '📋',
+                      title: '定制方案',
+                      subtitle: '锁死你的ROI',
+                      desc: '给你一份包含具体工具、实施路径、预期ROI的完整方案，写进合同。',
+                      time: '3天出方案，不满意免费改'
+                    },
+                    {
+                      num: '03',
+                      icon: '⚡',
+                      title: '极速上线',
+                      subtitle: '2周全部搞定',
+                      desc: '无需改你的系统架构，我们直接对接现有工作流，员工无感知切换。',
+                      time: '第3周就能看到成本降低'
+                    },
+                    {
+                      num: '04',
+                      icon: '📈',
+                      title: '持续优化',
+                      subtitle: '效果不好退钱',
+                      desc: '每月复盘数据，持续优化模型。达不到承诺的ROI？按比例退服务费。',
+                      time: '60天内未达标，退款走人'
+                    }
+                  ].map((step, idx) => (
+                    <div key={idx} className="relative group" data-animate>
+                      <div className="bg-slate-800 border-2 border-slate-700 rounded-2xl p-6 hover:border-amber-500 transition-all duration-300 transform hover:-translate-y-1 h-full">
+                        {/* 步骤号 */}
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className="w-12 h-12 bg-amber-500 text-slate-900 rounded-lg flex items-center justify-center text-xl font-black mono">
+                            {step.num}
+                          </div>
+                          <div className="text-4xl">{step.icon}</div>
+                        </div>
+                        
+                        {/* 标题 */}
+                        <h4 className="text-2xl font-black text-white mb-2 group-hover:text-amber-400 transition-colors">{step.title}</h4>
+                        <p className="text-sm font-bold text-amber-400 mb-4 mono">{step.subtitle}</p>
+                        
+                        {/* 描述 */}
+                        <p className="text-slate-300 text-sm leading-relaxed mb-4">{step.desc}</p>
+                        
+                        {/* 时间 */}
+                        <div className="border-t border-slate-700 pt-4">
+                          <p className="text-xs text-slate-400 mono">⏱️ {step.time}</p>
+                        </div>
+                      </div>
+                      
+                      {/* 连接箭头 */}
+                      {idx < 3 && (
+                        <div className="hidden md:block absolute top-12 left-[100%] w-8 z-20">
+                          <div className="text-amber-500 text-3xl">→</div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 最终CTA板块 */}
+          <section id="contact" className="py-24 bg-black text-white relative overflow-hidden">
+            {/* 背景装饰 */}
+            <div className="absolute inset-0 opacity-20">
+              <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-pink-500 rounded-full blur-3xl" />
+              <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl" />
+            </div>
+
+            <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+              <div className="inline-block px-6 py-2 bg-amber-500 rounded-full text-black font-bold text-sm mb-6">
+                ⚡ 限时福利
+              </div>
+              <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight">
+                不试试，怎么知道能省多少钱？
+              </h2>
+              
+              <p className="text-2xl text-gray-200 mb-10 leading-relaxed font-light">
+                <span className="font-bold text-white">免费帮你算一笔账：</span>用AI能省多少成本、赚多少钱、多久回本。<br/>
+                <span className="text-amber-400 font-bold">前50家企业，免费赠送价值2万元的ROI评估报告。</span>
+              </p>
+
+              {/* 联系表单 */}
+              <form onSubmit={handleFormSubmit} className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl p-8 mb-8">
+                <div className="space-y-4 mb-6">
+                  <div className="floating-label-input">
+                    <input
+                      type="text"
+                      placeholder=" "
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      className="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-lg text-white focus:outline-none focus:border-indigo-500 transition-all"
+                      required
+                    />
+                    <label>您的称呼 *</label>
+                  </div>
+                  
+                  <div className="floating-label-input">
+                    <input
+                      type="text"
+                      placeholder=" "
+                      value={formData.contact}
+                      onChange={(e) => setFormData({...formData, contact: e.target.value})}
+                      className="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-lg text-white focus:outline-none focus:border-indigo-500 transition-all"
+                      required
+                    />
+                    <label>您的联系方式 *</label>
+                  </div>
+                  
+                  <textarea
+                    placeholder="您的企业/需求简述"
+                    value={formData.description}
+                    onChange={(e) => setFormData({...formData, description: e.target.value})}
+                    rows="4"
+                    className="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-indigo-500 transition-all resize-none"
+                  />
+                </div>
+
+                <button 
+                  type="submit"
+                  id="submitBtn"
+                  className="w-full py-5 bg-gradient-to-r from-amber-500 to-orange-500 text-black rounded-full text-xl font-black hover:shadow-2xl transition-all hover:scale-105"
+                >
+                  🎁 免费领取价值2万元ROI报告
+                </button>
+
+                <p className="text-sm text-gray-400 mt-4">我们承诺对您的信息严格保密。</p>
+              </form>
+
+              {/* 备选联系方式 */}
+              <div className="flex flex-col sm:flex-row justify-center gap-8 text-sm">
+                <div className="flex items-center justify-center gap-2">
+                  <i data-lucide="phone" className="w-5 h-5"></i>
+                  <span>商务合作热线: 400-XXX-XXXX</span>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <i data-lucide="mail" className="w-5 h-5"></i>
+                  <span>business@yourcompany.com</span>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <i data-lucide="message-square" className="w-5 h-5"></i>
+                  <span>扫码添加企业微信顾问</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 页脚 */}
+          <footer className="bg-gray-900 text-gray-400 py-12">
+            <div className="max-w-7xl mx-auto px-6 text-center">
+              <div className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-4">
+                AI·战略引擎
+              </div>
+              <p className="text-sm mb-8">让AI成为您业务增长的战略引擎</p>
+              <div className="flex justify-center gap-8 text-sm">
+                <a href="#" className="hover:text-white transition-colors">关于我们</a>
+                <a href="#" className="hover:text-white transition-colors">隐私政策</a>
+                <a href="#" className="hover:text-white transition-colors">服务条款</a>
+                <a href="#" className="hover:text-white transition-colors">联系我们</a>
+              </div>
+              <p className="text-xs mt-8">© 2025 AI战略引擎. 保留所有权利.</p>
+            </div>
+          </footer>
+        </div>
+      );
+    };
+
+    // 渲染应用
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<AIServiceWebsite />);
+  </script>
+</body>
+</html>
