@@ -1,0 +1,419 @@
+@custom-variant dark (&:is(.dark *));
+
+/* Material Design 3.0 深度定制化主题 */
+:root {
+  --font-size: 16px;
+  
+  /* Material Design 配色系统 - 深蓝主题 */
+  --md-primary: #1565C0;
+  --md-primary-variant: #0D47A1;
+  --md-primary-light: #1976D2;
+  --md-secondary: #00897B;
+  --md-secondary-variant: #00695C;
+  --md-accent: #6366F1;
+  --md-accent-variant: #4F46E5;
+  
+  /* 表面和背景 */
+  --md-surface: #FFFFFF;
+  --md-surface-variant: #F5F7FA;
+  --md-surface-container: #FAFBFC;
+  --md-surface-container-high: #F0F2F5;
+  --md-background: #FAFBFC;
+  --md-on-surface: #1A1C1E;
+  --md-on-surface-variant: #43474E;
+  --md-outline: #E1E4E8;
+  --md-outline-variant: #C9CDD2;
+  
+  /* AI主题色 - 紫色渐变 */
+  --ai-primary: #6366F1;
+  --ai-secondary: #8B5CF6;
+  --ai-gradient-start: #6366F1;
+  --ai-gradient-end: #8B5CF6;
+  
+  /* 语义化颜色 */
+  --md-success: #00897B;
+  --md-warning: #F57C00;
+  --md-error: #C62828;
+  --md-info: #1976D2;
+  
+  /* 文本颜色 */
+  --md-text-primary: rgba(0, 0, 0, 0.87);
+  --md-text-secondary: rgba(0, 0, 0, 0.60);
+  --md-text-disabled: rgba(0, 0, 0, 0.38);
+  --md-text-hint: rgba(0, 0, 0, 0.38);
+  
+  /* Material Design Elevation Shadows */
+  --md-elevation-0: none;
+  --md-elevation-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  --md-elevation-2: 0 3px 6px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.12);
+  --md-elevation-3: 0 10px 20px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.10);
+  --md-elevation-4: 0 15px 25px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.05);
+  --md-elevation-5: 0 20px 40px rgba(0,0,0,0.2);
+  
+  /* Tailwind兼容变量 */
+  --background: var(--md-background);
+  --foreground: var(--md-text-primary);
+  --card: var(--md-surface);
+  --card-foreground: var(--md-text-primary);
+  --popover: var(--md-surface);
+  --popover-foreground: var(--md-text-primary);
+  --primary: var(--md-primary);
+  --primary-foreground: #ffffff;
+  --secondary: var(--md-surface-variant);
+  --secondary-foreground: var(--md-text-primary);
+  --muted: var(--md-surface-container);
+  --muted-foreground: var(--md-text-secondary);
+  --accent: var(--md-accent);
+  --accent-foreground: #ffffff;
+  --destructive: var(--md-error);
+  --destructive-foreground: #ffffff;
+  --border: var(--md-outline);
+  --input: var(--md-outline);
+  --input-background: var(--md-surface-variant);
+  --ring: var(--md-primary);
+  
+  /* 圆角 - Material Design 更柔和 */
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  
+  /* 过渡动画 - Material Motion */
+  --motion-easing-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --motion-easing-decelerate: cubic-bezier(0.0, 0.0, 0.2, 1);
+  --motion-easing-accelerate: cubic-bezier(0.4, 0.0, 1, 1);
+  --motion-duration-short: 150ms;
+  --motion-duration-medium: 250ms;
+  --motion-duration-long: 350ms;
+  
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  
+  /* Charts */
+  --chart-1: var(--md-primary);
+  --chart-2: var(--md-secondary);
+  --chart-3: var(--md-accent);
+  --chart-4: var(--md-warning);
+  --chart-5: var(--md-success);
+}
+
+.dark {
+  /* 深色模式 Material Design */
+  --md-surface: #1A1C1E;
+  --md-surface-variant: #2B2D30;
+  --md-surface-container: #202124;
+  --md-surface-container-high: #2C2E31;
+  --md-background: #121212;
+  --md-on-surface: #E3E3E3;
+  --md-on-surface-variant: #C9C9C9;
+  --md-outline: #3C3F41;
+  --md-outline-variant: #2B2D30;
+  
+  --md-text-primary: rgba(255, 255, 255, 0.87);
+  --md-text-secondary: rgba(255, 255, 255, 0.60);
+  --md-text-disabled: rgba(255, 255, 255, 0.38);
+  
+  --background: var(--md-background);
+  --foreground: var(--md-text-primary);
+  --card: var(--md-surface);
+  --card-foreground: var(--md-text-primary);
+  --border: var(--md-outline);
+  --input: var(--md-outline);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Roboto', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/**
+ * Material Design Elevation Classes
+ */
+@layer utilities {
+  .elevation-0 {
+    box-shadow: var(--md-elevation-0);
+  }
+  
+  .elevation-1 {
+    box-shadow: var(--md-elevation-1);
+    transition: box-shadow var(--motion-duration-short) var(--motion-easing-standard);
+  }
+  
+  .elevation-2 {
+    box-shadow: var(--md-elevation-2);
+    transition: box-shadow var(--motion-duration-short) var(--motion-easing-standard);
+  }
+  
+  .elevation-3 {
+    box-shadow: var(--md-elevation-3);
+    transition: box-shadow var(--motion-duration-medium) var(--motion-easing-standard);
+  }
+  
+  .elevation-4 {
+    box-shadow: var(--md-elevation-4);
+    transition: box-shadow var(--motion-duration-medium) var(--motion-easing-standard);
+  }
+  
+  .elevation-5 {
+    box-shadow: var(--md-elevation-5);
+    transition: box-shadow var(--motion-duration-long) var(--motion-easing-standard);
+  }
+  
+  .elevation-hover:hover {
+    box-shadow: var(--md-elevation-4);
+  }
+  
+  /* AI主题渐变 */
+  .ai-gradient {
+    background: linear-gradient(135deg, var(--ai-gradient-start) 0%, var(--ai-gradient-end) 100%);
+  }
+  
+  .ai-gradient-text {
+    background: linear-gradient(135deg, var(--ai-gradient-start) 0%, var(--ai-gradient-end) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* AI光晕效果 */
+  .ai-glow {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  }
+  
+  .ai-glow-strong {
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.5), 0 0 60px rgba(139, 92, 246, 0.3);
+  }
+  
+  /* Material Design 动画 */
+  .md-transition {
+    transition: all var(--motion-duration-medium) var(--motion-easing-standard);
+  }
+  
+  .md-transition-fast {
+    transition: all var(--motion-duration-short) var(--motion-easing-standard);
+  }
+  
+  /* 玻璃态效果 */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .glass-effect-dark {
+    background: rgba(26, 28, 30, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  /* 表面容器变体 */
+  .surface-container {
+    background: var(--md-surface-container);
+  }
+  
+  .surface-container-high {
+    background: var(--md-surface-container-high);
+  }
+  
+  .surface-variant {
+    background: var(--md-surface-variant);
+  }
+  
+  /* AI脉搏动画 */
+  @keyframes ai-pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+  
+  .ai-pulse {
+    animation: ai-pulse 2s ease-in-out infinite;
+  }
+  
+  /* 数据流动画 */
+  @keyframes data-flow {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+  
+  .data-flow {
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(99, 102, 241, 0.1) 25%, 
+      rgba(99, 102, 241, 0.2) 50%, 
+      rgba(99, 102, 241, 0.1) 75%, 
+      transparent 100%);
+    background-size: 200% 100%;
+    animation: data-flow 3s linear infinite;
+  }
+  
+  /* Ripple Effect容器 */
+  .ripple-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* 悬浮卡片效果 */
+  .hover-lift {
+    transition: transform var(--motion-duration-medium) var(--motion-easing-standard),
+                box-shadow var(--motion-duration-medium) var(--motion-easing-standard);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--md-elevation-4);
+  }
+}
+
+/**
+ * Base typography
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.01562em;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 300;
+      line-height: 1.3;
+      letter-spacing: -0.00833em;
+    }
+
+    h3 {
+      font-size: 1.75rem;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: 0em;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: 0.00735em;
+    }
+
+    h5 {
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0em;
+    }
+
+    h6 {
+      font-size: 1.125rem;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0.0125em;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0.00938em;
+    }
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0.00714em;
+    }
+
+    button {
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.75;
+      letter-spacing: 0.02857em;
+      text-transform: uppercase;
+    }
+
+    input {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0.00938em;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* 滚动条样式 - Material Design */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--md-surface-variant);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--md-outline-variant);
+  border-radius: 4px;
+  transition: background var(--motion-duration-short);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--md-on-surface-variant);
+}

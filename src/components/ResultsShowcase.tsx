@@ -52,7 +52,7 @@ const ResultsShowcase = () => {
       key: 'clients',
       number: '120+',
       finalValue: 120,
-      title: '120+ 领跑企业',
+      title: '领跑企业',
       subtitle: 'Industry Leaders',
       description: '覆盖政府、500强、中小企业等15+行业领域',
       iconPath: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
@@ -64,7 +64,7 @@ const ResultsShowcase = () => {
       key: 'savings',
       number: '0',
       finalValue: 0,
-      title: '¥2.9亿+ 累计节省',
+      title: '累计节省成本',
       subtitle: 'Cost Saved',
       description: '平均降本增效 65%，为客户持续创造价值',
       iconPath: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
@@ -77,7 +77,7 @@ const ResultsShowcase = () => {
       key: 'efficiency',
       number: '73%',
       finalValue: 73,
-      title: '73% 效率革命',
+      title: '效率提升',
       subtitle: 'Efficiency Boost',
       description: '业务流程智能化，人力成本显著降低',
       iconPath: 'M13 10V3L4 14h7v7l9-11h-7z',
@@ -89,7 +89,7 @@ const ResultsShowcase = () => {
       key: 'satisfaction',
       number: '96%',
       finalValue: 96,
-      title: '96% 续约铁粉',
+      title: '客户续约率',
       subtitle: 'Retention Rate',
       description: '4.8/5.0 综合评分 • 85% 续约合作率',
       iconPath: 'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z',
@@ -99,14 +99,14 @@ const ResultsShowcase = () => {
     }
   ];
 
-  // 客户案例 - 扩充到8个，制造"评价很多"的感觉
+  // 客户案例 - 精简内容，突出数据冲击力
   const testimonials = [
     {
       name: '王建国',
-      title: 'XX跨境电商 CEO',
+      title: '跨境电商 CEO',
       company: '年营收2000万',
       avatar: '/img/头像1.png',
-      content: '"之前我根本不信AI能帮电商干啥。直到看到数据：设计成本 ￥45,000/月 → ￥8,000/月（-82%）；产出效率 60张/月 → 500张/月（+733%）；转化率直接提升40%。3个月回本，之后全是纯利润。现在我最担心的是竞争对手也学会了。"',
+      content: '设计成本从4.5万降到8千，产出从60张涨到500张。3个月回本，之后全是利润。',
       metrics: [
         { label: '设计成本', value: '-82%' },
         { label: '产出效率', value: '+733%' },
@@ -115,34 +115,34 @@ const ResultsShowcase = () => {
     },
     {
       name: '李明',
-      title: 'XX智能硬件 运营总监',
-      company: '年营收5000万 | 团队80人',
+      title: '智能硬件 运营总监',
+      company: '年营收5000万 · 团队80人',
       avatar: '/img/头像2.png',
-      content: '"制造业老板都说AI落地难。炬象用5个场景证明不是：客服 3人 → 1人+AI，响应速度×5；库存预测 准确率+60%，呆滞库存直接腰斩；质检 AI识别率80%+，质检工从5人→2人。最神奇的是员工态度180度转变，现在抢着用AI。人效提升60%，运营成本降40%。"',
+      content: '客服3人变1人+AI，库存预测准确率+60%，质检工从5人减到2人。人效提升60%，成本降40%。',
       metrics: [
         { label: '人效提升', value: '+60%' },
         { label: '运营成本', value: '-40%' },
-        { label: '员工满意度', value: '+85%' }
+        { label: '响应速度', value: '×5' }
       ]
     },
     {
       name: '陈娜',
-      title: 'XX AI应用公司 创始人',
-      company: '刚拿到天使轮融资',
+      title: 'AI应用公司 创始人',
+      company: '天使轮融资',
       avatar: '/img/头像3.png',
-      content: '我自己就是做AI产品的，但炬象让我看到"AI咨询"的专业性。他们懂中小企业痛点，给的方案不炫技，能立刻上手、3个月见效。我们现在也在学他们的方法论服务客户。',
+      content: '我自己做AI产品，但炬象的方法论让我服气。方案不炫技，能落地，3个月见效。',
       metrics: [
         { label: '同行认可', value: '✓' },
-        { label: '方法论可复用', value: '✓' },
-        { label: '落地性强', value: '✓' }
+        { label: '方法论', value: '可复用' },
+        { label: '落地周期', value: '3个月' }
       ]
     },
     {
       name: '张伟',
-      title: 'XX服装外贸 总经理',
-      company: '年营收3500万 | 团队45人',
+      title: '服装外贸 总经理',
+      company: '年营收3500万 · 团队45人',
       avatar: '/img/头像4.png',
-      content: '之前跟进客户全靠Excel，经常漏单。现在用AI智能CRM，自动提醒跟进、预测成交率、生成邮件模板。销售团队效率提升70%，客户满意度从78%涨到92%，复购率翻倍。',
+      content: '告别Excel跟单，AI自动提醒跟进、预测成交率。销售效率+70%，复购率翻倍。',
       metrics: [
         { label: '销售效率', value: '+70%' },
         { label: '客户满意度', value: '+18%' },
@@ -151,10 +151,10 @@ const ResultsShowcase = () => {
     },
     {
       name: '刘芳',
-      title: 'XX教育科技 创始人',
+      title: '教育科技 创始人',
       company: '在线教育平台',
       avatar: '/img/头像5.png',
-      content: '用AI做个性化学习路径推荐后，学员完课率从35%飙升到78%。AI批改作业替代了2个老师的工作量，每月省4万。最关键是续费率提升了60%，用户真实感受到了价值。',
+      content: 'AI个性化推荐+自动批改，完课率从35%飙到78%，每月省4万人力成本。',
       metrics: [
         { label: '完课率', value: '+123%' },
         { label: '人力成本', value: '-50%' },
@@ -163,10 +163,10 @@ const ResultsShowcase = () => {
     },
     {
       name: '赵强',
-      title: 'XX机械制造 副总',
-      company: '年营收8000万 | 团队200人',
+      title: '机械制造 副总',
+      company: '年营收8000万 · 团队200人',
       avatar: '/img/头像1.png',
-      content: '设备维护全靠老师傅经验，成本高还不准。现在AI预测性维护系统提前3天预警故障，停机时间减少80%，维护成本降低55%。投资50万，半年就回本了。',
+      content: 'AI提前3天预警设备故障，停机时间-80%，维护成本-55%。投资50万，半年回本。',
       metrics: [
         { label: '停机时间', value: '-80%' },
         { label: '维护成本', value: '-55%' },
@@ -175,26 +175,74 @@ const ResultsShowcase = () => {
     },
     {
       name: '孙丽',
-      title: 'XX美妆电商 运营负责人',
+      title: '美妆电商 运营负责人',
       company: '年GMV 1.2亿',
       avatar: '/img/头像2.png',
-      content: '直播间用AI数字人做夜间值守，24小时不间断带货。白天真人主播，晚上AI接棒，GMV增长40%，人力成本只增加了10%。客户根本分不出来是不是真人。',
+      content: 'AI数字人夜间值守，24小时不间断带货。GMV+40%，人力成本只多了10%。',
       metrics: [
         { label: 'GMV增长', value: '+40%' },
-        { label: '运营时长', value: '+100%' },
+        { label: '运营时长', value: '24h' },
         { label: '人力成本', value: '+10%' }
       ]
     },
     {
       name: '周杰',
-      title: 'XX供应链公司 CTO',
-      company: '年营收1.5亿 | B端服务',
+      title: '供应链公司 CTO',
+      company: '年营收1.5亿 · B端服务',
       avatar: '/img/头像3.png',
-      content: '"供应链最怕两件事：库存积压和缺货。AI上线2个月：库存周转 45天 → 28天（+38%）；缺货率 12% → 3%（-75%）；流动资金 每年节省 ￥600万。这不是优化，这是重构。董事会现在逼着我把AI铺到所有业务线。"',
+      content: '库存周转45天→28天，缺货率12%→3%，每年省600万。董事会逼着全业务线铺开。',
       metrics: [
         { label: '周转率', value: '+38%' },
         { label: '缺货率', value: '-75%' },
         { label: '年节省', value: '¥600万' }
+      ]
+    },
+    {
+      name: '黄磊',
+      title: '餐饮连锁 运营VP',
+      company: '全国120家门店',
+      avatar: '/img/头像4.png',
+      content: 'AI排班+智能订货，人力成本降30%，食材损耗减半。单店利润提升25%。',
+      metrics: [
+        { label: '人力成本', value: '-30%' },
+        { label: '食材损耗', value: '-50%' },
+        { label: '单店利润', value: '+25%' }
+      ]
+    },
+    {
+      name: '吴敏',
+      title: '医疗器械 市场总监',
+      company: '年营收6000万',
+      avatar: '/img/头像5.png',
+      content: 'AI生成产品文案和投放素材，内容产出提升8倍，获客成本降了一半。',
+      metrics: [
+        { label: '内容产出', value: '×8' },
+        { label: '获客成本', value: '-50%' },
+        { label: '线索量', value: '+120%' }
+      ]
+    },
+    {
+      name: '郑浩',
+      title: '物流科技 CEO',
+      company: '年营收1亿 · 团队150人',
+      avatar: '/img/头像1.png',
+      content: 'AI调度优化路线，配送效率+45%，油费省了20%。客户投诉率降到历史最低。',
+      metrics: [
+        { label: '配送效率', value: '+45%' },
+        { label: '油费节省', value: '-20%' },
+        { label: '投诉率', value: '历史最低' }
+      ]
+    },
+    {
+      name: '林静',
+      title: '金融科技 风控总监',
+      company: '持牌消费金融',
+      avatar: '/img/头像2.png',
+      content: 'AI风控模型上线后，坏账率从2.8%降到1.5%，审批效率提升3倍。',
+      metrics: [
+        { label: '坏账率', value: '-46%' },
+        { label: '审批效率', value: '×3' },
+        { label: '通过率', value: '+15%' }
       ]
     }
   ];
@@ -310,14 +358,22 @@ const ResultsShowcase = () => {
     if (isTestimonialPaused) return;
 
     let animationFrameId: number;
-    const scrollSpeed = 0.8; // 每帧移动的像素数，调整这个值可以改变滚动速度
+    let lastTime = performance.now();
+    const scrollSpeed = 0.5; // 降低速度，更流畅
+    const cardHeight = 220; // 精简后的卡片高度
+    const totalHeight = cardHeight * testimonials.length;
 
-    const animate = () => {
+    const animate = (currentTime: number) => {
+      const deltaTime = currentTime - lastTime;
+      lastTime = currentTime;
+      
+      // 基于时间的平滑滚动，避免卡顿
+      const movement = scrollSpeed * (deltaTime / 16.67); // 基于60fps标准化
+      
       setScrollOffset((prev) => {
-        const newOffset = prev + scrollSpeed;
-        // 当滚动超过一个卡片高度（约280px）时，重置
+        const newOffset = prev + movement;
         // 使用模运算实现无限循环
-        return newOffset % 280;
+        return newOffset % totalHeight;
       });
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -329,7 +385,7 @@ const ResultsShowcase = () => {
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [isTestimonialPaused]);
+  }, [isTestimonialPaused, testimonials.length]);
 
   return (
     <>
@@ -668,10 +724,10 @@ const ResultsShowcase = () => {
 
           {/* 第二层：案例 + 照片 */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
-            {/* 左侧：3个客户案例 - 占2/3宽度 */}
+            {/* 左侧：客户案例 - 占2/3宽度 */}
             <div 
-              className="lg:col-span-2 relative"
-              style={{ height: 'auto', minHeight: '400px' }}
+              className="lg:col-span-2 relative h-full flex flex-col"
+              style={{ minHeight: '620px' }}
               onMouseEnter={() => setIsTestimonialPaused(true)}
               onMouseLeave={() => setIsTestimonialPaused(false)}
             >
@@ -708,7 +764,7 @@ const ResultsShowcase = () => {
               </div>
 
               {/* 卡片容器 - 连续滚动 */}
-              <div className="relative overflow-hidden" style={{ height: '400px', maxHeight: '528px' }}>
+              <div className="relative overflow-hidden flex-1" style={{ height: '560px' }}>
                 {/* 顶部渐隐遮罩 */}
                 <div 
                   className="absolute top-0 left-0 right-0 h-12 md:h-16 z-20 pointer-events-none"
@@ -740,8 +796,8 @@ const ResultsShowcase = () => {
                         key={`testimonial-${index}`}
                         className="bg-white rounded-xl md:rounded-2xl border border-orange-100 hover:border-orange-300 mb-3 md:mb-4"
                         style={{
-                          padding: '1.25rem',
-                          minHeight: '240px',
+                          padding: '1rem 1.25rem',
+                          minHeight: '200px',
                           boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
                           transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
                         }}
@@ -839,7 +895,7 @@ const ResultsShowcase = () => {
             </div>
 
             {/* 右侧：活动时间轴 - 占1/3宽度 */}
-            <div className="relative flex flex-col" style={{ height: '594px' }}>
+            <div className="relative flex flex-col" style={{ height: '620px' }}>
               {/* 标题 */}
               <div className="pb-4 border-b border-gray-100 flex-shrink-0">
                 <div className="flex items-center gap-2 mb-1">
@@ -904,40 +960,62 @@ const ResultsShowcase = () => {
                           {photo.date}
                         </div>
 
-                        {/* 时间点 - 不同状态 */}
+                        {/* 时间点 - 不同状态，带呼吸光晕 */}
                         <div 
                           className="absolute left-[68px] top-3 transform -translate-x-1/2 z-10 transition-all duration-300"
                           style={{
-                            width: isFirst ? '14px' : '10px',
-                            height: isFirst ? '14px' : '10px'
+                            width: isFirst ? '16px' : '12px',
+                            height: isFirst ? '16px' : '12px'
                           }}
                         >
                           {isFirst ? (
-                            // 最新时间点 - 带脉动效果
+                            // 最新时间点 - 带呼吸光晕效果
                             <>
+                              {/* 外层光晕 */}
+                              <div 
+                                className="absolute rounded-full animate-pulse"
+                                style={{
+                                  inset: '-8px',
+                                  background: 'radial-gradient(circle, rgba(217,119,87,0.3) 0%, transparent 70%)'
+                                }}
+                              ></div>
+                              {/* 脉动圈 */}
                               <div 
                                 className="absolute inset-0 rounded-full animate-ping"
                                 style={{
-                                  background: 'rgba(217, 119, 87, 0.4)'
+                                  background: 'rgba(217, 119, 87, 0.5)'
                                 }}
                               ></div>
+                              {/* 核心点 */}
                               <div 
                                 className="absolute inset-0 rounded-full"
                                 style={{
                                   background: 'linear-gradient(135deg, #FB923C 0%, #EA580C 100%)',
-                                  boxShadow: '0 0 0 3px rgba(217, 119, 87, 0.15), 0 2px 8px rgba(217, 119, 87, 0.3)'
+                                  boxShadow: '0 0 12px rgba(217, 119, 87, 0.5), 0 0 4px rgba(217, 119, 87, 0.8)'
                                 }}
                               ></div>
                             </>
                           ) : (
-                            // 历史时间点
-                            <div 
-                              className="absolute inset-0 rounded-full border-2 bg-white group-hover:border-orange-400 transition-colors"
-                              style={{
-                                borderColor: '#E5E7EB',
-                                boxShadow: '0 0 0 2px rgba(217, 119, 87, 0.08)'
-                              }}
-                            ></div>
+                            // 历史时间点 - 带hover光晕
+                            <>
+                              <div 
+                                className="absolute rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                style={{
+                                  inset: '-4px',
+                                  background: 'radial-gradient(circle, rgba(217,119,87,0.2) 0%, transparent 70%)'
+                                }}
+                              ></div>
+                              <div 
+                                className="absolute inset-0 rounded-full bg-white group-hover:bg-orange-50 transition-all duration-300"
+                                style={{
+                                  border: '2px solid #E5E7EB',
+                                  boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+                                }}
+                              ></div>
+                              <div 
+                                className="absolute inset-[3px] rounded-full bg-gray-300 group-hover:bg-orange-400 transition-colors duration-300"
+                              ></div>
+                            </>
                           )}
                         </div>
 
@@ -953,26 +1031,32 @@ const ResultsShowcase = () => {
                             }}
                           ></div>
 
-                          {/* 卡片 */}
+                          {/* 卡片 - 现代化设计 */}
                           <div 
-                            className="bg-white rounded-xl border overflow-hidden group-hover:border-orange-300 group-hover:shadow-lg transition-all duration-300"
+                            className="bg-white rounded-xl overflow-hidden group-hover:shadow-xl transition-all duration-300"
                             style={{
-                              borderColor: isFirst ? 'rgba(217, 119, 87, 0.2)' : 'rgba(229, 231, 235, 1)',
                               boxShadow: isFirst 
-                                ? '0 4px 12px rgba(217, 119, 87, 0.08)' 
-                                : '0 2px 6px rgba(0, 0, 0, 0.04)'
+                                ? '0 8px 24px rgba(217, 119, 87, 0.15), 0 4px 8px rgba(0,0,0,0.05)' 
+                                : '0 4px 12px rgba(0, 0, 0, 0.08)'
                             }}
                           >
-                            {/* 图片 */}
+                            {/* 图片 - 带 Hover 放大效果 */}
                             <div 
                               className="w-full relative overflow-hidden"
-                              style={{ height: '90px' }}
+                              style={{ height: '100px' }}
                             >
                               <img 
                                 src={photo.image} 
                                 alt={photo.title}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                               />
+                              {/* 图片上的渐变遮罩 */}
+                              <div 
+                                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                style={{
+                                  background: 'linear-gradient(to top, rgba(0,0,0,0.1) 0%, transparent 50%)'
+                                }}
+                              ></div>
                             </div>
                             {/* 文字 */}
                             <div className="p-3">

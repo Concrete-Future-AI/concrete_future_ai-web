@@ -1,61 +1,74 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+interface ServiceItem {
+  number: string;
+  title: string;
+  description: string;
+  items: string[];
+  image: string;
+  imagePosition: string;
+  ctaText?: string;
+  ctaLink?: string;
+  itemCtas?: { text: string; link: string }[];
+}
+
 const ServiceMatrix = () => {
-  const services = [
+  const services: ServiceItem[] = [
     {
       number: '01',
-      title: '全员效能倍增引擎',
-      description: '这不是工具，而是你未来的『超级员工』。让AI接管重复劳动，让人才回归创造价值。',
+      title: '企业AI化转型 · 9大场景落地',
+      description: '从销售到HR，从客服到供应链——我们帮你把AI真正用起来，90天交付见效。',
       items: [
-        '智能CRM · 转化率飙升 40%', 
-        '离职预警 · 准确率 85%',
-        '内容工场 · 产能提升 700%',
-        '全天候客服 · 满意度 92%',
+        '销售智能助手 · 转化率+40%', 
+        'HR离职预警 · 准确率85%',
+        '营销内容生成 · 产能提升7倍',
+        '24小时AI客服 · 满意度92%',
       ],
       image: '/img/1.avif',
       imagePosition: 'left',
-      ctaText: '查看降本数据',
-      ctaLink: '#'
+      ctaText: '查看9大场景',
+      ctaLink: '/enterprise-ai'
     },
     {
       number: '02', 
-      title: '24小时不眠的业绩收割机',
-      description: '外贸老板的增长黑客：我们不教你怎么用AI，我们直接用AI帮你把钱赚回来。库存周转快一倍，流动资金省百万。',
+      title: '电商AI增长引擎 · 7大核心能力',
+      description: '从直播到投放，从选品到内容——AI替你7×24小时跑业绩，人工成本降90%。',
       items: [
-        '增长咨询：找到最赚钱的切入点',
-        '无感部署：现有业务零中断',
-        '结果对赌：只为增长指标负责'
+        'AI咨询培训 · 找到最适合的切入点',
+        '落地开发 · 系统部署业务零中断',
+        '效果交付 · 内容代制作/智能体代运营'
       ],
       itemCtas: [
         { text: '了解详情', link: '/ai-transformation' },
         { text: '了解详情', link: '/ai-implementation' },
-        { text: '了解详情', link: '#' }
+        { text: '了解详情', link: '/ai-implementation' }
       ],
       image: '/img/2.png',
       imagePosition: 'right'
     },
     {
       number: '03',
-      title: '懂行业的AI，才是真AI', 
-      description: '拒绝通用模版。我们在零售、金融、制造等7+行业摸爬滚打，把踩过的坑填成你的护城河。',
+      title: '行业AI解决方案 · 7+垂直领域', 
+      description: '零售、金融、制造、医疗——每个行业都有专属AI方案，不套模板，只解决你的真问题。',
       items: [
-        '覆盖零售、金融、医疗、教育等7+行业',
-        '业务流程RPA智能化改造'
+        '零售行业 · 智能选品+库存优化',
+        '金融行业 · 风控+合规自动化',
+        '制造行业 · 质检+供应链AI'
       ],
       image: '/img/3.svg',
       imagePosition: 'left',
-      ctaText: '获取 [你的行业] 解决方案',
+      ctaText: '获取行业方案',
       ctaLink: '#'
     },
     {
       number: '04',
-      title: '让硬件拥有『灵魂』',
-      description: '从冷冰冰的设备，变成会说话、懂人心的智能伙伴。产品溢价提升200%，差异化竞争的终极武器。',
+      title: 'AI+硬件定制 · 让产品会说话',
+      description: '把AI装进你的产品里——从玩具到终端，从展馆到礼品，产品溢价提升200%。',
       items: [
-        '互动玩具、IP手办、企业吉祥物定制',
-        '智能终端、展馆导览、教育机器人',
-        'AI音箱、耳机、磁悬浮灯泡等礼品'
+        'IP衍生品 · 互动玩具/手办/吉祥物',
+        '智能终端 · 展馆导览/教育机器人',
+        '企业礼品 · AI音箱/耳机/创意硬件'
       ],
       image: '/img/4.avif',
       imagePosition: 'right',
@@ -64,7 +77,7 @@ const ServiceMatrix = () => {
     }
   ];
 
-  const ServiceRow = ({ service }: { service: typeof services[0] }) => {
+  const ServiceRow = ({ service }: { service: ServiceItem }) => {
     const isImageLeft = service.imagePosition === 'left';
     
     return (
@@ -194,11 +207,11 @@ const ServiceMatrix = () => {
                         service.itemCtas[index].link.startsWith('/') ? (
                           <Link
                             to={service.itemCtas[index].link}
-                            className="text-label inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-gray-700 hover:border-orange-400 hover:text-orange-600 hover:bg-orange-50 transition-all duration-300 whitespace-nowrap"
+                            className="text-label inline-flex items-center gap-2 px-4 py-2 bg-white border-2 border-gray-200 rounded-xl text-gray-900 text-sm hover:border-orange-500 hover:text-orange-600 hover:bg-gradient-to-r hover:from-orange-50 hover:to-orange-50/50 transition-all duration-300 shadow-sm hover:shadow-md whitespace-nowrap"
                           >
                             <span>{service.itemCtas[index].text}</span>
                             <svg 
-                              className="w-3 h-3" 
+                              className="w-3.5 h-3.5" 
                               fill="none" 
                               viewBox="0 0 24 24" 
                               stroke="currentColor"
@@ -214,11 +227,11 @@ const ServiceMatrix = () => {
                         ) : (
                           <a
                             href={service.itemCtas[index].link}
-                            className="text-label inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-gray-700 hover:border-orange-400 hover:text-orange-600 hover:bg-orange-50 transition-all duration-300 whitespace-nowrap"
+                            className="text-label inline-flex items-center gap-2 px-4 py-2 bg-white border-2 border-gray-200 rounded-xl text-gray-900 text-sm hover:border-orange-500 hover:text-orange-600 hover:bg-gradient-to-r hover:from-orange-50 hover:to-orange-50/50 transition-all duration-300 shadow-sm hover:shadow-md whitespace-nowrap"
                           >
                             <span>{service.itemCtas[index].text}</span>
                             <svg 
-                              className="w-3 h-3" 
+                              className="w-3.5 h-3.5" 
                               fill="none" 
                               viewBox="0 0 24 24" 
                               stroke="currentColor"

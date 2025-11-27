@@ -392,20 +392,20 @@ const ContactForm = () => {
             </div>
 
             {/* Service Features */}
-            <div className="space-y-2 md:space-y-3">
-              <div className="bg-white rounded-lg p-3 md:p-4 border border-gray-100">
-                <div className="flex items-start space-x-2 md:space-x-3">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-1 flex-shrink-0"></div>
+            <div className="space-y-3 md:space-y-4">
+              <div className="bg-white rounded-xl p-4 md:p-5 border border-gray-100">
+                <div className="flex items-start space-x-3 md:space-x-4">
+                  <div className="w-3 h-3 bg-orange-600 rounded-full mt-1.5 flex-shrink-0"></div>
                   <div className="flex-1 min-w-0">
                     <h4 
-                      className="text-black mb-1 text-xs md:text-sm"
+                      className="text-black mb-1.5 text-base md:text-lg"
                       style={{
                         fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
-                        fontWeight: '600'
+                        fontWeight: '700'
                       }}
                     >定制方案</h4>
                     <p 
-                      className="text-xs text-gray-600"
+                      className="text-sm md:text-base text-gray-600"
                       style={{
                         fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
                         fontWeight: '400'
@@ -415,19 +415,19 @@ const ContactForm = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg p-3 md:p-4 border border-gray-100">
-                <div className="flex items-start space-x-2 md:space-x-3">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-1 flex-shrink-0"></div>
+              <div className="bg-white rounded-xl p-4 md:p-5 border border-gray-100">
+                <div className="flex items-start space-x-3 md:space-x-4">
+                  <div className="w-3 h-3 bg-orange-600 rounded-full mt-1.5 flex-shrink-0"></div>
                   <div className="flex-1 min-w-0">
                     <h4 
-                      className="text-black mb-1 text-xs md:text-sm"
+                      className="text-black mb-1.5 text-base md:text-lg"
                       style={{
                         fontFamily: "'Space Grotesk', 'Noto Sans SC', sans-serif",
-                        fontWeight: '600'
+                        fontWeight: '700'
                       }}
                     >效果保障</h4>
                     <p 
-                      className="text-xs text-gray-600"
+                      className="text-sm md:text-base text-gray-600"
                       style={{
                         fontFamily: "'IBM Plex Sans', 'Noto Sans SC', sans-serif",
                         fontWeight: '400'

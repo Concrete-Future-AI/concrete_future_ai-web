@@ -4,24 +4,37 @@ import CustomSelect from './CustomSelect';
 interface ConsultationModalProps {
   isOpen: boolean;
   onClose: () => void;
+  context?: 'default' | 'ai-diagnosis';
 }
 
-const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    company: '',
-    phone: '',
-    requirement: '企业AI全案转型咨询'
-  });
-
-  // 需求选项配置
-  const requirementOptions = [
+const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose, context = 'default' }) => {
+  // 根据context配置不同的内容
+  const isAIDiagnosis = context === 'ai-diagnosis';
+  
+  const defaultRequirementOptions = [
     { value: '企业AI全案转型咨询', label: '企业AI全案转型咨询' },
     { value: '外贸/电商降本增效方案', label: '外贸/电商降本增效方案' },
     { value: '智能客服/销售/RPA自动化部署', label: '智能客服/销售/RPA自动化部署' },
     { value: 'AI+硬件/产品智能化定制', label: 'AI+硬件/产品智能化定制' },
     { value: '企业内训与AI团队赋能', label: '企业内训与AI团队赋能' }
   ];
+
+  const aiDiagnosisRequirementOptions = [
+    { value: 'GEO现状评估', label: 'GEO现状评估' },
+    { value: '9大场景适配分析', label: '9大场景适配分析' },
+    { value: 'ROI预测报告', label: 'ROI预测报告' },
+    { value: '定制化实施方案', label: '定制化实施方案' },
+    { value: '全部诊断服务', label: '全部诊断服务（推荐）' }
+  ];
+
+  const requirementOptions = isAIDiagnosis ? aiDiagnosisRequirementOptions : defaultRequirementOptions;
+
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    phone: '',
+    requirement: isAIDiagnosis ? '全部诊断服务' : '企业AI全案转型咨询'
+  });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -64,17 +77,27 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
       });
       
       // 构建飞书富文本消息
+      const messageTitle = isAIDiagnosis 
+        ? "🎯 新的诊断预约（企业AI化转型）" 
+        : "🎯 新的客户咨询（AI实施页面）";
+      const messageSource = isAIDiagnosis 
+        ? "来源：企业AI化转型页面 - 诊断报告预约" 
+        : "来源：AI化转型落地开发与部署页面";
+      const messageFooter = isAIDiagnosis 
+        ? "💡 企业AI化转型诊断预约（价值¥20,000）- 请尽快与客户联系！" 
+        : "💡 免费咨询预约（价值¥1,000）- 请尽快与客户联系！";
+      
       const message = {
         msg_type: "post",
         content: {
           post: {
             zh_cn: {
-              title: "🎯 新的客户咨询（AI实施页面）",
+              title: messageTitle,
               content: [
                 [
                   {
                     tag: "text",
-                    text: "来源：AI化转型落地开发与部署页面"
+                    text: messageSource
                   }
                 ],
                 [
@@ -116,7 +139,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
                 [
                   {
                     tag: "text",
-                    text: "💡 免费咨询预约（价值¥1,000）- 请尽快与客户联系！"
+                    text: messageFooter
                   }
                 ]
               ]
@@ -187,19 +210,19 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
         >
           <div>
             <h3 
-              className="text-heading text-3xl mb-2"
+              className="text-heading text-2xl md:text-3xl mb-2"
               style={{ color: '#0A0A0A' }}
             >
-              免费预约咨询
+              {isAIDiagnosis ? '预约AI化转型诊断' : '免费预约咨询'}
             </h3>
             <p 
               className="text-sm"
               style={{
-                color: '#D97757',
+                color: isAIDiagnosis ? '#6B0F1A' : '#D97757',
                 fontWeight: '700'
               }}
             >
-              价值 ¥1,000 | 24小时内快速响应
+              {isAIDiagnosis ? '价值 ¥20,000 | 《企业AI化转型诊断报告》' : '价值 ¥1,000 | 24小时内快速响应'}
             </p>
           </div>
           <button

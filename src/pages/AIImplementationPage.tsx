@@ -103,70 +103,200 @@ const AIImplementationPage: React.FC = () => {
       number: '01',
       title: 'AI数字人直播',
       headline: '7×24小时无人直播，营收增长的永动机',
-      description: '克隆金牌主播，成本趋近于零，让直播间日夜不休地为你赚钱。部署50-500个账号矩阵，连播8小时不重复。',
+      description: '克隆真人形象和声音，7×24小时直播带货。无需真人值守，AI自动互动、改写话术、回答问题。全球多平台同步开播，人力成本降为0，直播时长提升10倍。',
       bgColor: 'bg-amber-50/30',
       conceptArt: '/img/digi_man.jpg',
-      keyMetrics: ['72小时交付', '成本降90%', '7×24在线']
+      keyMetrics: ['72小时交付', '人力成本→0', '10+平台同播'],
+      features: [
+        '超写实数字人克隆：5分钟视频素材，1:1还原真人形象和声音',
+        '智能话术实时改写：AI自动优化话术，每次直播都是新内容',
+        '全球多平台矩阵：抖音、TikTok、YouTube等10+平台同时开播'
+      ],
+      details: [
+        { title: '秒播级数字人克隆', desc: '拍摄5分钟素材(5个产品手持动作)，72小时交付专属数字人。面部微表情、头发丝级细节，观众无法分辨真假。' },
+        { title: '声音高保真克隆', desc: '录制10分钟音频(约2000字)，还原音色、语气、停顿习惯。支持7种情绪模式切换(热情推销/专业讲解/亲切唠嗑)。' },
+        { title: '话术智能改写引擎', desc: '预设500条基础话术，AI每轮自动改写30%内容。连播8小时不重复，避免平台"录播"检测限流。' },
+        { title: 'GPT-4驱动智能问答', desc: '接入200+产品知识库，理解方言、网络用语。响应延迟<2秒，90%问题无需人工介入，高峰期顶20个客服。' },
+        { title: '关键词精准截流', desc: '自定义500+触发词("怎么买"、"多少钱"、"发什么快递")，瞬间弹出优惠/链接，转化率提升40%。' },
+        { title: '氛围自动烘托系统', desc: '检测进入/点赞/关注动作，3秒内口播感谢+弹幕特效。模拟"老铁来了"、"感谢榜一大哥"等真人直播话术。' },
+        { title: '产品智能弹窗', desc: '根据话术节奏自动弹出商品图/视频(如讲到"这款面霜"立刻展示使用效果)。支持一键跳转购物车。' },
+        { title: '全球10+平台矩阵', desc: '国内：快手、视频号(抖音有限制)。出海：TikTok、YouTube Live、Facebook Live、Amazon Live、Shopee Live等。一键多开。' },
+        { title: '直播自动切片成短视频', desc: '每场直播AI提取20-50个高光片段(产品演示/互动爆点)，自动加字幕、BGM，生成抖音/小红书投流素材。' },
+        { title: '矩阵化运营管理', desc: '1人操作50个数字人账号。批量设置直播时间表、话术库、产品库。异常监控(掉线/违规警告)自动重启。' },
+        { title: '数据驱动优化', desc: '实时看板：各账号在线人数、停留时长、点击率、GMV。AI推荐最佳开播时段、话术A/B测试结果。' },
+        { title: '成本与回本周期', desc: '试点版(6路直播)：首年22.6万，第3周见效，62天回本。规模版(60路)：首年157万，次年仅15万维护费，ROI>500%。' }
+      ]
     },
     {
       id: 'selection',
       number: '02',
       title: 'AI智能选品',
       headline: '爆款命中率从30%提升至70%',
-      description: '不再盲目测款。AI分析全网趋势，提前锁定下一个爆款，库存周转快一倍。选品周期从2周缩短到3天。',
+      description: '全网爆款监控+趋势预判+利润测算。AI分析3年数据，预测未来3个月爆款品类。选品周期从2周→3天，命中率从30%→70%。',
       bgColor: 'bg-blue-50/30',
       conceptArt: '/img/AI_choose.jpg',
-      keyMetrics: ['命中率70%', '周期缩短80%', '库存周转快一倍']
+      keyMetrics: ['命中率70%', '周期缩短80%', '库存周转快一倍'],
+      features: [
+        '全网爆款实时监控：抖音/小红书/淘宝热榜实时追踪，抢占窗口期',
+        '趋势预判AI模型：预测未来3个月爆款，准确率70%',
+        '快速测款系统：小批量投放测试，72小时跑出ROI数据'
+      ],
+      details: [
+        { title: '全网爆款实时监控', desc: '实时抓取抖音/小红书/淘宝热榜、谷歌趋势、亚马逊BSR。检测到"冲锋衣"搜索量暴涨200%→立即预警，抢占窗口期。' },
+        { title: '趋势预判AI模型', desc: '分析3年历史数据+季节性规律，预测未来3个月爆款品类。准确率70%，某客户提前2个月备货"围炉煮茶"周边，销量翻5倍。' },
+        { title: '利润空间智能测算', desc: '输入1688采购价，AI计算各平台售价、广告成本、物流费。推荐最优定价策略，预估毛利率和ROI。' },
+        { title: '竞品爆款深度拆解', desc: '输入竞品链接，AI分析销量曲线、评价关键词、价格策略、广告投放手法。生成"爆款复刻手册"，找到突破点。' },
+        { title: '供应链智能匹配', desc: '输入产品需求(如"纯棉T恤，月产能5万件")，AI筛选1688/阿里国际站供应商。自动比价、核验资质、生成报价对比表。' },
+        { title: '出海市场机会雷达', desc: '分析目标国消费数据(如"日本Z世代偏好莫兰迪色")、准入门槛(CE认证/FDA)、物流成本。推荐最适合出海的品类。' },
+        { title: '选品评分系统', desc: '综合评估：市场热度(30%)+竞争强度(25%)+利润空间(25%)+供应链稳定性(20%)。满分100，>75分推荐进货。' },
+        { title: '季节性备货预警', desc: 'AI预测"618前30天羽绒服搜索量下跌80%"→建议清仓。"双11前60天保温杯需求激增"→提前备货2万件。' },
+        { title: '快速测款系统', desc: '小批量进货(100件)，AI生成10组广告素材投放测试。72小时跑出ROI数据，决定是否规模化进货。降低试错成本80%。' },
+        { title: '选品数据可视化看板', desc: '实时显示：在售SKU热度、库存周转率、滞销预警、爆款潜力值。一目了然，辅助决策。' },
+        { title: '差异化卖点挖掘', desc: 'AI分析竞品评价，提取用户痛点(如"杯盖容易漏")。推荐产品改进方向或差异化营销角度("我们的防漏技术通过SGS认证")。' },
+        { title: '成功案例数据', desc: '某家居品牌用AI选品后：选品周期从2周→3天，爆款命中率从30%→70%，库存积压从50万→8万。ROI回收期4个月。' }
+      ]
     },
     {
       id: 'content-creation',
       number: '03',
       title: '营销内容生成',
       headline: '一支队伍的产能，只需一个人的成本',
-      description: '批量生产高转化详情页、短视频、种草文案。让内容不再是增长的瓶颈。产能提升50倍，成本降75%。',
+      description: '一键生成全套营销素材：商品图+短视频+文案。输入产品信息，30分钟完成主图、详情页、短视频脚本、小红书笔记。产能提升50倍，成本降75%。',
       bgColor: 'bg-green-50/30',
       conceptArt: '/img/content_gen.png',
-      keyMetrics: ['产能提升50倍', '成本降75%', '日产500条']
+      keyMetrics: ['产能提升50倍', '成本降75%', '日产500条'],
+      features: [
+        '一键生成全套素材：商品图+详情页+短视频+文案，30分钟全搞定',
+        '商品图场景批量生成：1张白底图→50种场景，成本降90%',
+        '3小时直播→100条短视频：AI自动切片+字幕+BGM，日产500条'
+      ],
+      details: [
+        { title: '一键生成全套营销素材', desc: '输入产品信息，AI生成：商品主图(5张不同场景)+详情页(含卖点文案)+短视频脚本+小红书笔记+朋友圈文案。30分钟完成。' },
+        { title: '商品图场景批量生成', desc: '1张白底图→50种场景(沙滩/咖啡厅/卧室)。保留光影一致性，适配不同平台。处理速度：100张/10分钟，成本降90%。' },
+        { title: 'AI模特试穿(0成本)', desc: '上传平铺服装，生成穿在模特身上效果。可选身高/肤色/体型，匹配全球市场审美。某服装品牌月省摄影费8万。' },
+        { title: '3小时直播→100条短视频', desc: 'AI识别产品演示、价格播报、互动爆点。自动切片+字幕+BGM，生成抖音/小红书投流素材。日产500条。' },
+        { title: '爆款视频像素级复刻', desc: '输入竞品爆款链接，AI解构镜头节奏(前3秒钩子/5秒痛点/10秒方案)、BGM卡点、文案公式。一键套用你的产品。' },
+        { title: '全平台文案智能生成', desc: 'AI生成：小红书种草笔记、抖音短视频脚本、淘宝详情页、朋友圈推广文案、电商评价话术。学习头部账号风格，A/B测试找最高转化版本。' },
+        { title: '多SKU批量内容生成', desc: '1个视频模板，AI自动替换50个SKU(颜色/包装)。日产500条投流素材，快速测出爆款。某美妆品牌月产量从50→2000条。' },
+        { title: '小红书爆款笔记生成器', desc: '分析10万+爆款笔记，提取封面公式(大字标题/产品角度/色调)+正文钩子+评论区截流话术。CTR提升3倍。' },
+        { title: '一键多语言本地化', desc: '中文素材→自动翻译英/日/韩/西班牙语+AI配音(克隆原声)+替换场景元素(人民币→美元)。适配全球市场。' },
+        { title: '产品卖点智能提炼', desc: 'AI分析产品参数+竞品评价，提炼3-5个核心卖点。自动生成"痛点-方案-证据"文案结构，转化率提升40%。' },
+        { title: '品牌IP形象生成', desc: '输入品牌理念，AI生成卡通IP形象+表情包+应用场景(包装/周边/海报)。建立品牌记忆点，用户认知度提升50%。' },
+        { title: '内容产能对比', desc: '传统团队：3人日产10条内容，月成本5万。AI系统：日产500条，月成本1.2万。产能提升50倍，成本降75%。' }
+      ]
     },
     {
       id: 'ad-optimization',
       number: '04',
       title: 'AI广告投放优化',
       headline: '每一分广告费，都花在刀刃上',
-      description: 'AI全天候监控ROI，自动关停亏损计划，放量盈利计划。替你省下无效预算。某品牌广告ROI提升67%。',
+      description: 'AI自动测试50组素材，实时优化出价，预判ROI。每月100万广告费的客户，ROI从1:3提升到1:5。相当于每月多赚67万，6个月回本。',
       bgColor: 'bg-purple-50/30',
-      conceptArt: '/img/concept-ads.png',
-      keyMetrics: ['ROI提升67%', '日均优化2000次', '预算节省40%']
+      conceptArt: '/img/ad_v2.png',
+      keyMetrics: ['ROI提升67%', '日均优化2000次', '6个月回本'],
+      features: [
+        '素材A/B测试自动化：1条素材生成50组变体，72小时跑出最佳组合',
+        '智能出价实时优化：AI每5分钟调整策略，日均优化2000次',
+        '跨平台数据归因：打通全渠道，算清每个平台真实ROI'
+      ],
+      details: [
+        { title: '素材A/B测试自动化', desc: '1条原始素材，AI生成50组变体(不同开头/文案/CTA按钮)。自动投放到千川/广点通，72小时跑出ROI最高组合。' },
+        { title: '智能出价实时优化', desc: 'AI每5分钟调整出价策略。检测到"这组素材CTR>5%"→提高出价抢量；"转化成本>目标"→降低出价或暂停。日均优化2000次。' },
+        { title: 'ROI预测模型', desc: '投放前预判素材ROI。分析画面节奏/文案钩子/BGM，对比10万+历史数据。预测"该素材ROI 1:4.2，建议投放预算5万"。准确率85%。' },
+        { title: '跨平台数据归因', desc: '打通抖音/快手/小红书/淘宝数据。追踪"用户在抖音看广告→小红书搜索→淘宝下单"全路径。算清每个渠道真实ROI，避免重复归因。' },
+        { title: '竞品广告情报监控', desc: '追踪竞品在千川/Meta Ads投放素材(创意/文案/落地页)。识别爆款广告(投放>30天=跑量大)，一键复刻到你的产品。' },
+        { title: '自动化投放策略', desc: '设置规则"ROI<1:3自动暂停"、"爆量素材自动提预算"。AI接管日常操作，优化师只需审核异常，人效提升10倍。' },
+        { title: '落地页智能优化', desc: '生成10种落地页变体(不同标题/按钮颜色/图片顺序)。自动分流测试，找出转化率最高版本。某客户转化率从2.3%→5.8%。' },
+        { title: '创意疲劳自动预警', desc: '监控素材数据(CTR/转化率持续下跌=创意疲劳)。提前3天预警"该素材即将失效"，自动启用备用素材，避免ROI断崖。' },
+        { title: '全球广告平台对接', desc: '支持：国内(巨量千川/腾讯广告/磁力金牛)，海外(Meta Ads/Google Ads/TikTok Ads)。统一后台管理，一键复制策略。' },
+        { title: '实时ROI看板', desc: '按素材/时段/地域/人群实时显示ROI。AI建议"23-24点ROI最高，建议加大预算"、"男性用户转化成本高20%，建议排除"。' },
+        { title: '智能投放策略推荐', desc: 'AI学习账户历史数据，推荐最优策略(如"该产品适合放量投放+自动出价")。新账户冷启动期从7天缩短到3天。' },
+        { title: '成本对比数据', desc: '人工投放：ROI 1:3，优化师月薪2万。AI投放：ROI 1:5，每月100万广告费多赚67万。某品牌用后广告ROI提升67%，6个月回本。' }
+      ]
     },
     {
       id: 'matrix-operation',
       number: '05',
       title: 'AI矩阵运营',
       headline: '构建永不贬值的数字品牌资产',
-      description: '部署50-500个高权重账号矩阵。AI智能体集群管理，7×24自动浏览/点赞/评论/发布，建立"数字品牌资产池"。',
+      description: '50-500个账号矩阵7×24自动运营，建立数字品牌资产池。AI智能体模拟真人，全域内容分发，评论截流，私域引导。品牌资产回报率ROBA>5:1。',
       bgColor: 'bg-teal-50/30',
-      conceptArt: '/img/concept-matrix.png',
-      keyMetrics: ['500账号矩阵', '日加粉500+', '品牌资产化']
+      conceptArt: '/img/account.png',
+      keyMetrics: ['500账号矩阵', '日加粉500+', 'ROBA>5:1'],
+      features: [
+        '账号矩阵自动养号：50-500个高权重账号，建立数字品牌资产池',
+        'KOC人设智能构建：5-10个人设角色，一致的言行风格建立信任',
+        '全域内容智能分发：AI精准分发到各平台，最大化传播效果'
+      ],
+      details: [
+        { title: '50-500账号矩阵自动养号', desc: '部署50-500个高权重账号矩阵(抖音/小红书/视频号)。AI模拟真人行为(浏览时长/点赞/评论)，建立"数字品牌资产池"。' },
+        { title: 'KOC人设智能构建', desc: '定义5-10个人设角色(宝妈/健身达人/职场白领)。AI为每个人设生成一致的言行风格、内容日历、互动话术，建立长期信任。' },
+        { title: '全域内容智能分发', desc: 'AI将内容精准分发到各平台(抖音/小红书/B站/知乎)。根据平台特性微调标题/封面/标签，最大化传播效果。' },
+        { title: '社媒评论精准截流', desc: '监控竞品/大V评论区，识别意向客户(如"求链接")。AI自动点赞+神评抢位+私信引导，日加粉500+，获客成本<5元。' },
+        { title: '高热内容机会雷达', desc: '实时监控与品牌相关的高热度内容(10W+播放/5000+点赞)。AI自动生成与内容相关的"神评"，在黄金位置获取海量曝光。' },
+        { title: 'AI智能体集群管理', desc: '每个账号背后是独立AI智能体，拥有"人设"和"性格"。7×24自动浏览/点赞/评论/发布，像真人一样运营账号。' },
+        { title: '柔性私域引导系统', desc: '在互动中，以合规、友好方式将高意向用户引导至品牌主阵地(企微/公众号)。话术自然，避免硬广，转化率提升3倍。' },
+        { title: '品牌声量实时监控', desc: '追踪全网品牌提及量、情感倾向、关键词热度。AI生成"品牌健康度报告"，预警负面舆情，指导公关策略。' },
+        { title: '多平台协同作战', desc: '小红书种草→抖音短视频引流→企微私域转化。AI打通全链路，实现"公域引流+私域转化"双飞轮增长。' },
+        { title: '账号资产风险隔离', desc: '企业级隔离设备矩阵，每个账号独立运行环境。单一账号问题不连带，建立"资产防火墙"，保护品牌安全。' },
+        { title: '品牌资产价值评估', desc: '账号矩阵总粉丝量、月均互动量、内容传播力、私域转化率→综合评估"品牌资产价值"。资产持续增值，不再是"消耗流量"。' },
+        { title: 'ROBA模型对比', desc: '传统广告：花100万买流量，次月归零。AI矩阵：投100万建资产，持续产生自然流量，3年价值>500万。品牌资产回报率ROBA>5:1。' }
+      ]
     },
     {
       id: 'after-sales',
       number: '06',
       title: 'AI售后提效',
       headline: '口碑和复购率，从售后开始',
-      description: 'AI客服秒级自动回复+全网舆情5分钟预警。解决90%常见问题，某品牌用后客服成本降60%，满意度反升35%。',
+      description: '客户反馈自动分析，舆情实时监控，工单智能处理。AI客服7×24小时在线，秒级响应，多轮对话解决90%常见问题。客服成本降60%，满意度提升35%。',
       bgColor: 'bg-cyan-50/30',
-      conceptArt: '/img/concept-service.png',
-      keyMetrics: ['响应<10秒', '成本降60%', '满意度升35%']
+      conceptArt: '/img/chat_v2.png',
+      keyMetrics: ['响应<10秒', '成本降60%', '满意度升35%'],
+      features: [
+        '全渠道舆情监控：实时监控全网评价，负面舆情5分钟内预警',
+        '智能工单系统：自动分类、分配、跟进，处理效率提升3倍',
+        '客户情感分析：AI识别客户情绪，高危客户优先人工介入'
+      ],
+      details: [
+        { title: 'AI客服秒级自动回复', desc: '客户咨询瞬间响应，理解多轮对话("这款有黑色吗"→"黑色M码还有30件库存")。解决90%常见问题，仅10%转人工，顶20个客服。' },
+        { title: '全网舆情5分钟预警', desc: '监控淘宝/京东/抖音评价、小红书/微博提及、黑猫投诉。检测到"售后态度差"等负面，5分钟推送钉钉/企微预警。' },
+        { title: '客户情绪实时识别', desc: 'AI判断客户情绪等级(满意/中性/不满/愤怒)。识别到"投诉"、"退款"等高危词，自动转人工+标注优先级，避免升级纠纷。' },
+        { title: '工单智能分流系统', desc: '自动识别问题类型(物流/质量/退换货)，分配给对应部门。紧急工单置顶，超时未处理自动提醒主管，处理效率提升3倍。' },
+        { title: '售后话术智能推荐', desc: '根据问题类型+客户情绪，推荐最佳回复(如愤怒客户→先道歉+补偿方案)。学习优秀客服话术，新人也能达到老员工水平。' },
+        { title: '一键生成个性化回复', desc: 'AI读取订单历史、聊天记录，生成定制化回复("王女士您好，您购买的连衣裙已从杭州仓发出...")。支持人工微调后发送。' },
+        { title: '全渠道统一工作台', desc: '聚合微信/电话/邮件/App/淘宝旺旺消息。客服在一个界面处理所有咨询，切换无需登录多个后台，响应速度提升50%。' },
+        { title: '客户反馈AI挖掘', desc: '分析10万+评价，提取高频问题("拉链容易坏"出现2300次)→生成产品改进报告。按问题严重度排序，指导下季度优化重点。' },
+        { title: '售后数据可视化看板', desc: '实时显示：咨询量、平均响应时间、解决率、满意度、各类问题占比。AI预测"618大促咨询量将激增300%，建议增派5名临时客服"。' },
+        { title: '主动服务自动触达', desc: '订单签收3天后自动发微信"使用满意吗？晒图返10元"。检测物流异常自动道歉+补偿，降低因物流导致的差评率40%。' },
+        { title: '知识库自学习进化', desc: '从每天1000+对话中学习新问题、新答案。客服标注"答案准确"→纳入知识库。AI覆盖率从60%→90%仅需3个月。' },
+        { title: '效率提升数据', desc: '人工客服：响应时间2分钟，日处理80单。AI客服：响应<10秒，日处理2000单。某品牌用后客服成本降60%，满意度反升35%。' }
+      ]
     },
     {
       id: 'operation',
       number: '07',
       title: '数据驱动决策',
       headline: '让数据告诉你答案，不再凭感觉赌',
-      description: '库存智能预测+动态定价+供应链协同。AI推荐最优策略，减少50%缺货和滞销损失，毛利率提升15%。',
+      description: '进什么货、定什么价、推哪款，算法算给你看。不再拍脑袋，不用赌运气。AI预测库存、优化定价、推荐爆款。试错成本降80%，毛利率提升15%。',
       bgColor: 'bg-indigo-50/30',
-      conceptArt: '/img/concept-data.png',
-      keyMetrics: ['预测准确率90%', '毛利提升15%', '损失减少50%']
+      conceptArt: '/img/ai_data.png',
+      keyMetrics: ['预测准确率90%', '毛利提升15%', '试错成本降80%'],
+      features: [
+        '库存预测调度：准确率90%，减少50%滞销和缺货损失',
+        '动态定价系统：实时调价，毛利率提升15-20%',
+        '选品趋势分析：提前3个月预判爆款，命中率70%+'
+      ],
+      details: [
+        { title: '库存智能预测(准确率90%)', desc: '分析历史销量、季节性、促销活动、天气，预测未来30天各SKU销量。自动生成补货建议，减少50%缺货和滞销损失。' },
+        { title: '动态定价(毛利提升15%)', desc: '实时监控竞品价格、库存水平、用户支付意愿。自动调价(如库存积压→降价促销/爆款缺货→涨价)。日均调价500次。' },
+        { title: 'AI选品(爆款命中率70%)', desc: '分析抖音/小红书热搜、亚马逊BSR、1688上新数据。推荐潜力爆品(如"检测到腰包搜索量暴涨300%，建议进货")。' },
+        { title: '客户分层自动化运营', desc: '根据RFM模型(最近购买/频次/金额)分7类客户。沉睡客户→推送大额券，VIP客户→新品优先购，自动化执行，复购率提升40%。' },
+        { title: '供应链智能协同', desc: '打通供应商/仓库/物流系统。AI推荐"A商品走义乌仓发顺丰，比杭州仓发EMS省1.2元/单"。预警"春节前10天锁仓，提前备货"。' },
+        { title: '出海合规自动检测', desc: '输入商品链接，检测欧盟CE认证/美国FDA/各国关税。标注风险项(如"该款充电宝锂电池容量超美国航空禁令")。' },
+        { title: '知识产权侵权预警', desc: '上传产品图，AI比对全球专利库/商标库。检测侵权风险(如"该外观与苹果2019年专利相似度87%，建议规避")。' },
+        { title: '目标市场本地化洞察', desc: '分析目标国社媒热点(如"日本Z世代偏好莫兰迪色系")、文化禁忌(如"中东不能用左手图案")、定价策略(购买力/支付习惯)。' },
+        { title: '成本对比数据', desc: '人工选品/定价/库存管理：50万积压损失/年。AI系统：试错成本降80%，毛利率提升15%，ROI回收期6个月。' }
+      ]
     }
   ];
 
@@ -842,90 +972,143 @@ const AIImplementationPage: React.FC = () => {
               return (
                 <div 
                   key={engine.id}
-                  className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 lg:gap-16 items-center`}
                   data-animate
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  {/* Image/Concept Art Side */}
-                  <div className="w-full md:w-1/2">
-                    <div 
-                      className={`${engine.bgColor} rounded-2xl p-8 ${(engine.conceptArt.endsWith('.jpg') || engine.conceptArt.endsWith('.png')) ? '' : 'aspect-square flex items-center justify-center'} border-2 hover-glow transition-all`}
-                      style={{
-                        borderColor: 'rgba(217, 119, 87, 0.2)',
-                        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)'
-                      }}
-                    >
-                      {(engine.conceptArt.includes('digi_man.jpg') || 
-                        engine.conceptArt.includes('AI_choose.jpg') || 
-                        engine.conceptArt.includes('content_gen.png')) ? (
-                        // Real image
-                        <img 
-                          src={engine.conceptArt} 
-                          alt={engine.title}
-                          className="w-full h-full object-cover rounded-xl"
-                          style={{ aspectRatio: '1/1' }}
-                        />
-                      ) : (
-                        // Concept Art Placeholder
-                        <div className="concept-art-placeholder w-full h-full rounded-xl">
-                          <div className="text-center">
-                            <div className="text-6xl mb-4">🎨</div>
-                            <div className="text-sm text-slate-500 font-inconsolata">
-                              Concept Art Placeholder
+                  {/* Top Row: Image + Text Side by Side */}
+                  <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 lg:gap-16 items-center`}>
+                    {/* Image/Concept Art Side */}
+                    <div className="w-full md:w-1/2">
+                      <div 
+                        className={`${engine.bgColor} rounded-2xl p-8 ${(engine.conceptArt.endsWith('.jpg') || engine.conceptArt.endsWith('.png')) ? '' : 'aspect-square flex items-center justify-center'} border-2 hover-glow transition-all`}
+                        style={{
+                          borderColor: 'rgba(217, 119, 87, 0.2)',
+                          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)'
+                        }}
+                      >
+                        {(engine.conceptArt.includes('digi_man.jpg') || 
+                          engine.conceptArt.includes('AI_choose.jpg') || 
+                          engine.conceptArt.includes('content_gen.png') ||
+                          engine.conceptArt.includes('ad_v2.png') ||
+                          engine.conceptArt.includes('chat_v2.png') ||
+                          engine.conceptArt.includes('account.png') ||
+                          engine.conceptArt.includes('ai_data.png')) ? (
+                          // Real image
+                          <img 
+                            src={engine.conceptArt} 
+                            alt={engine.title}
+                            className="w-full h-full object-cover rounded-xl"
+                            style={{ aspectRatio: '1/1' }}
+                          />
+                        ) : (
+                          // Concept Art Placeholder
+                          <div className="concept-art-placeholder w-full h-full rounded-xl">
+                            <div className="text-center">
+                              <div className="text-6xl mb-4">🎨</div>
+                              <div className="text-sm text-slate-500 font-inconsolata">
+                                Concept Art Placeholder
+                              </div>
+                              <div className="text-xs text-slate-400 mt-2">
+                                {engine.conceptArt}
+                              </div>
                             </div>
-                            <div className="text-xs text-slate-400 mt-2">
-                              {engine.conceptArt}
-                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Text Content Side */}
+                    <div className="w-full md:w-1/2">
+                      <div className="flex items-center gap-4 mb-4">
+                        <span 
+                          className="text-sm font-bold bg-slate-900 text-white px-4 py-2 rounded-full font-inconsolata"
+                        >
+                          {engine.number}
+                        </span>
+                        <h3 className="text-2xl font-syne text-slate-900">
+                          {engine.title}
+                        </h3>
+                      </div>
+
+                      <h4 
+                        className="text-3xl md:text-4xl font-syne text-slate-900 mb-4 leading-tight"
+                        style={{ color: '#D97757' }}
+                      >
+                        {engine.headline}
+                      </h4>
+
+                      <p className="text-lg text-slate-600 leading-relaxed mb-6 font-bitter-light">
+                        {engine.description}
+                      </p>
+
+                      {/* Key Metrics */}
+                      <div className="flex flex-wrap gap-3 mb-6">
+                        {engine.keyMetrics.map((metric, idx) => (
+                          <div
+                            key={idx}
+                            className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-inconsolata text-slate-700 border border-slate-200"
+                          >
+                            ✓ {metric}
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Features - Always Visible */}
+                      {engine.features && (
+                        <div className="mb-6 p-4 bg-slate-50 rounded-xl border border-slate-200">
+                          <h5 className="text-sm font-syne font-bold text-slate-900 mb-3 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#D97757' }}></span>
+                            核心能力
+                          </h5>
+                          <div className="space-y-2">
+                            {engine.features.map((feature, idx) => (
+                              <div key={idx} className="flex items-start gap-2">
+                                <CheckCircle2 className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
+                                <span className="text-sm text-slate-700 font-bitter">{feature}</span>
+                              </div>
+                            ))}
                           </div>
                         </div>
                       )}
-                    </div>
-                  </div>
 
-                  {/* Text Content Side */}
-                  <div className="w-full md:w-1/2">
-                    <div className="flex items-center gap-4 mb-4">
-                      <span 
-                        className="text-sm font-bold bg-slate-900 text-white px-4 py-2 rounded-full font-inconsolata"
+                      <button 
+                        onClick={() => toggleEngine(engine.id)}
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl hover:bg-slate-800 transition-all font-syne font-bold"
                       >
-                        {engine.number}
-                      </span>
-                      <h3 className="text-2xl font-syne text-slate-900">
-                        {engine.title}
-                      </h3>
+                        {expandedEngine === engine.id ? '收起详情' : '查看详情'}
+                        <ArrowRight className={`w-5 h-5 transition-transform ${expandedEngine === engine.id ? 'rotate-90' : ''}`} />
+                      </button>
                     </div>
-
-                    <h4 
-                      className="text-3xl md:text-4xl font-syne text-slate-900 mb-4 leading-tight"
-                      style={{ color: '#D97757' }}
-                    >
-                      {engine.headline}
-                    </h4>
-
-                    <p className="text-lg text-slate-600 leading-relaxed mb-6 font-bitter-light">
-                      {engine.description}
-                    </p>
-
-                    {/* Key Metrics */}
-                    <div className="flex flex-wrap gap-3 mb-6">
-                      {engine.keyMetrics.map((metric, idx) => (
-                        <div
-                          key={idx}
-                          className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-inconsolata text-slate-700 border border-slate-200"
-                        >
-                          ✓ {metric}
-                        </div>
-                      ))}
-                    </div>
-
-                    <button 
-                      onClick={() => toggleEngine(engine.id)}
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl hover:bg-slate-800 transition-all font-syne font-bold"
-                    >
-                      {expandedEngine === engine.id ? '收起详情' : '查看详情'}
-                      <ArrowRight className={`w-5 h-5 transition-transform ${expandedEngine === engine.id ? 'rotate-90' : ''}`} />
-                    </button>
                   </div>
+
+                  {/* Expanded Details - Full Width Below */}
+                  {expandedEngine === engine.id && engine.details && (
+                    <div className="mt-8 p-6 md:p-8 bg-slate-50 rounded-2xl border border-slate-200 animate-in">
+                      {/* Detailed Breakdown */}
+                      <h5 className="text-xl font-syne font-bold text-slate-900 mb-6">功能详解</h5>
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                        {engine.details.map((detail, idx) => (
+                          <div 
+                            key={idx} 
+                            className="p-5 bg-white rounded-xl border border-slate-200 hover:border-amber-300 hover:shadow-md transition-all"
+                          >
+                            <h6 className="font-syne font-bold text-slate-900 mb-2 flex items-center gap-2">
+                              <span 
+                                className="w-7 h-7 rounded-full flex items-center justify-center text-sm text-white font-inconsolata"
+                                style={{ background: 'linear-gradient(135deg, #D97757 0%, #C96543 100%)' }}
+                              >
+                                {idx + 1}
+                              </span>
+                              {detail.title}
+                            </h6>
+                            <p className="text-sm text-slate-600 font-bitter-light leading-relaxed">
+                              {detail.desc}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -975,12 +1158,50 @@ const AIImplementationPage: React.FC = () => {
               <span style={{ color: '#FCA582' }}>构建您的专属数字化壁垒</span>
             </h2>
             
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto font-bitter-light">
-              当标准化产品无法满足需求时，我们提供深度定制。打通ERP/CRM，重构核心业务流。
+            <p className="text-xl text-slate-300 max-w-4xl mx-auto font-bitter-light mb-4">
+              当标准化系统无法满足您独特的业务流程时，我们提供深度定制开发服务，将多个自动化系统打通整合，构建专属的数字化运营平台。
+            </p>
+            <p className="text-lg text-slate-400 max-w-4xl mx-auto font-bitter-light">
+              不是简单的功能叠加，而是站在业务全局的角度，重新设计工作流程、打通数据孤岛、实现跨部门协同，让技术真正成为业务增长的核心驱动力。
             </p>
           </div>
 
-
+          {/* 5-Step Process */}
+          <div className="mb-16" data-animate>
+            <h3 className="text-2xl font-syne text-white text-center mb-10">定制开发流程</h3>
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-6">
+              {[
+                { num: '01', title: '战略咨询与需求诊断', desc: '深度访谈，理解您的业务全貌与核心痛点。' },
+                { num: '02', title: 'AI转型蓝图规划', desc: '共同设计分阶段、可落地的AI转型路线图。' },
+                { num: '03', title: '数据治理与模型构建', desc: '清洗、整合企业数据，训练专属的AI模型。' },
+                { num: '04', title: '系统集成与私有化部署', desc: '将AI系统无缝对接到您现有的ERP、CRM等系统。' },
+                { num: '05', title: '持续优化与赋能培训', desc: '长期跟踪系统表现，持续迭代优化。' }
+              ].map((step, idx) => (
+                <div 
+                  key={idx}
+                  className="relative p-5 rounded-xl text-center"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid rgba(217, 119, 87, 0.2)'
+                  }}
+                >
+                  <div 
+                    className="w-10 h-10 mx-auto rounded-full flex items-center justify-center text-sm font-bold font-inconsolata mb-3"
+                    style={{ 
+                      background: 'linear-gradient(135deg, #D97757 0%, #C96543 100%)',
+                      color: 'white'
+                    }}
+                  >
+                    {step.num}
+                  </div>
+                  <h4 className="text-base font-syne text-white mb-2">{step.title}</h4>
+                  <p className="text-xs text-slate-400 font-bitter-light leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
 
           {/* Value Props - Minimal Cards with Top Border */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto" data-animate>
@@ -1027,7 +1248,7 @@ const AIImplementationPage: React.FC = () => {
       </section>
 
       {/* ========== SECTION 5: CASE STUDIES (Light/Clean) ========== */}
-      <section id="cases" className="py-20" style={{ backgroundColor: '#fefce8' }}>
+      <section id="cases" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 

@@ -10,6 +10,7 @@ import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import AITransformationPage from './pages/AITransformationPage';
 import AIImplementationPage from './pages/AIImplementationPage';
+import EnterpriseAIPage from './pages/EnterpriseAIPage';
 
 // 主页组件
 function HomePage() {
@@ -38,6 +39,7 @@ function App() {
         } />
         <Route path="/ai-transformation" element={<AITransformationPage />} />
         <Route path="/ai-implementation" element={<AIImplementationPage />} />
+        <Route path="/enterprise-ai" element={<EnterpriseAIPage />} />
       </Routes>
     </div>
   );
