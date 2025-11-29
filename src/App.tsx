@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import PartnerShowcase from './components/PartnerShowcase';
@@ -29,6 +30,7 @@ function HomePage() {
 function App() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#F2F0EA' }}>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={
           <>
