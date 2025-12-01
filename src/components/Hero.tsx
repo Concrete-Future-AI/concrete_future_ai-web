@@ -25,26 +25,28 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
           
-          {/* 主标题 */}
+          {/* 主标题 - 三行分开显示 */}
           <h1 
-            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-[#1a1a1a] leading-[1.3] md:leading-[1.35] mb-6 md:mb-10 lg:mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-[#1a1a1a] mb-6 md:mb-10 lg:mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            {/* 第一行: 你需要的 企业AI化转型 */}
-            <span className="block">
-              你需要的
-              <span className="relative inline-block mx-2">
-                <span>企业AI化转型</span>
-                {/* 橙色下划线 - 不与文字重叠 */}
-                <span 
-                  className="absolute left-0 w-full h-[4px] md:h-[5px] lg:h-[6px] bg-orange-500 rounded-full"
-                  style={{ bottom: '-8px' }}
-                />
+            {/* 第一行: 你需要的 */}
+            <span className="block leading-tight">你需要的</span>
+            
+            {/* 第二行: 企业AI化转型 - 橙色突出 */}
+            <span className="block leading-tight mt-2 md:mt-3">
+              <span 
+                className="text-[#D97757] text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
+                style={{
+                  textShadow: '0 2px 4px rgba(217, 119, 87, 0.15), 0 4px 12px rgba(217, 119, 87, 0.1)',
+                }}
+              >
+                企业AI化转型
               </span>
             </span>
             
-            {/* 第二行: 就在这里 */}
-            <span className="block mt-3 md:mt-4">就在这里</span>
+            {/* 第三行: 就在这里 */}
+            <span className="block leading-tight mt-2 md:mt-3">就在这里</span>
           </h1>
 
           {/* 副标题 */}

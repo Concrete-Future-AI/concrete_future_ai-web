@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 interface ServiceItem {
   number: string;
   title: string;
+  subtitle: string;
   description: string;
   items: string[];
   image: string;
@@ -17,7 +18,8 @@ const ServiceMatrix = () => {
   const services: ServiceItem[] = [
     {
       number: '01',
-      title: '企业AI化转型 · 9大场景落地',
+      title: '企业AI化转型',
+      subtitle: '9大场景落地',
       description: '从销售到HR，从客服到供应链——我们帮你把AI真正用起来，90天交付见效。',
       items: [
         '销售智能助手 · 转化率+40%', 
@@ -32,7 +34,8 @@ const ServiceMatrix = () => {
     },
     {
       number: '02', 
-      title: '电商AI增长引擎 · 7大核心能力',
+      title: '电商AI增长引擎',
+      subtitle: '7大核心能力',
       description: '从直播到投放，从选品到内容——AI替你7×24小时跑业绩，人工成本降90%。',
       items: [
         'AI咨询培训 · 找到最适合的切入点',
@@ -49,7 +52,8 @@ const ServiceMatrix = () => {
     },
     {
       number: '03',
-      title: '行业AI解决方案 · 7+垂直领域', 
+      title: '行业AI解决方案',
+      subtitle: '7+垂直领域',
       description: '零售、金融、制造、医疗——每个行业都有专属AI方案，不套模板，只解决你的真问题。',
       items: [
         '零售行业 · 智能选品+库存优化',
@@ -63,7 +67,8 @@ const ServiceMatrix = () => {
     },
     {
       number: '04',
-      title: 'AI+硬件定制 · 让产品会说话',
+      title: 'AI+硬件定制',
+      subtitle: '让产品会说话',
       description: '把AI装进你的产品里——从玩具到终端，从展馆到礼品，产品溢价提升200%。',
       items: [
         'IP衍生品 · 互动玩具/手办/吉祥物',
@@ -102,7 +107,7 @@ const ServiceMatrix = () => {
               <div 
                 className="text-label bg-black text-white px-3 py-1 rounded-full text-xs md:text-sm"
               >
-                {service.title}
+                {service.title} · {service.subtitle}
               </div>
             </div>
           </div>
@@ -127,20 +132,27 @@ const ServiceMatrix = () => {
           </div>
 
           {/* Title with Underline Decoration */}
-          <div className="relative">
+          <div>
             <h3 
               className="text-xl sm:text-2xl md:text-4xl lg:text-5xl text-gray-900 font-bold"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               {service.title}
             </h3>
-            <div 
-              className="absolute -bottom-2 left-0 h-1 rounded-full"
-              style={{
-                width: '40px',
-                background: 'linear-gradient(90deg, #FB923C 0%, #F97316 100%)'
-              }}
-            ></div>
+            <div className="mt-1 pb-3 inline-flex flex-col">
+              <span 
+                className="text-xl sm:text-2xl md:text-4xl lg:text-5xl text-gray-900 font-bold"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                {service.subtitle}
+              </span>
+              <div 
+                className="h-1 rounded-full mt-2 w-full"
+                style={{
+                  background: 'linear-gradient(90deg, #FB923C 0%, #F97316 100%)'
+                }}
+              ></div>
+            </div>
           </div>
 
           {/* Description with Better Typography */}
@@ -254,7 +266,29 @@ const ServiceMatrix = () => {
               {/* Button Section (Only show if no itemCtas) */}
               {!service.itemCtas && service.ctaLink && (
                 <div className="flex-shrink-0 w-full lg:w-auto mt-2 lg:mt-0">
-                  {service.ctaLink.startsWith('/') ? (
+                  {service.ctaLink === '#' ? (
+                    <div className="flex flex-col items-center lg:items-start">
+                      <div 
+                        className="text-subheading inline-flex items-center justify-center gap-2 md:gap-3 px-5 md:px-7 py-3 md:py-3.5 bg-gray-100 border-2 border-gray-300 rounded-xl text-gray-400 text-sm md:text-base cursor-not-allowed whitespace-nowrap w-full lg:w-auto"
+                      >
+                        <span>{service.ctaText}</span>
+                        <svg 
+                          className="w-3 h-3 md:w-4 md:h-4" 
+                          fill="none" 
+                          viewBox="0 0 24 24" 
+                          stroke="currentColor"
+                        >
+                          <path 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            strokeWidth={2.5} 
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" 
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-xs text-gray-400 mt-2">等待更新</span>
+                    </div>
+                  ) : service.ctaLink.startsWith('/') ? (
                     <Link 
                       to={service.ctaLink}
                       className="text-subheading inline-flex items-center justify-center gap-2 md:gap-3 px-5 md:px-7 py-3 md:py-3.5 bg-white border-2 border-gray-200 rounded-xl text-gray-900 text-sm md:text-base hover:border-orange-500 hover:text-orange-600 hover:bg-gradient-to-r hover:from-orange-50 hover:to-orange-50/50 transition-all duration-300 group shadow-sm hover:shadow-md whitespace-nowrap w-full lg:w-auto"

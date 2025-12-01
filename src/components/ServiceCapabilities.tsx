@@ -35,13 +35,10 @@ const ServiceCapabilities = () => {
               </h3>
             </div>
             <div>
-              <p 
-                className="text-body text-sm md:text-base lg:text-lg leading-relaxed text-gray-700"
-                style={{ lineHeight: '1.8' }}
-              >
-                <span style={{ fontWeight: '600' }}>95%的AI项目死于"规划很美好，落地很骨感"。</span>
+              <p className="text-sm md:text-base lg:text-lg text-gray-700">
+                <span className="font-semibold">95%的AI项目死于"规划很美好，落地很骨感"。</span>
                 深耕零售、金融、制造、跨境电商等15+垂直行业，我们说的每一个痛点，都是你昨天刚经历的。
-                我们承诺：<span style={{ fontWeight: '700', color: '#D97757' }}>2周上线MVP，60天见到ROI</span>，否则不收费。
+                我们承诺：<span className="font-bold text-[#D97757]">2周上线MVP，60天见到ROI</span>，否则不收费。
                 不懂你的行业？那就不合作。
               </p>
             </div>
@@ -58,13 +55,10 @@ const ServiceCapabilities = () => {
               </h3>
             </div>
             <div>
-              <p 
-                className="text-body text-sm md:text-base lg:text-lg leading-relaxed text-gray-700"
-                style={{ lineHeight: '1.8' }}
-              >
-                <span style={{ fontWeight: '600' }}>拒绝"拼接式"开发，我们要的是企业级稳定交付。</span>
-                作为 <span style={{ fontWeight: '700', color: '#D97757' }}>影刀RPA、飞书(Lark)、Coze(字节跳动)及阿里巴巴</span> 的深度生态合作伙伴，我们拥有原厂级的技术开发能力。
-                为您构建的不再是割裂的工具，而是能无缝融入您现有业务流、安全可扩展的<span style={{ fontWeight: '700', color: '#D97757' }}>企业级智能化底座</span>。
+              <p className="text-sm md:text-base lg:text-lg text-gray-700">
+                <span className="font-semibold">拒绝"拼接式"开发，我们要的是企业级稳定交付。</span>
+                作为 <span className="font-bold text-[#D97757]">影刀RPA、飞书(Lark)、Coze(字节跳动)及阿里巴巴</span> 的深度生态合作伙伴，我们拥有原厂级的技术开发能力。
+                为您构建的不再是割裂的工具，而是能无缝融入您现有业务流、安全可扩展的<span className="font-bold text-[#D97757]">企业级智能化底座</span>。
               </p>
             </div>
           </div>
@@ -80,11 +74,8 @@ const ServiceCapabilities = () => {
               </h3>
             </div>
             <div>
-              <p 
-                className="text-body text-sm md:text-base lg:text-lg leading-relaxed text-gray-700"
-                style={{ lineHeight: '1.8' }}
-              >
-                <span style={{ fontWeight: '700', color: '#D97757' }}>炬象未来</span> 拥有复合型实战团队，在<span style={{ fontWeight: '700', color: '#D97757' }}>湖南股权交易所挂牌</span>（310127HN），荣获"<span style={{ fontWeight: '700', color: '#D97757' }}>国家级先进制造业集群</span>"认证及<span style={{ fontWeight: '700', color: '#D97757' }}>阿里巴巴官方讲师</span>资质。
+              <p className="text-sm md:text-base lg:text-lg text-gray-700">
+                <span className="font-bold text-[#D97757]">炬象未来</span> 拥有复合型实战团队，在<span className="font-bold text-[#D97757]">湖南股权交易所挂牌</span>（310127HN），荣获"<span className="font-bold text-[#D97757]">国家级先进制造业集群</span>"认证及<span className="font-bold text-[#D97757]">阿里巴巴官方讲师</span>资质。
                 先验证，再投入——每一分钱都花在刀刃上。
               </p>
             </div>
