@@ -22,48 +22,6 @@ const EnterpriseAIPage: React.FC = () => {
     document.documentElement.style.scrollBehavior = 'smooth';
   }, []);
 
-  const cases = [
-    {
-      id: 1,
-      badge: 'GEO优化',
-      company: '某SaaS企业',
-      industry: '企业服务 · 150人',
-      challenge: '月投20万竞价广告，获客成本¥2000/人，停投就没流量',
-      solution: 'GEO优化，让ChatGPT/Perplexity主动推荐品牌',
-      results: [
-        { number: '85%', label: 'AI推荐率' },
-        { number: '120', label: '月均咨询' },
-        { number: '¥210万', label: '年省营销费' },
-      ],
-    },
-    {
-      id: 2,
-      badge: 'AI化转型',
-      company: '某制造企业',
-      industry: '工业制造 · 500人',
-      challenge: '销售团队50人，客户跟进效率低，成交率仅18%',
-      solution: 'CRM智能管理+销售助手，自动分析客户需求',
-      results: [
-        { number: '78%', label: '效率提升' },
-        { number: '42%', label: '成交率' },
-        { number: '¥300万', label: '年省成本' },
-      ],
-    },
-    {
-      id: 3,
-      badge: 'AI化转型',
-      company: '某零售连锁',
-      industry: '零售 · 800人',
-      challenge: '年招聘300人，HR仅5人，招聘周期45天',
-      solution: 'HR智能系统，自动筛选简历、安排面试',
-      results: [
-        { number: '65%', label: '效率提升' },
-        { number: '20天', label: '招聘周期' },
-        { number: '40%', label: '留存率提升' },
-      ],
-    },
-  ];
-
   const features = [
     {
       id: 'local-llm',
@@ -323,8 +281,7 @@ const EnterpriseAIPage: React.FC = () => {
           {/* Center: Page Navigation */}
           <nav className="hidden lg:flex items-center gap-2 flex-1 justify-center">
             {[
-              { href: '#service-overview', label: '服务概览' },
-              { href: '#features', label: '9大场景' },
+              { href: '#features', label: '服务详情' },
               { href: '#faq', label: '常见问题' },
               { href: '#contact', label: '联系我们' },
             ].map((link) => (
@@ -356,21 +313,6 @@ const EnterpriseAIPage: React.FC = () => {
           </div>
         </div>
       </header>
-
-      {/* Definition Block */}
-      <section className="pt-24 pb-8" style={{ backgroundColor: '#F5F5F0', borderBottom: '2px solid #E0E0E0' }}>
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <h1 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#191919' }}>
-            什么是企业AI化转型？
-          </h1>
-          <p className="text-base md:text-lg mb-4" style={{ color: '#333', lineHeight: 1.8 }}>
-            <strong>企业AI化转型</strong>是指企业通过引入人工智能技术，系统性地改造业务流程、优化运营效率、提升决策质量的数字化升级过程。核心目标是让AI成为企业的"智能大脑"，自动处理重复性工作，释放人力专注高价值创造。
-          </p>
-          <p className="text-sm md:text-base" style={{ color: '#666', lineHeight: 1.8 }}>
-            <strong>典型应用场景包括：</strong>智能客服（24/7自动响应）、文档自动化（合同审核、报告生成）、数据分析（实时洞察生成）、营销内容创作、销售线索管理、HR招聘筛选、供应链优化、质量检测等9大核心场景。根据行业实践，企业AI化转型平均可实现效率提升300%、成本降低50%，投资回收期通常为3-6个月。
-          </p>
-        </div>
-      </section>
 
       {/* Hero Section */}
       <section 
@@ -447,7 +389,7 @@ const EnterpriseAIPage: React.FC = () => {
               立即咨询服务
             </button>
             <a 
-              href="#service-overview"
+              href="#features"
               className="px-8 py-4 rounded-full text-base font-semibold transition-all"
               style={{ 
                 background: 'transparent',
@@ -457,129 +399,6 @@ const EnterpriseAIPage: React.FC = () => {
             >
               查看服务详情
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Overview */}
-      <section id="service-overview" className="py-16 md:py-20" style={{ backgroundColor: '#F5EFE6' }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-5xl font-bold mb-4" style={{ color: '#6B0F1A' }}>
-              我们能帮您的企业做什么？
-            </h2>
-            <p className="text-lg text-gray-600">两大核心服务，解决企业AI时代的核心难题</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
-            {[
-              {
-                number: '01',
-                title: 'GEO生成引擎优化',
-                tagline: '让ChatGPT主动推荐你的品牌',
-                stats: [{ value: '85%', label: 'AI推荐率' }, { value: '30天', label: '见效' }],
-              },
-              {
-                number: '02',
-                title: '企业AI化转型',
-                tagline: '9大场景覆盖，让AI成为智能大脑',
-                stats: [{ value: '300%', label: '效率提升' }, { value: '90天', label: '交付' }],
-              },
-            ].map((service, idx) => (
-              <div 
-                key={idx}
-                className="bg-white rounded-2xl p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl relative overflow-hidden"
-                style={{ boxShadow: '0 4px 20px rgba(107, 15, 26, 0.08)' }}
-              >
-                <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold text-white mb-6 mx-auto"
-                  style={{ background: 'linear-gradient(135deg, #6B0F1A 0%, #8B2332 100%)' }}
-                >
-                  {service.number}
-                </div>
-                <h3 className="text-xl md:text-2xl font-bold mb-3" style={{ color: '#191919' }}>{service.title}</h3>
-                <p className="text-gray-600 mb-6">{service.tagline}</p>
-                <div className="flex justify-center gap-8 pt-4 border-t border-gray-200">
-                  {service.stats.map((stat, sidx) => (
-                    <div key={sidx} className="text-center">
-                      <p className="text-2xl font-bold" style={{ color: '#6B0F1A' }}>{stat.value}</p>
-                      <p className="text-sm text-gray-500">{stat.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-center py-4 px-6 rounded-lg text-gray-600" style={{ background: 'rgba(212,165,116,0.1)' }}>
-            可单独选择或组合实施 · 灵活定制方案
-          </p>
-        </div>
-      </section>
-
-      {/* Customer Success Cases */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-5xl font-bold mb-4" style={{ color: '#6B0F1A' }}>客户成功案例</h2>
-            <p className="text-lg text-gray-600">真实数据 · 真实企业 · 真实效果</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {cases.map((c) => (
-              <div 
-                key={c.id}
-                className="case-card rounded-2xl p-6 transition-all duration-300"
-                style={{ backgroundColor: '#F5EFE6', boxShadow: '0 4px 16px rgba(107, 15, 26, 0.06)' }}
-              >
-                <span 
-                  className="inline-block px-3 py-1 rounded-full text-xs font-semibold text-white mb-4"
-                  style={{ background: '#6B0F1A' }}
-                >
-                  {c.badge}
-                </span>
-                <h3 className="text-xl font-bold mb-1">{c.company}</h3>
-                <p className="text-sm text-gray-500 mb-4">{c.industry}</p>
-                
-                <div className="space-y-3 mb-4">
-                  <div className="p-3 rounded-lg" style={{ background: 'rgba(250,246,241,0.5)' }}>
-                    <p className="text-xs font-semibold mb-1" style={{ color: '#6B0F1A' }}>挑战</p>
-                    <p className="text-sm text-gray-700">{c.challenge}</p>
-                  </div>
-                  <div className="p-3 rounded-lg" style={{ background: 'rgba(250,246,241,0.5)' }}>
-                    <p className="text-xs font-semibold mb-1" style={{ color: '#6B0F1A' }}>方案</p>
-                    <p className="text-sm text-gray-700">{c.solution}</p>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-lg bg-white">
-                  <p className="text-xs font-semibold mb-3" style={{ color: '#6B0F1A' }}>效果</p>
-                  <div className="grid grid-cols-3 gap-2">
-                    {c.results.map((r, ridx) => (
-                      <div key={ridx} className="text-center">
-                        <p className="text-xl font-bold" style={{ color: '#6B0F1A' }}>{r.number}</p>
-                        <p className="text-xs text-gray-500">{r.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* ROI Calculator Teaser */}
-          <div 
-            className="text-center p-8 rounded-2xl"
-            style={{ background: 'linear-gradient(135deg, #D4A574 0%, #C77E5C 100%)' }}
-          >
-            <h3 className="text-2xl font-bold mb-3 text-gray-900">想知道AI能为您的企业节省多少成本？</h3>
-            <p className="text-gray-700 mb-6">填写简单信息，1分钟获得专属ROI预测报告</p>
-            <button 
-              onClick={() => openModal('ai-diagnosis')}
-              className="px-8 py-3 rounded-lg font-semibold btn-primary-burgundy"
-            >
-              免费获取ROI评估
-            </button>
           </div>
         </div>
       </section>
@@ -635,21 +454,6 @@ const EnterpriseAIPage: React.FC = () => {
                     <span className="underline decoration-4" style={{ textDecorationColor: '#D4A574' }}>AI推荐的是竞争对手</span>
                   </h3>
                   <p className="text-gray-600">我们通过GEO生成引擎优化技术，让您的品牌成为AI优先推荐的答案</p>
-                </div>
-
-                <div className="grid md:grid-cols-4 gap-4 mb-8">
-                  {[
-                    { value: '85%', label: 'AI推荐成功率', desc: 'ChatGPT/Perplexity/Gemini主动推荐您的品牌' },
-                    { value: '¥210万', label: '年均节省营销费', desc: '零广告费获取精准客户，一次优化长期有效' },
-                    { value: '30天', label: '见效周期', desc: '快速部署，效果保证，未达标全额退款' },
-                    { value: '7倍', label: '转化率提升', desc: 'AI推荐转化率35% vs 传统广告5%' },
-                  ].map((m, idx) => (
-                    <div key={idx} className="bg-white p-6 rounded-xl text-center">
-                      <p className="font-display text-3xl font-bold mb-2" style={{ color: '#6B0F1A' }}>{m.value}</p>
-                      <p className="font-semibold mb-2">{m.label}</p>
-                      <p className="text-sm text-gray-500">{m.desc}</p>
-                    </div>
-                  ))}
                 </div>
 
                 <div className="bg-white p-6 rounded-xl">
@@ -973,12 +777,6 @@ const EnterpriseAIPage: React.FC = () => {
                 className="p-8 rounded-2xl text-center text-white"
                 style={{ background: 'linear-gradient(135deg, #6B0F1A 0%, #8B2332 100%)' }}
               >
-                <span 
-                  className="inline-block px-4 py-2 rounded-full text-sm font-bold mb-4"
-                  style={{ background: '#D4A574', color: '#1A1A1A' }}
-                >
-                  限时免费
-                </span>
                 <h3 className="font-display text-2xl md:text-3xl font-bold mb-3">免费GEO诊断服务（价值¥2万）</h3>
                 <p className="mb-6 opacity-95">我们将测试ChatGPT、Perplexity、Gemini等主流AI对您品牌的识别度，并提供详细优化方案</p>
                 <div className="flex flex-wrap justify-center gap-3 mb-6 max-w-2xl mx-auto">
@@ -1002,9 +800,22 @@ const EnterpriseAIPage: React.FC = () => {
               <h3 className="font-display text-2xl md:text-4xl font-bold text-center mb-4" style={{ color: '#6B0F1A' }}>
                 9大核心应用场景
               </h3>
-              <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
+              <p className="text-center text-gray-600 mb-4 max-w-3xl mx-auto">
                 覆盖销售、营销、客服、HR、供应链等高频业务场景，每个场景都有成熟方案和真实案例验证
               </p>
+              <div className="flex justify-center mb-8">
+                <div 
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold animate-pulse"
+                  style={{ 
+                    background: 'linear-gradient(135deg, rgba(212,165,116,0.2) 0%, rgba(199,126,92,0.2) 100%)',
+                    border: '2px solid #D4A574',
+                    color: '#8B2332'
+                  }}
+                >
+                  <span className="text-lg">👆</span>
+                  点击任意场景卡片，即可查看AI模拟演示效果
+                </div>
+              </div>
 
               {/* Category Filter */}
               <div className="flex flex-wrap justify-center gap-3 mb-8">
